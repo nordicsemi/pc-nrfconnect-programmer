@@ -120,7 +120,7 @@ export const nRF5340DefaultDevice: DeviceDefinition<
     },
 };
 
-// TODO App and netowrk core are dynamic for now we will show entoer memroy as owne by one core
+// TODO App and network core are dynamic for now we will show entoer memroy as owne by one core
 export const nRF54L5DefaultDevice: DeviceDefinition<
     Required<Pick<CoreDefinitions, 'Application'>>
 > = {

@@ -387,6 +387,7 @@ Are you sure you want to continue?`,
                     }
                 >
                     <span className="mdi mdi-refresh" />
+                    {/* // TODO: disable read */}
                     Read
                 </Button>
             </Group>
