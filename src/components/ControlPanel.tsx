@@ -41,6 +41,7 @@ import {
 import { getAutoRead, getAutoReset } from '../reducers/settingsReducer';
 import { getIsWritable } from '../reducers/targetReducer';
 import { convertDeviceDefinitionToCoreArray } from '../util/devices';
+import { DeviceFamily } from '../util/deviceTypes';
 
 const useRegisterDragEvents = () => {
     const dispatch = useDispatch();
@@ -187,6 +188,10 @@ const ControlPanel = () => {
     const isMcuboot = !!device?.traits.mcuBoot;
     const isModem = !!device?.traits.modem;
 
+    const disableLayoutActions =
+        deviceDefinition.family === DeviceFamily.NRF54H ||
+        deviceDefinition.family === DeviceFamily.NRF92;
+
     const targetIsRecoverable = isJLink;
 
     const refreshAllFiles = () => dispatch(fileActions.refreshAllFiles());
@@ -294,7 +299,12 @@ Are you sure you want to continue?`,
                         }
                         dispatch(jlinkTargetActions.saveAsFile());
                     }}
-                    disabled={!isJLink || !isMemLoaded || !targetIsReady}
+                    disabled={
+                        !isJLink ||
+                        !isMemLoaded ||
+                        !targetIsReady ||
+                        disableLayoutActions
+                    }
                 >
                     <span className="mdi mdi-floppy" />
                     Save as file
@@ -382,22 +392,36 @@ Are you sure you want to continue?`,
                         }
                         dispatch(setDeviceBusy(false));
                     }}
+                    title={
+                        disableLayoutActions
+                            ? 'Reading memory for this family is not supported.'
+                            : undefined
+                    }
                     disabled={
-                        isMcuboot || !isJLink || !targetIsReady || !canRead
+                        isMcuboot ||
+                        !isJLink ||
+                        !targetIsReady ||
+                        !canRead ||
+                        disableLayoutActions
                     }
                 >
                     <span className="mdi mdi-refresh" />
-                    {/* // TODO: disable read */}
                     Read
                 </Button>
             </Group>
             <Group heading="J-Link Settings">
                 <Toggle
                     onToggle={() => dispatch(settingsActions.toggleAutoRead())}
-                    isToggled={autoRead}
+                    isToggled={autoRead && !disableLayoutActions}
                     label="Auto read memory"
                     barColor={colors.gray700}
                     handleColor={colors.gray300}
+                    disabled={disableLayoutActions}
+                    title={
+                        disableLayoutActions
+                            ? 'Reading memory for this family is not supported.'
+                            : undefined
+                    }
                 />
                 <Toggle
                     isToggled={autoReset}

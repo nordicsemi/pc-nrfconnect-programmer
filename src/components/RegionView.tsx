@@ -31,7 +31,8 @@ const regionColorByName: Record<RegionName | 'background', string> = {
     background: colors.gray100,
 };
 
-const color = (name?: RegionName) => regionColorByName[name ?? 'background'];
+export const color = (name?: RegionName) =>
+    regionColorByName[name ?? 'background'];
 
 interface RegionViewProps {
     width: number;
