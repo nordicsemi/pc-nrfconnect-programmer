@@ -35,6 +35,7 @@ import {
 } from '../reducers/deviceDefinitionReducer';
 import {
     getFileRegions,
+    getLoaded,
     getMruFiles,
     getZipFilePath,
 } from '../reducers/fileReducer';
@@ -176,6 +177,7 @@ const ControlPanel = () => {
     const targetIsWritable = useSelector(getIsWritable);
     const deviceDefinition = useSelector(getDeviceDefinition);
     const zipFile = useSelector(getZipFilePath);
+    const hexFile = useSelector(getLoaded);
     const targetIsReady = !useSelector(getDeviceIsBusy) && !!device;
     const coreInfos = convertDeviceDefinitionToCoreArray(deviceDefinition);
     const canRead = !!coreInfos.find(
@@ -191,6 +193,8 @@ const ControlPanel = () => {
     const disableLayoutActions =
         deviceDefinition.family === DeviceFamily.NRF54H ||
         deviceDefinition.family === DeviceFamily.NRF92;
+
+    const hasHexFile = Object.keys(hexFile).length > 0;
 
     const targetIsRecoverable = isJLink;
 
@@ -281,7 +285,8 @@ Are you sure you want to continue?`,
                         isMcuboot ||
                         !isJLink ||
                         !targetIsReady ||
-                        !fileRegionSize ||
+                        (!fileRegionSize &&
+                            !(disableLayoutActions && hasHexFile)) ||
                         !(targetIsRecoverable && mruFiles.length)
                     }
                 >
