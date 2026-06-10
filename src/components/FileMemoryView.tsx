@@ -143,9 +143,9 @@ export default () => {
                 >
                     <div className="read-indicator">
                         <p>
-                            HEX file is selected and ready for the programming
+                            HEX file selected and available for programming
                         </p>
-                        <p>Memory layout is not available for this family</p>
+                        <p>Memory layout is not available for this product series</p>
                     </div>
                 </div>
             </div>

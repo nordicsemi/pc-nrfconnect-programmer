@@ -642,7 +642,7 @@ const getAllCoreInfoBatch =
                 device.devkit?.deviceFamily === DeviceFamily.NRF92
             ) {
                 logger.info(
-                    `Skipping reading core ${coreInfo.name} information as operation is not supported for the ${device.devkit?.deviceFamily} device family.`,
+                    `Skipping reading information for the ${coreInfo.name} core - operation is not supported for devices from the ${device.devkit?.deviceFamily} Series.`,
                 );
                 return accBatch;
             }

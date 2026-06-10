@@ -105,7 +105,7 @@ const TextOverlay = ({
             <div className="centering-container">
                 <div className="read-indicator">
                     <p>Device core is connected</p>
-                    <p>Memory layout is not available for this family</p>
+                    <p>Memory layout is not available for this product series</p>
                 </div>
             </div>
         );

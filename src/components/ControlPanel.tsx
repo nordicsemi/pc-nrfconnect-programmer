@@ -399,7 +399,7 @@ Are you sure you want to continue?`,
                     }}
                     title={
                         disableLayoutActions
-                            ? 'Reading memory for this family is not supported.'
+                            ? 'Reading memory for devices from this product series is not supported.'
                             : undefined
                     }
                     disabled={
@@ -424,7 +424,7 @@ Are you sure you want to continue?`,
                     disabled={disableLayoutActions}
                     title={
                         disableLayoutActions
-                            ? 'Reading memory for this family is not supported.'
+                            ? 'Reading memory for this product series is not supported.'
                             : undefined
                     }
                 />
