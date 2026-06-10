@@ -142,10 +142,11 @@ export default () => {
                     }}
                 >
                     <div className="read-indicator">
+                        <p>HEX file selected and available for programming</p>
                         <p>
-                            HEX file selected and available for programming
+                            Memory layout is not available for this product
+                            series
                         </p>
-                        <p>Memory layout is not available for this product series</p>
                     </div>
                 </div>
             </div>
