@@ -79,8 +79,12 @@ export const openDevice =
 
         const batch = NrfutilDeviceLib.batch();
 
+        const disableAutoRead =
+            defaultDeviceInfo.family === DeviceFamily.NRF54H ||
+            defaultDeviceInfo.family === DeviceFamily.NRF92;
+
         const autoRead = getState().app.settings.autoRead;
-        if (autoRead) {
+        if (autoRead && !disableAutoRead) {
             dispatch(readAllCoresBatch(true, batch));
         }
 
