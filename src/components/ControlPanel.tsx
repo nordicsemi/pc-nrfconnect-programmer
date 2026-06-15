@@ -200,6 +200,13 @@ const ControlPanel = () => {
 
     const refreshAllFiles = () => dispatch(fileActions.refreshAllFiles());
 
+    useEffect(() => {
+        if (!disableLayoutActions) return;
+        if (!autoRead) return;
+
+        dispatch(settingsActions.toggleAutoRead());
+    }, [disableLayoutActions, autoRead, dispatch]);
+
     return (
         <SidePanel className="control-panel">
             <Group heading="File">
@@ -417,7 +424,7 @@ Are you sure you want to continue?`,
             <Group heading="J-Link Settings">
                 <Toggle
                     onToggle={() => dispatch(settingsActions.toggleAutoRead())}
-                    isToggled={autoRead && !disableLayoutActions}
+                    isToggled={autoRead}
                     label="Auto read memory"
                     barColor={colors.gray700}
                     handleColor={colors.gray300}
