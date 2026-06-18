@@ -1,3 +1,9 @@
+## 4.7.6 - unreleased
+
+### Added
+
+- Logging of added and removed files.
+
 ## 4.7.5 - 2026-06-15
 
 ### Changed
