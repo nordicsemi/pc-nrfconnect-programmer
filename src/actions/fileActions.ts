@@ -110,9 +110,13 @@ export const removeFile =
 export const closeFiles = (): AppThunk<RootState> => (dispatch, getState) => {
     const { loaded } = getState().app.file;
     const zipFilePath = getZipFilePath(getState());
-    [...Object.keys(loaded), ...(zipFilePath ? [zipFilePath] : [])].forEach(
-        filePath => logger.info(`${basename(filePath)} file was removed`),
-    );
+
+    Object.keys(loaded ?? {}).forEach(filePath => {
+        logger.info(`${basename(filePath)} file was removed`);
+    });
+    if (zipFilePath) {
+        logger.info(`${basename(zipFilePath)} file was removed`);
+    }
 
     dispatch(fileWarningRemove());
     dispatch(filesEmpty());
