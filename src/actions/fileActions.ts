@@ -22,6 +22,7 @@ import {
 import {
     fileParse,
     filesEmpty,
+    getZipFilePath,
     mcubootFileKnown,
     mruFilesLoadSuccess,
     zipFileKnown,
@@ -91,6 +92,10 @@ export const removeFile =
     (dispatch, getState) => {
         const { loaded, memMaps } = getState().app.file;
 
+        if (loaded[filePath]) {
+            logger.info(`${basename(filePath)} file was removed`);
+        }
+
         const newLoaded = Object.fromEntries(
             Object.entries(loaded).filter(([key]) => key !== filePath),
         );
@@ -103,6 +108,12 @@ export const removeFile =
     };
 
 export const closeFiles = (): AppThunk<RootState> => (dispatch, getState) => {
+    const { loaded } = getState().app.file;
+    const zipFilePath = getZipFilePath(getState());
+    [...Object.keys(loaded), ...(zipFilePath ? [zipFilePath] : [])].forEach(
+        filePath => logger.info(`${basename(filePath)} file was removed`),
+    );
+
     dispatch(fileWarningRemove());
     dispatch(filesEmpty());
 
@@ -230,22 +241,31 @@ const parseHexFile =
             [filePath, memMap],
         ] as MemoryMapTuple<string>[];
         dispatch(fileParse({ loaded: newLoaded, memMaps: newMemMaps }));
+        logger.info(`${basename(filePath)} file was selected`);
         dispatch(updateCoreInfo());
     };
 
 export const openFile =
     (...params: string[]): AppThunk<RootState, Promise<unknown>> =>
-    async (dispatch): Promise<unknown> => {
+    async (dispatch, getState): Promise<unknown> => {
         const filePath = params[0];
         if (!filePath) return dispatch(loadMruFiles());
+
+        const previousZipFilePath = getZipFilePath(getState());
 
         // The last selected file has higher priority
         dispatch(mcubootFileKnown(undefined));
         dispatch(zipFileKnown(undefined));
 
         if (filePath.toLowerCase().endsWith('.zip')) {
+            if (previousZipFilePath) {
+                logger.info(
+                    `${basename(previousZipFilePath)} file was removed`,
+                );
+            }
             dispatch(filesEmpty());
             dispatch(zipFileKnown(filePath));
+            logger.info(`${basename(filePath)} file was selected`);
             await dispatch(parseZipFile(filePath));
             dispatch(updateTargetWritable());
             return dispatch(openFile(...params.slice(1)));
