@@ -5,6 +5,11 @@
 - Write support for MCUboot devices, such as Nordic Thingy:91 X or the nRF54LM20
   Dongle.
 
+### Changed
+
+- When programming via MCUboot, Programmer now detects whether the selected
+  `.zip` file is a modem firmware or an application.
+
 ## 4.7.5 - 2026-06-15
 
 ### Changed

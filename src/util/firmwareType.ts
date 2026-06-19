@@ -16,19 +16,13 @@ interface Manifest {
     files?: { type?: string }[];
 }
 
-/*
- * Classify a firmware zip.
- *  - MODEM if it carries Nordic modem-FW markers
- *  - APPLICATION if it has a manifest.json with a file of type "application"
- *  - UNKNOWN_APPLICATION otherwise
- */
 export const classifyFirmwareZip = async (
     zipPath: string,
 ): Promise<FirmwareType> => {
     const directory = await Open.file(zipPath);
     const entries = directory.files.map(file => file.path);
 
-    // 1. Modem firmware — check first (a modem zip also contains .bin/.hex files).
+    // Is modem firmware
     const isModem = entries.some(name => {
         const l = name.toLowerCase();
         return (
@@ -41,7 +35,7 @@ export const classifyFirmwareZip = async (
     });
     if (isModem) return FirmwareType.MODEM;
 
-    // 2. Application — manifest.json with a file entry of type "application".
+    // Is Application: check manifest.json with a "file" entry of type "application".
     const manifestEntry = directory.files.find(file =>
         file.path.toLowerCase().endsWith('manifest.json'),
     );
@@ -61,6 +55,5 @@ export const classifyFirmwareZip = async (
         }
     }
 
-    // 3. Anything else.
     return FirmwareType.UNKNOWN_APPLICATION;
 };
