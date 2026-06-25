@@ -7,8 +7,8 @@ import {
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 type ModalStage = 'firmwareTypeSelection' | 'versionSelection';
-export default () => {
-    const [isVisible, setIsVisible] = useState(false);
+export default ({ isVisible }: { isVisible: boolean }) => {
+    // const [isVisible, setIsVisible] = useState(true);
     const [modalStage, setModalStage] = useState<ModalStage>(
         'firmwareTypeSelection',
     );
@@ -16,7 +16,7 @@ export default () => {
     // const device = useSelector(selectedDevice);
 
     const close = () => {
-        setIsVisible(false);
+        // setIsVisible(false);
         setFirmwareType('');
         // What else needs to be done when closing the window?
     };

@@ -11,6 +11,7 @@ import {
     telemetry,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
+import Testpane from './artifactory/Testpane';
 import AppMainView from './components/AppMainView';
 import ControlPanel from './components/ControlPanel';
 import DeviceSelector from './components/DeviceSelector';
@@ -18,7 +19,6 @@ import DocumentationSections from './components/DocumentationSections';
 import appReducer from './reducers';
 
 import '../resources/css/index.scss';
-import Testpane from './artifactory/Testpane';
 
 telemetry.enableTelemetry();
 

@@ -43,6 +43,7 @@ import { getAutoRead, getAutoReset } from '../reducers/settingsReducer';
 import { getIsWritable } from '../reducers/targetReducer';
 import { convertDeviceDefinitionToCoreArray } from '../util/devices';
 import { DeviceFamily } from '../util/deviceTypes';
+import ProgramFirmwareModal from './ProgramFirmwareModal';
 
 const useRegisterDragEvents = () => {
     const dispatch = useDispatch();
@@ -113,6 +114,12 @@ const Mru = ({ mruFiles }: { mruFiles: string[] }) => {
         setShow(false);
     };
 
+    const openArtifactory = () => {
+        setModalVisible(true);
+    };
+
+    const [modalVisible, setModalVisible] = useState(false);
+
     const containerNode = document.getElementsByClassName(
         'core-main-layout',
     )[0] as HTMLElement;
@@ -152,6 +159,12 @@ const Mru = ({ mruFiles }: { mruFiles: string[] }) => {
                     )}
                     <Dropdown.Divider />
                     <Dropdown.Item
+                        onSelect={openArtifactory}
+                        style={{ fontWeight: 700 }}
+                    >
+                        Select from artifactory
+                    </Dropdown.Item>
+                    <Dropdown.Item
                         onSelect={onSelect}
                         style={{ fontWeight: 700 }}
                     >
@@ -163,6 +176,7 @@ const Mru = ({ mruFiles }: { mruFiles: string[] }) => {
                 <span className="mdi mdi-folder-open" />
                 Add file
             </Button>
+            <ProgramFirmwareModal isVisible={modalVisible} />
         </>
     );
 };
