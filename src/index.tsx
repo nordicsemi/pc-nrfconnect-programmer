@@ -18,6 +18,7 @@ import DocumentationSections from './components/DocumentationSections';
 import appReducer from './reducers';
 
 import '../resources/css/index.scss';
+import Testpane from './artifactory/Testpane';
 
 telemetry.enableTelemetry();
 
@@ -26,7 +27,7 @@ render(
         appReducer={appReducer}
         deviceSelect={<DeviceSelector />}
         sidePanel={<ControlPanel />}
-        panes={[{ name: 'Programmer', Main: AppMainView }]}
+        panes={[{ name: 'Programmer', Main: AppMainView } { name: 'Artifactory', Main: Testpane }]}
         documentation={DocumentationSections}
     />,
 );
