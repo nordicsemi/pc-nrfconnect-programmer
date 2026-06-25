@@ -27,7 +27,10 @@ render(
         appReducer={appReducer}
         deviceSelect={<DeviceSelector />}
         sidePanel={<ControlPanel />}
-        panes={[{ name: 'Programmer', Main: AppMainView } { name: 'Artifactory', Main: Testpane }]}
+        panes={[
+            { name: 'Programmer', Main: AppMainView },
+            { name: 'Artifactory', Main: Testpane },
+        ]}
         documentation={DocumentationSections}
     />,
 );
