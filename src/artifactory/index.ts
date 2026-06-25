@@ -4,13 +4,12 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-import { logger } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import { AQLClient, type AQLQueryData, type AQLResult } from './AQLClient.js';
 import { ArtifactoryClient, type AUrlData } from './ArtifactoryClient.js';
 
 export const NordicURL: string = 'files.nordicsemi.com';
 
-export async function tester() {
+export const tester = async () => {
     const testData: AQLQueryData = {
         server: NordicURL,
         repo: 'swtools',
@@ -35,4 +34,4 @@ export async function tester() {
     const blob = await downloader.downloadArtifact(url);
 
     console.log(blob);
-}
+};

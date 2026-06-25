@@ -1,22 +1,27 @@
 /*
- * Copyright (c) 2015 Nordic Semiconductor ASA
+ * Copyright (c) 2026 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
+import React from 'react';
 
-import React, { useEffect } from 'react';
-import { logger } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import { tester } from '.';
 
-const Testpane: React.FC<{ active: boolean }> = ({ active }) => (
-    <>
-        <button type="button" onClick={console.log('Test')}>
-            Test
-        </button>
-        <button type="button" onClick={tester}>
-            Run
-        </button>
-    </>
-);
+const Testpane: React.FC = () => {
+    const clickTest = () => {
+        console.log('test');
+    };
+
+    return (
+        <>
+            <button type="button" onClick={clickTest}>
+                Test
+            </button>
+            <button type="button" onClick={tester}>
+                Run
+            </button>
+        </>
+    );
+};
 
 export default Testpane;
