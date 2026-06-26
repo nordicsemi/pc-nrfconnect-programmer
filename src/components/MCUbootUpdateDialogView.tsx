@@ -289,9 +289,9 @@ Are you sure you want to continue?`,
                             using MCUboot.
                         </p>
                         <p className="tw-mb-0">
-                            The device will be overwritten if you proceed to
-The device memory will be overwritten if you proceed to
-write.
+                            The device will be overwritten if you proceed to The
+                            device memory will be overwritten if you proceed to
+                            write.
                         </p>
                         <p className="tw-mb-0">
                             Make sure the device is in the{' '}

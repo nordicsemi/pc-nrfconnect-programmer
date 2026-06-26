@@ -20,20 +20,6 @@ export const classifyFirmwareZip = async (
     zipPath: string,
 ): Promise<FirmwareType> => {
     const directory = await Open.file(zipPath);
-    const entries = directory.files.map(file => file.path);
-
-    // Is modem firmware
-    const isModem = entries.some(name => {
-        const l = name.toLowerCase();
-        return (
-            l.includes('.ipc_dfu') ||
-            // l.endsWith('.cbor') ||
-            l.includes('firmware.update.image.segments') ||
-            l.includes('firmware.update.image.digest') ||
-            /(^|\/)mfw_nrf\w+/.test(l)
-        );
-    });
-    if (isModem) return FirmwareType.MODEM;
 
     // Is Application: check manifest.json with a "file" entry of type "application".
     const manifestEntry = directory.files.find(file =>
@@ -54,6 +40,21 @@ export const classifyFirmwareZip = async (
             /* malformed manifest → fall through */
         }
     }
+
+    const entries = directory.files.map(file => file.path);
+
+    // Is modem firmware
+    const isModem = entries.some(name => {
+        const l = name.toLowerCase();
+        return (
+            l.includes('.ipc_dfu') ||
+            // l.endsWith('.cbor') ||
+            l.includes('firmware.update.image.segments') ||
+            l.includes('firmware.update.image.digest') ||
+            /(^|\/)mfw_nrf\w+/.test(l)
+        );
+    });
+    if (isModem) return FirmwareType.MODEM;
 
     return FirmwareType.UNKNOWN_APPLICATION;
 };
