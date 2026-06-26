@@ -6,6 +6,8 @@ import {
     selectedDevice,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
+import FirmwareFilter from './FirmwareFilter';
+
 type ModalStage = 'firmwareTypeSelection' | 'versionSelection';
 export default ({
     isVisible,
@@ -61,6 +63,8 @@ const SelectFirmwareType = ({
             <Dialog.Body>
                 <p>Select a program</p>
                 {/* Let user select type of firmware here */}
+                <FirmwareFilter />
+                <p>test</p>
             </Dialog.Body>
             <Dialog.Footer>
                 <DialogButton onClick={close}>Close</DialogButton>
