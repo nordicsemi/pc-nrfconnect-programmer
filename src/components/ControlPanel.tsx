@@ -176,7 +176,10 @@ const Mru = ({ mruFiles }: { mruFiles: string[] }) => {
                 <span className="mdi mdi-folder-open" />
                 Add file
             </Button>
-            <ProgramFirmwareModal isVisible={modalVisible} />
+            <ProgramFirmwareModal
+                isVisible={modalVisible}
+                onClose={() => setModalVisible(false)}
+            />
         </>
     );
 };
