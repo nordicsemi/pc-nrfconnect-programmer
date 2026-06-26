@@ -286,14 +286,15 @@ Are you sure you want to continue?`,
                             {isApplication
                                 ? 'application programming'
                                 : 'modem DFU'}{' '}
-                            via MCUboot.
+                            using MCUboot.
                         </p>
                         <p className="tw-mb-0">
                             The device will be overwritten if you proceed to
-                            write.
+The device memory will be overwritten if you proceed to
+write.
                         </p>
                         <p className="tw-mb-0">
-                            Make sure the device is in{' '}
+                            Make sure the device is in the{' '}
                             <strong>MCUboot mode</strong>.
                         </p>
                     </Alert>
