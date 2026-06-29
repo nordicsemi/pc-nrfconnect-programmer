@@ -48,10 +48,8 @@
     },
     "devDependencies": {
         "@nordicsemiconductor/pc-nrfconnect-shared": "^252.0.0",
-        "@types/unzipper": "^0.10.11"
+        "@types/unzipper": "^0.10.11",
+        "unzipper": "^0.12.5"
     },
-    "prettier": "@nordicsemiconductor/pc-nrfconnect-shared/config/prettier.config.js",
-    "dependencies": {
-        "unzipper": "^0.12.3"
-    }
+    "prettier": "@nordicsemiconductor/pc-nrfconnect-shared/config/prettier.config.js"
 }
