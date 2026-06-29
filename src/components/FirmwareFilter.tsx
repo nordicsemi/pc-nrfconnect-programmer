@@ -8,6 +8,7 @@ import {
 type FilterOptions = Record<string, string[]>;
 
 const artifactoryUrl = '../resources/firmware/firmwareFilters.json'; // change later
+// const tempUrl = '../resources/firmware/filtertest.json';
 
 export default () => {
     const [filterOptions, setFilterOptions] = useState<FilterOptions>();
@@ -48,16 +49,28 @@ export default () => {
             </Button>
             {isOpen &&
                 Object.entries(filterOptions ?? {}).map(([key, values]) => (
-                    <div key={key}>
+                    <div key={key} className="tw-flex tw-f">
                         <p>{key}</p>
                         {values.map(value => (
                             <div key={value}>
-                                <input
-                                    type="checkbox"
-                                    value={value}
-                                    onClick={() => handleToggle(key, value)}
-                                />
-                                <p>{value}</p>
+                                {(selectedFilters[key] ?? []).includes(
+                                    value,
+                                ) ? (
+                                    <Button
+                                        variant="primary"
+                                        onClick={() => handleToggle(key, value)}
+                                    >
+                                        {value}
+                                    </Button>
+                                ) : (
+                                    <Button
+                                        variant="secondary"
+                                        className="tw-full"
+                                        onClick={() => handleToggle(key, value)}
+                                    >
+                                        {value}
+                                    </Button>
+                                )}
                             </div>
                         ))}
                     </div>

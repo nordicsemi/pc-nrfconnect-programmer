@@ -8,6 +8,12 @@ import {
 
 import FirmwareFilter from './FirmwareFilter';
 
+interface Sample {
+    name: string;
+    description: string;
+    versions: string[];
+}
+
 type ModalStage = 'firmwareTypeSelection' | 'versionSelection';
 export default ({
     isVisible,
@@ -22,6 +28,7 @@ export default ({
     );
     const [firmwareType, setFirmwareType] = useState('');
     // const device = useSelector(selectedDevice);
+    const [samples, setSamples] = useState();
 
     const close = () => {
         onClose();
