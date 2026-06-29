@@ -7,8 +7,6 @@
 
 ### Changed
 
-- When programming via MCUboot, Programmer now detects whether the selected
-  `.zip` file is a modem firmware or an application.
 - When programming using MCUboot, the Programmer app now detects whether the
   selected `.zip` file is a modem firmware or an application.
 
