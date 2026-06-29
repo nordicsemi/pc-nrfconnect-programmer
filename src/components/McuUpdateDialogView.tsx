@@ -90,6 +90,9 @@ const McuUpdateDialogView = () => {
         resolution: 200,
     });
 
+    const mustHaveChipTarget = programmingOptions.length > 1 && !zipFilePath;
+    const hasChipTarget = mustHaveChipTarget && !chosenTarget;
+
     useEffect(() => {
         // note: check may be redundant as Thingy:91 has a different modal
         const isThingy53 =
@@ -151,7 +154,7 @@ const McuUpdateDialogView = () => {
             return;
         }
 
-        if (programmingOptions.length > 1 && !zipFilePath && !chosenTarget) {
+        if (hasChipTarget) {
             logger.error('No target selected');
             return;
         }
@@ -199,7 +202,7 @@ Are you sure you want to continue?`,
                 setProgress(updatedProgress);
             },
             abortController.current,
-            showDelayTimeout || (mcubootFwPath && chosenTarget)
+            showDelayTimeout || hasChipTarget
                 ? {
                       netCoreUploadDelay: uploadDelay,
                       target: mcubootFwPath ? chosenTarget : undefined,
@@ -264,9 +267,7 @@ Are you sure you want to continue?`,
                             writing ||
                             writingSucceed ||
                             writingFail ||
-                            (programmingOptions.length > 1 &&
-                                !chosenTarget &&
-                                !!mcubootFwPath)
+                            hasChipTarget
                         }
                     >
                         Write
@@ -283,7 +284,7 @@ Are you sure you want to continue?`,
                     <span>{` ${mcubootFwPath || zipFilePath}`}</span>
                 </div>
 
-                {programmingOptions.length > 1 && !zipFilePath && (
+                {mustHaveChipTarget && (
                     <div className="tw-flex tw-flex-col tw-gap-2">
                         <strong>Target:</strong>
                         <Dropdown
