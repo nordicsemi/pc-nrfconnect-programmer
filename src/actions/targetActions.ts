@@ -14,9 +14,13 @@ import describeError from '@nordicsemiconductor/pc-nrfconnect-shared/src/logging
 
 import { setDeviceBusy } from '../reducers/deviceDefinitionReducer';
 import { setShowMcuBootProgrammingDialog } from '../reducers/mcubootReducer';
-import { setShowModemProgrammingDialog } from '../reducers/modemReducer';
+import {
+    setFirmwareType,
+    setShowModemProgrammingDialog,
+} from '../reducers/modemReducer';
 import { targetWritableKnown } from '../reducers/targetReducer';
 import { type RootState } from '../reducers/types';
+import { classifyFirmwareZip } from '../util/firmwareType';
 import * as jlinkTargetActions from './jlinkTargetActions';
 import * as mcubootTargetActions from './mcubootTargetActions';
 import * as usbsdfuTargetActions from './usbsdfuTargetActions';
@@ -87,10 +91,19 @@ export const updateTargetWritable =
 
 export const write =
     (device: Device): AppThunk<RootState> =>
-    (dispatch, getState) => {
+    async (dispatch, getState) => {
         const zipFilePath = getState().app.file.zipFilePath;
 
         if (device.traits.modem && zipFilePath) {
+            try {
+                dispatch(
+                    setFirmwareType(await classifyFirmwareZip(zipFilePath)),
+                );
+            } catch (error) {
+                logger.error(
+                    `Could not detect firmware type: ${describeError(error)}`,
+                );
+            }
             dispatch(setShowModemProgrammingDialog(true));
             return;
         }

@@ -24,9 +24,11 @@ import { performUpdate } from '../actions/modemTargetActions';
 import { getDeviceDefinition } from '../reducers/deviceDefinitionReducer';
 import { getZipFilePath } from '../reducers/fileReducer';
 import {
+    getFirmwareType,
     getShowModemProgrammingDialog,
     setShowModemProgrammingDialog,
 } from '../reducers/modemReducer';
+import { FirmwareType } from '../util/firmwareType';
 import { type WithRequired } from '../util/types';
 
 export const isValidNrf9160FirmwareName = (filename: string | undefined) =>
@@ -37,7 +39,7 @@ export const isValidNrf91x1FirmwareName = (filename: string | undefined) =>
     /mfw_nrf91x1_\d+\.\d+\.\d+.*.zip/.test(filename) ||
     /mfw.*nrf91.1(-\w+)?_\d+\.\d+\.\d+.*.zip/.test(filename);
 
-const ModemUpdateDialogView = () => {
+const MCUbootUpdateDialogView = () => {
     const abortController = useRef(new AbortController());
     const [progress, setProgress] =
         useState<WithRequired<Progress, 'message'>>();
@@ -51,6 +53,8 @@ const ModemUpdateDialogView = () => {
     const deviceDefinition = useSelector(getDeviceDefinition);
     const modemFwName = useSelector(getZipFilePath);
     const isVisible = useSelector(getShowModemProgrammingDialog);
+    const firmwareType = useSelector(getFirmwareType);
+    const isApplication = firmwareType !== FirmwareType.MODEM;
     const isMcuboot = !!device?.traits.mcuBoot && !device?.traits.jlink;
 
     const is9160 =
@@ -178,7 +182,9 @@ Are you sure you want to continue?`,
 
     return (
         <GenericDialog
-            title={`Modem DFU ${isMcuboot ? ' via MCUboot' : ''}`}
+            title={`${isApplication ? 'Application Update' : 'Modem DFU'}${
+                isMcuboot ? ' via MCUboot' : ''
+            }`}
             showSpinner={writing}
             onHide={onCancel}
             closeOnEsc
@@ -211,11 +217,14 @@ Are you sure you want to continue?`,
             <div className="tw-flex tw-flex-col tw-gap-4">
                 <div className="tw-flex tw-flex-col tw-gap-2">
                     <div>
-                        <b>Modem firmware</b>
+                        <b>
+                            {isApplication ? 'Application' : 'Modem'} firmware
+                        </b>
                     </div>
                     <div>{modemFwName}</div>
                 </div>
-                {!writing &&
+                {!isApplication &&
+                    !writing &&
                     !writingSucceed &&
                     !writingFail &&
                     !expectedFwName &&
@@ -241,7 +250,8 @@ Are you sure you want to continue?`,
                             .
                         </Alert>
                     )}
-                {!writing &&
+                {!isApplication &&
+                    !writing &&
                     !writingSucceed &&
                     !writingFail &&
                     !deviceTypeKnown && (
@@ -272,14 +282,18 @@ Are you sure you want to continue?`,
                 {isMcuboot && !writing && !writingSucceed && !writingFail && (
                     <Alert variant="warning">
                         <p className="tw-mb-0">
-                            You are now performing modem DFU via MCUboot.
+                            You are now performing{' '}
+                            {isApplication
+                                ? 'application programming'
+                                : 'modem DFU'}{' '}
+                            using MCUboot.
                         </p>
                         <p className="tw-mb-0">
-                            The device will be overwritten if you proceed to
-                            write.
+                            The device memory will be overwritten if you proceed
+                            to write.
                         </p>
                         <p className="tw-mb-0">
-                            Make sure the device is in{' '}
+                            Make sure the device is in the{' '}
                             <strong>MCUboot mode</strong>.
                         </p>
                     </Alert>
@@ -302,6 +316,6 @@ Are you sure you want to continue?`,
     );
 };
 
-ModemUpdateDialogView.defaultProps = {};
+MCUbootUpdateDialogView.defaultProps = {};
 
-export default ModemUpdateDialogView;
+export default MCUbootUpdateDialogView;

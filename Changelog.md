@@ -1,8 +1,15 @@
-## 4.7.6 - unreleased
+## 4.8.0 - Unreleased
 
 ### Added
 
-- Logging of added and removed files.
+- Write support for MCUboot devices, such as Nordic Thingy:91 X or the nRF54LM20
+  Dongle.
+- Logging of removed files.
+
+### Changed
+
+- When programming using MCUboot, the Programmer app now detects whether the
+  selected `.zip` file is a modem firmware or an application.
 
 ## 4.7.5 - 2026-06-15
 

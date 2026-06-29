@@ -7,7 +7,7 @@
 import {
     isValidNrf91x1FirmwareName,
     isValidNrf9160FirmwareName,
-} from '../ModemUpdateDialogView';
+} from '../MCUbootUpdateDialogView';
 
 describe('Modem firmware filename validation', () => {
     describe('nRF9160 firmware names', () => {

@@ -14,8 +14,8 @@ import {
 import useOpenFileFromArgs from '../useOpenFileFromArgs';
 import DeviceMemoryBoxView from './DeviceMemoryBoxView';
 import FileMemoryBoxView from './FileMemoryBoxView';
+import MCUbootUpdateDialogView from './MCUbootUpdateDialogView';
 import McuUpdateDialogView from './McuUpdateDialogView';
-import ModemUpdateDialogView from './ModemUpdateDialogView';
 import UsbSdfuUpdateDialog from './UsbSdfuUpdateDialog';
 import UserInputDialogView from './UserInputDialogView';
 import WarningView from './WarningView';
@@ -60,7 +60,7 @@ export default () => {
                 <DeviceMemoryBoxView />
             </div>
             <UserInputDialogView />
-            <ModemUpdateDialogView />
+            <MCUbootUpdateDialogView />
             <McuUpdateDialogView />
             <UsbSdfuUpdateDialog />
         </div>
