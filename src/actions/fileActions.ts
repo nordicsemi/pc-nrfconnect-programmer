@@ -245,7 +245,6 @@ const parseHexFile =
             [filePath, memMap],
         ] as MemoryMapTuple<string>[];
         dispatch(fileParse({ loaded: newLoaded, memMaps: newMemMaps }));
-        logger.info(`${basename(filePath)} file was selected`);
         dispatch(updateCoreInfo());
     };
 
@@ -269,7 +268,6 @@ export const openFile =
             }
             dispatch(filesEmpty());
             dispatch(zipFileKnown(filePath));
-            logger.info(`${basename(filePath)} file was selected`);
             await dispatch(parseZipFile(filePath));
             dispatch(updateTargetWritable());
             return dispatch(openFile(...params.slice(1)));
