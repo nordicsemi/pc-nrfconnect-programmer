@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="importmap-type" content="systemjs-importmap"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#f5f5f2">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/ui/webapp/css/vendorStyles.css">
+    <link rel="stylesheet" type="text/css" href="/ui/webapp/css/application.css">
+
+
+    <!--  This section will be evaluated by the server in runtime -->
+    <script type="systemjs-importmap">
+        {"imports":{"@jfrog/ui-platform-microfrontend-artifactory":"/ui/api/v1/ui/webapp/js/app.umd.js?v=1.1139.1-3167875e24fcdb1c2946d428ca3deb72","@jfrog/ui-platform-microfrontend-artifactory-manifest":"/ui/api/v1/ui/webapp/js/manifest.umd.js?v=1.1139.1-3167875e24fcdb1c2946d428ca3deb72","@jfrog/ui-platform-microfrontend-distribution":"/ui/api/v1/distribution/webapp/js/app.umd.js?v=2.52.0","@jfrog/ui-platform-microfrontend-distribution-manifest":"/ui/api/v1/distribution/webapp/js/manifest.umd.js?v=2.52.0","@jfrog/ui-platform-microfrontend-mc":"/ui/api/v1/mc/webapp/js/app.umd.js?v=4.152.1","@jfrog/ui-platform-microfrontend-mc-manifest":"/ui/api/v1/mc/webapp/js/manifest.umd.js?v=4.152.1","@jfrog/ui-platform-microfrontend-insight":"/ui/api/v1/insight/webapp/js/app.umd.js","@jfrog/ui-platform-microfrontend-insight-manifest":"/ui/api/v1/insight/webapp/js/manifest.umd.js","@jfrog/ui-platform-microfrontend-catalog":"/ui/api/v1/catalog/webapp/js/app.umd.js?v=1.41.2","@jfrog/ui-platform-microfrontend-catalog-manifest":"/ui/api/v1/catalog/webapp/js/manifest.umd.js?v=1.41.2","@jfrog/ui-platform-microfrontend-xray":"/ui/api/v1/xray/webapp/js/app.umd.js?v=3.148.4","@jfrog/ui-platform-microfrontend-xray-manifest":"/ui/api/v1/xray/webapp/js/manifest.umd.js?v=3.148.4","@jfrog/ui-platform-microfrontend-retention":"/ui/api/v1/ui/webapp/retention/js/app.umd.js","@jfrog/ui-platform-microfrontend-retention-manifest":"/ui/api/v1/ui/webapp/retention/js/manifest.umd.js","@jfrog/ui-platform-microfrontend-runtime":"/ui/api/v1/runtime/webapp/js/app.umd.js?v=1.18.3","@jfrog/ui-platform-microfrontend-runtime-manifest":"/ui/api/v1/runtime/webapp/js/manifest.umd.js?v=1.18.3","@jfrog/ui-platform-microfrontend-event":"/ui/api/v1/event/webapp/js/app.umd.js?v=7.675.0","@jfrog/ui-platform-microfrontend-event-manifest":"/ui/api/v1/event/webapp/js/manifest.umd.js?v=7.675.0","@jfrog/ui-platform-microfrontend-access":"/ui/api/v1/access/webapp/js/app.umd.js?v=7.186.3","@jfrog/ui-platform-microfrontend-access-manifest":"/ui/api/v1/access/webapp/js/manifest.umd.js?v=7.186.3","@jfrog/ui-platform-microfrontend-pipelines":"/ui/api/v1/pipe/webapp/js/app.umd.js?v=1.59.10","@jfrog/ui-platform-microfrontend-pipelines-manifest":"/ui/api/v1/pipe/webapp/js/manifest.umd.js?v=1.59.10","@jfrog/ui-platform-microfrontend-worker":"/ui/api/v1/worker/webapp/js/app.umd.js?v=1.210.0","@jfrog/ui-platform-microfrontend-worker-manifest":"/ui/api/v1/worker/webapp/js/manifest.umd.js?v=1.210.0","@jfrog/ui-platform-microfrontend-xsc":"/ui/api/v1/xsc/webapp/js/app.umd.js","@jfrog/ui-platform-microfrontend-xsc-manifest":"/ui/api/v1/xsc/webapp/js/manifest.umd.js","@jfrog/ui-platform-microfrontend-apptrust":"/ui/api/v1/apptrust/webapp/js/app.umd.js?v=1.85.0","@jfrog/ui-platform-microfrontend-apptrust-manifest":"/ui/api/v1/apptrust/webapp/js/manifest.umd.js?v=1.85.0","@jfrog/ui-platform-microfrontend-unifiedpolicy":"/ui/api/v1/unifiedpolicy/webapp/js/app.umd.js?v=1.67.0","@jfrog/ui-platform-microfrontend-unifiedpolicy-manifest":"/ui/api/v1/unifiedpolicy/webapp/js/manifest.umd.js?v=1.67.0","@jfrog/ui-platform-microfrontend-ml":"/ui/api/v1/ml/frontend-mfe-server/static/main.js?v=1.0.506","@jfrog/ui-platform-microfrontend-ml-manifest":"/ui/api/v1/ml/frontend-mfe-server/static/manifest.js?v=1.0.506","vue":"/ui/externals/vue/dist/vue.min.js","vue-router":"/ui/externals/vue-router/dist/vue-router.min.js","jfrog-ui-essentials":"/ui/externals/jfrog-ui-essentials/shim.js","single-spa":"/ui/externals/single-spa/lib/umd/single-spa.min.js"}}
+    </script>
+
+    <!--  This section will be evaluated by the server in runtime -->
+    
+
+    <!--  This section will be rendered by the server in runtime  -->
+    <script type="importmap" nonce="NymCYaIV9INKMngfhtT1Hg=="> {"imports":{"@jfrog/mfe-artifactory-app-esm":"/ui/api/v1/ui/webapp/rtui/js/app.esm.js?v=1.43.0-3167875e24fcdb1c2946d428ca3deb72","@jfrog/mfe-artifactory-manifest-esm":"/ui/api/v1/ui/webapp/rtui/js/manifest.esm.js?v=1.43.0-3167875e24fcdb1c2946d428ca3deb72","@jfrog/mfe-packages-app-esm":"/ui/api/v1/ui/webapp/packages/js/app.esm.js?v=1.25.0-3167875e24fcdb1c2946d428ca3deb72","@jfrog/mfe-packages-manifest-esm":"/ui/api/v1/ui/webapp/packages/js/manifest.esm.js?v=1.25.0-3167875e24fcdb1c2946d428ca3deb72","@jfrog/mfe-buildinfomfe-app-esm":"/ui/api/v1/ui/webapp/buildinfomfe/js/app.esm.js?v=7.157.4","@jfrog/mfe-buildinfomfe-manifest-esm":"/ui/api/v1/ui/webapp/buildinfomfe/js/manifest.esm.js?v=7.157.4","@jfrog/mfe-distribution-app-esm":"/ui/api/v1/distribution/webapp-vue3/js/app.esm.js?v=2.52.0","@jfrog/mfe-distribution-manifest-esm":"/ui/api/v1/distribution/webapp-vue3/js/manifest.esm.js?v=2.52.0","@jfrog/mfe-mc-app-esm":"/ui/api/v1/mc/webapp/vue3/app.js?v=4.152.1","@jfrog/mfe-mc-manifest-esm":"/ui/api/v1/mc/webapp/vue3/manifest.js?v=4.152.1","@jfrog/mfe-catalog-app-esm":"/ui/api/v1/catalog/webapp-vue3/js/app.esm.js?v=1.41.2","@jfrog/mfe-catalog-manifest-esm":"/ui/api/v1/catalog/webapp-vue3/js/manifest.esm.js?v=1.41.2","@jfrog/mfe-xray-app-esm":"/ui/api/v1/xray/webapp-vue3/js/app.esm.js?v=3.148.4","@jfrog/mfe-xray-manifest-esm":"/ui/api/v1/xray/webapp-vue3/js/manifest.esm.js?v=3.148.4","@jfrog/mfe-runtime-app-esm":"/ui/api/v1/runtime/webapp-vue3/js/app.esm.js?v=1.18.3","@jfrog/mfe-runtime-manifest-esm":"/ui/api/v1/runtime/webapp-vue3/js/manifest.esm.js?v=1.18.3","@jfrog/mfe-event-app-esm":"/ui/api/v1/event/webapp/vue3/app.js?v=7.675.0","@jfrog/mfe-event-manifest-esm":"/ui/api/v1/event/webapp/vue3/manifest.js?v=7.675.0","@jfrog/mfe-access-app-esm":"/ui/api/v1/access/webapp/vue3/app.js?v=7.186.3","@jfrog/mfe-access-manifest-esm":"/ui/api/v1/access/webapp/vue3/manifest.js?v=7.186.3","@jfrog/mfe-frontend-app-esm":"/ui/client-mfe/app-frontend.js?v=1.580.1","@jfrog/mfe-frontend-manifest-esm":"?v=1.580.1","@jfrog/mfe-worker-app-esm":"/ui/api/v1/worker/webapp/vue3/app.js?v=1.210.0","@jfrog/mfe-worker-manifest-esm":"/ui/api/v1/worker/webapp/vue3/manifest.js?v=1.210.0","@jfrog/mfe-evidence-app-esm":"/ui/api/v1/evidence/webapp/app.esm.js?v=7.1069.0","@jfrog/mfe-evidence-manifest-esm":"/ui/api/v1/evidence/webapp/manifest.esm.js?v=7.1069.0","@jfrog/mfe-apptrust-app-esm":"/ui/api/v1/apptrust/webapp-vue3/app.js?v=1.85.0","@jfrog/mfe-apptrust-manifest-esm":"/ui/api/v1/apptrust/webapp-vue3/manifest.js?v=1.85.0","@jfrog/mfe-evaluation-app-esm":"/ui/api/v1/evaluation/webapp/app.js","@jfrog/mfe-evaluation-manifest-esm":"/ui/api/v1/evaluation/webapp/manifest.js","@jfrog/mfe-unifiedpolicy-app-esm":"/ui/api/v1/unifiedpolicy/webapp-vue3/js/app.esm.js?v=1.67.0","@jfrog/mfe-unifiedpolicy-manifest-esm":"/ui/api/v1/unifiedpolicy/webapp-vue3/js/manifest.esm.js?v=1.67.0","@jfrog/mfe-onemodel-app-esm":"/ui/api/v1/onemodel/webapp/app.js?v=1.300.0","@jfrog/mfe-onemodel-manifest-esm":"/ui/api/v1/onemodel/webapp/manifest.js?v=1.300.0","@jfrog/mfe-wingman-app-esm":"/ui/api/v1/wingman/webapp/js/app.esm.js?v=0.606.0","@jfrog/mfe-wingman-manifest-esm":"/ui/api/v1/wingman/webapp/js/manifest.esm.js?v=0.606.0","@jfrog/mfe-platform_federation-app-esm":"/ui/api/v1/pfed/webapp/app.esm.js?v=1.1089.0","@jfrog/mfe-platform_federation-manifest-esm":"/ui/api/v1/pfed/webapp/manifest.esm.js?v=1.1089.0","@jfrog/mfe-bridge-server-app-esm":"/ui/api/v1/bridge-server/webapp/app.js","@jfrog/mfe-bridge-server-manifest-esm":"/ui/api/v1/bridge-server/webapp/manifest.js","@jfrog/mfe-bridge-client-app-esm":"/ui/api/v1/bridge-client/webapp/app.js","@jfrog/mfe-bridge-client-manifest-esm":"/ui/api/v1/bridge-client/webapp/manifest.js","@jfrog/mfe-grid-app-esm":"/ui/api/v1/grid/webapp/app.esm.js","@jfrog/mfe-grid-manifest-esm":"/ui/api/v1/grid/webapp/manifest.esm.js","@jfrog/mfe-fastci-app-esm":"/ui/api/v1/fastci/webapp/js/app.esm.js","@jfrog/mfe-fastci-manifest-esm":"/ui/api/v1/fastci/webapp/js/manifest.esm.js"}}</script>
+
+    <script nonce="NymCYaIV9INKMngfhtT1Hg=="> window.appConfig = {"jfrogMlAppState":"DISABLED","isSelfHostedEnv":false,"isMultiTenant":false,"fullstoryOrgId":"o-22W7HN-na1","isUiEssentialsEnabled":false,"coralogixRUMConfig":{"application":"Platform-Ui","coralogixDomain":"US1","public_key":"cxtp_q8f8rZIzakFdEw5FrZKC7RRALTjyxM"},"MFE_APPS":{"CONFIGS":[{"serviceKey":"ARTIFACTORY","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-artifactory","path":"/ui/api/v1/ui/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-artifactory-manifest","path":"/ui/api/v1/ui/webapp/js/manifest.umd.js"},"mfeVersionPath":"/api/v1/mfe/core/version"},{"serviceKey":"ARTIFACTORY","type":"esm","app":{"name":"@jfrog/mfe-artifactory-app-esm","path":"/ui/api/v1/ui/webapp/rtui/js/app.esm.js"},"manifest":{"name":"@jfrog/mfe-artifactory-manifest-esm","path":"/ui/api/v1/ui/webapp/rtui/js/manifest.esm.js"},"mfeVersionPath":"/api/v1/mfe/rtui/version"},{"serviceKey":"PACKAGES","type":"esm","app":{"name":"@jfrog/mfe-packages-app-esm","path":"/ui/api/v1/ui/webapp/packages/js/app.esm.js"},"manifest":{"name":"@jfrog/mfe-packages-manifest-esm","path":"/ui/api/v1/ui/webapp/packages/js/manifest.esm.js"},"mfeVersionPath":"/api/v1/mfe/packages/version"},{"serviceKey":"BUILDINFOMFE","type":"esm","app":{"name":"@jfrog/mfe-buildinfomfe-app-esm","path":"/ui/api/v1/ui/webapp/buildinfomfe/js/app.esm.js"},"manifest":{"name":"@jfrog/mfe-buildinfomfe-manifest-esm","path":"/ui/api/v1/ui/webapp/buildinfomfe/js/manifest.esm.js"},"mfeVersionPath":"/api/v1/mfe/buildinfomfe/version"},{"serviceKey":"DISTRIBUTION","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-distribution","path":"/ui/api/v1/distribution/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-distribution-manifest","path":"/ui/api/v1/distribution/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"DISTRIBUTION","type":"esm","app":{"name":"@jfrog/mfe-distribution-app-esm","path":"/ui/api/v1/distribution/webapp-vue3/js/app.esm.js"},"manifest":{"name":"@jfrog/mfe-distribution-manifest-esm","path":"/ui/api/v1/distribution/webapp-vue3/js/manifest.esm.js"},"mfeVersionPath":""},{"serviceKey":"MISSION_CONTROL","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-mc","path":"/ui/api/v1/mc/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-mc-manifest","path":"/ui/api/v1/mc/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"MISSION_CONTROL","type":"esm","app":{"name":"@jfrog/mfe-mc-app-esm","path":"/ui/api/v1/mc/webapp/vue3/app.js"},"manifest":{"name":"@jfrog/mfe-mc-manifest-esm","path":"/ui/api/v1/mc/webapp/vue3/manifest.js"},"mfeVersionPath":""},{"serviceKey":"INSIGHT","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-insight","path":"/ui/api/v1/insight/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-insight-manifest","path":"/ui/api/v1/insight/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"CATALOG","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-catalog","path":"/ui/api/v1/catalog/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-catalog-manifest","path":"/ui/api/v1/catalog/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"CATALOG","type":"esm","app":{"name":"@jfrog/mfe-catalog-app-esm","path":"/ui/api/v1/catalog/webapp-vue3/js/app.esm.js"},"manifest":{"name":"@jfrog/mfe-catalog-manifest-esm","path":"/ui/api/v1/catalog/webapp-vue3/js/manifest.esm.js"},"mfeVersionPath":""},{"serviceKey":"XRAY","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-xray","path":"/ui/api/v1/xray/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-xray-manifest","path":"/ui/api/v1/xray/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"XRAY","type":"esm","app":{"name":"@jfrog/mfe-xray-app-esm","path":"/ui/api/v1/xray/webapp-vue3/js/app.esm.js"},"manifest":{"name":"@jfrog/mfe-xray-manifest-esm","path":"/ui/api/v1/xray/webapp-vue3/js/manifest.esm.js"},"mfeVersionPath":""},{"serviceKey":"RETENTION","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-retention","path":"/ui/api/v1/ui/webapp/retention/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-retention-manifest","path":"/ui/api/v1/ui/webapp/retention/js/manifest.umd.js"},"mfeVersionPath":"/api/v1/mfe/retention/version"},{"serviceKey":"RUNTIME","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-runtime","path":"/ui/api/v1/runtime/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-runtime-manifest","path":"/ui/api/v1/runtime/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"RUNTIME","type":"esm","app":{"name":"@jfrog/mfe-runtime-app-esm","path":"/ui/api/v1/runtime/webapp-vue3/js/app.esm.js"},"manifest":{"name":"@jfrog/mfe-runtime-manifest-esm","path":"/ui/api/v1/runtime/webapp-vue3/js/manifest.esm.js"},"mfeVersionPath":""},{"serviceKey":"EVENT","type":"esm","app":{"name":"@jfrog/mfe-event-app-esm","path":"/ui/api/v1/event/webapp/vue3/app.js"},"manifest":{"name":"@jfrog/mfe-event-manifest-esm","path":"/ui/api/v1/event/webapp/vue3/manifest.js"},"mfeVersionPath":""},{"serviceKey":"EVENT","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-event","path":"/ui/api/v1/event/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-event-manifest","path":"/ui/api/v1/event/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"ACCESS","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-access","path":"/ui/api/v1/access/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-access-manifest","path":"/ui/api/v1/access/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"ACCESS","type":"esm","app":{"name":"@jfrog/mfe-access-app-esm","path":"/ui/api/v1/access/webapp/vue3/app.js"},"manifest":{"name":"@jfrog/mfe-access-manifest-esm","path":"/ui/api/v1/access/webapp/vue3/manifest.js"},"mfeVersionPath":""},{"serviceKey":"FRONTEND","type":"esm","app":{"name":"@jfrog/mfe-frontend-app-esm","path":"/ui/client-mfe/app-frontend.js"},"manifest":{"name":"@jfrog/mfe-frontend-manifest-esm","path":""},"mfeVersionPath":""},{"serviceKey":"PIPELINES","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-pipelines","path":"/ui/api/v1/pipe/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-pipelines-manifest","path":"/ui/api/v1/pipe/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"WORKER","type":"esm","app":{"name":"@jfrog/mfe-worker-app-esm","path":"/ui/api/v1/worker/webapp/vue3/app.js"},"manifest":{"name":"@jfrog/mfe-worker-manifest-esm","path":"/ui/api/v1/worker/webapp/vue3/manifest.js"},"mfeVersionPath":""},{"serviceKey":"WORKER","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-worker","path":"/ui/api/v1/worker/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-worker-manifest","path":"/ui/api/v1/worker/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"XRAY_SOURCE_CONTROL","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-xsc","path":"/ui/api/v1/xsc/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-xsc-manifest","path":"/ui/api/v1/xsc/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"EVIDENCE","type":"esm","app":{"name":"@jfrog/mfe-evidence-app-esm","path":"/ui/api/v1/evidence/webapp/app.esm.js"},"manifest":{"name":"@jfrog/mfe-evidence-manifest-esm","path":"/ui/api/v1/evidence/webapp/manifest.esm.js"},"mfeVersionPath":""},{"serviceKey":"APPTRUST","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-apptrust","path":"/ui/api/v1/apptrust/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-apptrust-manifest","path":"/ui/api/v1/apptrust/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"APPTRUST","type":"esm","app":{"name":"@jfrog/mfe-apptrust-app-esm","path":"/ui/api/v1/apptrust/webapp-vue3/app.js"},"manifest":{"name":"@jfrog/mfe-apptrust-manifest-esm","path":"/ui/api/v1/apptrust/webapp-vue3/manifest.js"},"mfeVersionPath":""},{"serviceKey":"EVALUATION","type":"esm","app":{"name":"@jfrog/mfe-evaluation-app-esm","path":"/ui/api/v1/evaluation/webapp/app.js"},"manifest":{"name":"@jfrog/mfe-evaluation-manifest-esm","path":"/ui/api/v1/evaluation/webapp/manifest.js"},"mfeVersionPath":""},{"serviceKey":"UNIFIEDPOLICY","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-unifiedpolicy","path":"/ui/api/v1/unifiedpolicy/webapp/js/app.umd.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-unifiedpolicy-manifest","path":"/ui/api/v1/unifiedpolicy/webapp/js/manifest.umd.js"},"mfeVersionPath":""},{"serviceKey":"UNIFIEDPOLICY","type":"esm","app":{"name":"@jfrog/mfe-unifiedpolicy-app-esm","path":"/ui/api/v1/unifiedpolicy/webapp-vue3/js/app.esm.js"},"manifest":{"name":"@jfrog/mfe-unifiedpolicy-manifest-esm","path":"/ui/api/v1/unifiedpolicy/webapp-vue3/js/manifest.esm.js"},"mfeVersionPath":""},{"serviceKey":"ONEMODEL","type":"esm","app":{"name":"@jfrog/mfe-onemodel-app-esm","path":"/ui/api/v1/onemodel/webapp/app.js"},"manifest":{"name":"@jfrog/mfe-onemodel-manifest-esm","path":"/ui/api/v1/onemodel/webapp/manifest.js"},"mfeVersionPath":""},{"serviceKey":"WINGMAN","type":"esm","app":{"name":"@jfrog/mfe-wingman-app-esm","path":"/ui/api/v1/wingman/webapp/js/app.esm.js"},"manifest":{"name":"@jfrog/mfe-wingman-manifest-esm","path":"/ui/api/v1/wingman/webapp/js/manifest.esm.js"},"mfeVersionPath":""},{"serviceKey":"ML","type":"umd","app":{"name":"@jfrog/ui-platform-microfrontend-ml","path":"/ui/api/v1/ml/frontend-mfe-server/static/main.js"},"manifest":{"name":"@jfrog/ui-platform-microfrontend-ml-manifest","path":"/ui/api/v1/ml/frontend-mfe-server/static/manifest.js"},"mfeVersionPath":""},{"serviceKey":"PLATFORM_FEDERATION","type":"esm","app":{"name":"@jfrog/mfe-platform_federation-app-esm","path":"/ui/api/v1/pfed/webapp/app.esm.js"},"manifest":{"name":"@jfrog/mfe-platform_federation-manifest-esm","path":"/ui/api/v1/pfed/webapp/manifest.esm.js"},"mfeVersionPath":""},{"serviceKey":"BRIDGE_SERVER","type":"esm","app":{"name":"@jfrog/mfe-bridge-server-app-esm","path":"/ui/api/v1/bridge-server/webapp/app.js"},"manifest":{"name":"@jfrog/mfe-bridge-server-manifest-esm","path":"/ui/api/v1/bridge-server/webapp/manifest.js"},"mfeVersionPath":""},{"serviceKey":"BRIDGE_CLIENT","type":"esm","app":{"name":"@jfrog/mfe-bridge-client-app-esm","path":"/ui/api/v1/bridge-client/webapp/app.js"},"manifest":{"name":"@jfrog/mfe-bridge-client-manifest-esm","path":"/ui/api/v1/bridge-client/webapp/manifest.js"},"mfeVersionPath":""},{"serviceKey":"GRID","type":"esm","app":{"name":"@jfrog/mfe-grid-app-esm","path":"/ui/api/v1/grid/webapp/app.esm.js"},"manifest":{"name":"@jfrog/mfe-grid-manifest-esm","path":"/ui/api/v1/grid/webapp/manifest.esm.js"},"mfeVersionPath":""},{"serviceKey":"FASTCI","type":"esm","app":{"name":"@jfrog/mfe-fastci-app-esm","path":"/ui/api/v1/fastci/webapp/js/app.esm.js"},"manifest":{"name":"@jfrog/mfe-fastci-manifest-esm","path":"/ui/api/v1/fastci/webapp/js/manifest.esm.js"},"mfeVersionPath":""}],"NAMES":{"ARTIFACTORY":{"UMD":"@jfrog/ui-platform-microfrontend-artifactory","ESM":"@jfrog/mfe-artifactory-app-esm"},"PACKAGES":{"ESM":"@jfrog/mfe-packages-app-esm"},"BUILDINFOMFE":{"ESM":"@jfrog/mfe-buildinfomfe-app-esm"},"DISTRIBUTION":{"UMD":"@jfrog/ui-platform-microfrontend-distribution","ESM":"@jfrog/mfe-distribution-app-esm"},"MISSION_CONTROL":{"UMD":"@jfrog/ui-platform-microfrontend-mc","ESM":"@jfrog/mfe-mc-app-esm"},"INSIGHT":{"UMD":"@jfrog/ui-platform-microfrontend-insight"},"CATALOG":{"UMD":"@jfrog/ui-platform-microfrontend-catalog","ESM":"@jfrog/mfe-catalog-app-esm"},"XRAY":{"UMD":"@jfrog/ui-platform-microfrontend-xray","ESM":"@jfrog/mfe-xray-app-esm"},"RETENTION":{"UMD":"@jfrog/ui-platform-microfrontend-retention"},"RUNTIME":{"UMD":"@jfrog/ui-platform-microfrontend-runtime","ESM":"@jfrog/mfe-runtime-app-esm"},"EVENT":{"ESM":"@jfrog/mfe-event-app-esm","UMD":"@jfrog/ui-platform-microfrontend-event"},"ACCESS":{"UMD":"@jfrog/ui-platform-microfrontend-access","ESM":"@jfrog/mfe-access-app-esm"},"FRONTEND":{"ESM":"@jfrog/mfe-frontend-app-esm"},"PIPELINES":{"UMD":"@jfrog/ui-platform-microfrontend-pipelines"},"WORKER":{"ESM":"@jfrog/mfe-worker-app-esm","UMD":"@jfrog/ui-platform-microfrontend-worker"},"XRAY_SOURCE_CONTROL":{"UMD":"@jfrog/ui-platform-microfrontend-xsc"},"EVIDENCE":{"ESM":"@jfrog/mfe-evidence-app-esm"},"APPTRUST":{"UMD":"@jfrog/ui-platform-microfrontend-apptrust","ESM":"@jfrog/mfe-apptrust-app-esm"},"EVALUATION":{"ESM":"@jfrog/mfe-evaluation-app-esm"},"UNIFIEDPOLICY":{"UMD":"@jfrog/ui-platform-microfrontend-unifiedpolicy","ESM":"@jfrog/mfe-unifiedpolicy-app-esm"},"ONEMODEL":{"ESM":"@jfrog/mfe-onemodel-app-esm"},"WINGMAN":{"ESM":"@jfrog/mfe-wingman-app-esm"},"ML":{"UMD":"@jfrog/ui-platform-microfrontend-ml"},"PLATFORM_FEDERATION":{"ESM":"@jfrog/mfe-platform_federation-app-esm"},"BRIDGE_SERVER":{"ESM":"@jfrog/mfe-bridge-server-app-esm"},"BRIDGE_CLIENT":{"ESM":"@jfrog/mfe-bridge-client-app-esm"},"GRID":{"ESM":"@jfrog/mfe-grid-app-esm"},"FASTCI":{"ESM":"@jfrog/mfe-fastci-app-esm"}}},"serviceConfig":{"version":"1.580.1","serverId":"a0hdvygrlpdmq","environment":"production"},"isStrategicCustomer":false,"isJfrogInternal":false,"isNextThemeEnabled":false} </script>
+    
+    <!--  Coralogix RUM - Only for SaaS environments -->
+    
+    <script src="/ui/externals/@coralogix/browser/coralogix-browser.bundle.js"></script>
+    <script src="/ui/externals/coralogix-browser-sdk-init.js"></script>
+    
+
+    
+    <script src="/ui/externals/systemjs/dist/system.min.js"></script>
+    <script src="/ui/externals/systemjs/dist/extras/amd.min.js"></script>
+    <script src="/ui/externals/systemjs/dist/extras/named-exports.min.js"></script>
+
+    <link rel="preload" href="/ui/externals/vue/dist/vue.min.js" as="script">
+    <link rel="preload" href="/ui/externals/vue-router/dist/vue-router.min.js" as="script">
+    
+    <link rel="preload" href="/ui/externals/single-spa/lib/umd/single-spa.min.js" as="script">
+
+
+    <base href="/ui/">
+    <title>JFrog</title>
+
+    <style>
+
+        .pounding-heart-container {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            flex-direction: column;
+            gap: 30px;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 9999999999;
+            background: linear-gradient(132.49deg, #414857 14.17%, #252831 83.36%);
+        }
+
+        .pounding-heart-container.show-splash {
+            display: flex;
+        }
+
+        .logo {
+            width: 130px;
+            -webkit-backface-visibility: hidden;
+            -ms-transform: translateZ(0); /* IE 9 */
+            -webkit-transform: translateZ(0); /* Chrome, Safari, Opera */
+            transform: translateZ(0);
+        }
+
+        .growing-spinner {
+            display: inline-block;
+            width: 110px;
+            height: 110px;
+        }
+        .spinner {
+            animation: rotate 3s linear infinite;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+        .path {
+            stroke: #41bf47;
+            stroke-linecap: round;
+            animation: dash 2s linear infinite;
+        }
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1, 150;
+                stroke-dashoffset: 0;
+            }
+            50% {
+                stroke-dasharray: 90, 150;
+                stroke-dashoffset: -35;
+            }
+            100% {
+                stroke-dasharray: 1, 150;
+                stroke-dashoffset: -125;
+            }
+        }
+
+    </style>
+<link href="/ui/css/chunk-vendors.129da907.css" rel="stylesheet"><link href="/ui/css/app.56276f2a.css" rel="stylesheet"></head>
+<body>
+<div class="pounding-heart-container show-splash">
+    <div class="growing-spinner">
+        <svg class="spinner" viewBox="0 0 50 50">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="2" />
+        </svg>
+    </div>
+    <img class="logo" src="./jfrog.svg">
+</div>
+<noscript>
+    <strong>We're sorry but jfrog webapp doesn't work properly without JavaScript enabled. Please enable it to
+        continue.</strong>
+</noscript>
+<div id="app"></div>
+<!-- built files will be auto injected -->
+<script type="text/javascript" src="/ui/js/chunk-vendors.9b261592.js"></script><script type="text/javascript" src="/ui/js/app.d0bb628b.js"></script><script type="text/javascript" src="/ui/js/preloader.b7736ed7.js"></script></body>
+</html>
