@@ -91,7 +91,7 @@ const McuUpdateDialogView = () => {
     });
 
     const mustHaveChipTarget = programmingOptions.length > 1 && !zipFilePath;
-    const hasChipTarget = mustHaveChipTarget && !chosenTarget;
+    const hasChipTarget = mustHaveChipTarget && chosenTarget;
 
     useEffect(() => {
         // note: check may be redundant as Thingy:91 has a different modal
@@ -154,7 +154,7 @@ const McuUpdateDialogView = () => {
             return;
         }
 
-        if (hasChipTarget) {
+        if (!hasChipTarget) {
             logger.error('No target selected');
             return;
         }
@@ -267,7 +267,7 @@ Are you sure you want to continue?`,
                             writing ||
                             writingSucceed ||
                             writingFail ||
-                            hasChipTarget
+                            !hasChipTarget
                         }
                     >
                         Write
