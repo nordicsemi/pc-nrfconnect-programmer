@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2026 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
+ */
+
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -14,7 +20,7 @@ interface Sample {
     versions: string[];
 }
 
-type ModalStage = 'firmwareTypeSelection' | 'versionSelection';
+type ModalStage = 'firmwareSelection' | 'downloadFirmware';
 export default ({
     isVisible,
     onClose,
@@ -23,9 +29,8 @@ export default ({
     onClose: () => void;
 }) => {
     // const [isVisible, setIsVisible] = useState(true);
-    const [modalStage, setModalStage] = useState<ModalStage>(
-        'firmwareTypeSelection',
-    );
+    const [modalStage, setModalStage] =
+        useState<ModalStage>('firmwareSelection');
     const [firmwareType, setFirmwareType] = useState('');
     // const device = useSelector(selectedDevice);
     const [samples, setSamples] = useState();
@@ -38,13 +43,13 @@ export default ({
 
     return (
         <Dialog isVisible={isVisible} onHide={close}>
-            {modalStage === 'firmwareTypeSelection' && (
+            {modalStage === 'firmwareSelection' && (
                 <SelectFirmwareType
                     close={close}
                     setFirmwareType={setFirmwareType}
                 />
             )}
-            {modalStage === 'versionSelection' && (
+            {modalStage === 'downloadFirmware' && (
                 <SelectVersion
                     close={close}
                     setModalStage={setModalStage}
@@ -66,7 +71,7 @@ const SelectFirmwareType = ({
     const device = useSelector(selectedDevice);
     return (
         <>
-            <Dialog.Header title="Select a sample program" />
+            <Dialog.Header title="Select a firmware" />
             <Dialog.Body>
                 <p>Select a program</p>
                 {/* Let user select type of firmware here */}
@@ -105,7 +110,7 @@ const SelectVersion = ({
             <Dialog.Footer>
                 <DialogButton
                     onClick={() => {
-                        setModalStage('firmwareTypeSelection');
+                        setModalStage('downloadFirmware');
                     }}
                 >
                     Back
