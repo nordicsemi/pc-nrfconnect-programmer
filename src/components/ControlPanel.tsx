@@ -116,6 +116,7 @@ const Mru = ({ mruFiles }: { mruFiles: string[] }) => {
 
     const openArtifactory = () => {
         setModalVisible(true);
+        setShow(false);
     };
 
     const [modalVisible, setModalVisible] = useState(false);

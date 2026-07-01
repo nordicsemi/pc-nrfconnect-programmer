@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
     Button,
+    deviceInfo,
     selectedDevice,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
@@ -15,6 +16,13 @@ type FilterOptions = Record<string, string[]>;
 
 const artifactoryUrl = '../resources/firmware/firmwareFilters.json'; // change later
 // const tempUrl = '../resources/firmware/filtertest.json';
+
+// Two options:
+// 1. First get the filter menu, then use the filter options to make a query.
+// The filter options could either be on the same page or be devided between pages
+// Might have to make it impossible to select two options from same category to make query easier
+// 2. Show all firmwares and have a filter menu allowing user to filter what firmwares they want to see
+// This will need us to download properties of firmwares before filtering
 
 export default () => {
     const [filterOptions, setFilterOptions] = useState<FilterOptions>();
@@ -50,7 +58,13 @@ export default () => {
             </Button>
             <Button
                 variant="secondary"
-                onClick={() => console.log(selectedFilters)}
+                onClick={() =>
+                    console.log(
+                        selectedFilters,
+                        device,
+                        device ? deviceInfo(device) : 'no device',
+                    )
+                }
             >
                 Print filters
             </Button>
@@ -68,9 +82,7 @@ export default () => {
                                 <Button
                                     variant="primary-outline"
                                     size="lg"
-                                    onClick={() =>
-                                        setOpenKey(openKey === key ? null : key)
-                                    }
+                                    onClick={() => setOpenKey(null)}
                                 >
                                     {key}
                                 </Button>
@@ -109,9 +121,7 @@ export default () => {
                             <Button
                                 variant="secondary"
                                 size="lg"
-                                onClick={() =>
-                                    setOpenKey(openKey === key ? null : key)
-                                }
+                                onClick={() => setOpenKey(key)}
                             >
                                 {key}
                             </Button>
