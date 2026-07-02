@@ -14,7 +14,7 @@ import {
     selectedDevice,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
-import FirmwareFilter from './FirmwareFilter';
+import FirmwareFilter, { type FilterOptions } from './FirmwareFilter';
 
 interface Firmware {
     device: string;
@@ -43,7 +43,7 @@ export default ({
             .then((data: Firmware[]) => {
                 setFirmwares(data);
                 console.log(data);
-                // console.log(firmwares);
+                // fix this function later so that there are no type issues
             });
     }, []);
     // const [SelectedFilters, setSelectedFilters] = useState<FilterOptions>();
@@ -89,20 +89,51 @@ const SelectFirmware = ({
     setSelectedFirmware: (firmware: Firmware) => void;
     firmwares: Firmware[];
 }) => {
+    const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({});
+
+    const handleToggle = (key: string, value: string) => {
+        setSelectedFilters(prev => {
+            const current = prev[key] ?? [];
+            const isChecked = current.includes(value);
+
+            const updatedFilters = isChecked
+                ? current.filter(v => v !== value)
+                : [...current, value];
+            return { ...prev, [key]: updatedFilters };
+        });
+    };
+    const clearFilters = () => {
+        setSelectedFilters({});
+    };
     const device = useSelector(selectedDevice);
-    const deviceName = device ? deviceInfo(device).name : 'No device';
+    const deviceName = device ? deviceInfo(device).name : '';
     return (
         <>
             <Dialog.Header title="Select a firmware" />
             <Dialog.Body>
                 <p>Select a program</p>
                 {/* Let user select type of firmware here */}
-                <FirmwareFilter />
+                <FirmwareFilter
+                    selectedFilters={selectedFilters}
+                    handleToggle={handleToggle}
+                    clearFilters={clearFilters}
+                />
                 {firmwares.length ? (
                     <div>
                         <p>test</p>
                         {firmwares
-                            .filter(firmware => firmware.device === deviceName)
+                            // .filter(
+                            //     firmware =>
+                            //         firmware.device === deviceName ||
+                            //         deviceName === '',
+                            // )
+                            .filter(firmware =>
+                                Object.entries(selectedFilters).every(
+                                    ([key, values]) =>
+                                        values.length === 0 ||
+                                        values.includes(String(firmware[key])),
+                                ),
+                            )
                             .map(firmware => (
                                 <div key={firmware.name}>
                                     <Button
@@ -147,11 +178,14 @@ const DownloadFirmware = ({
                 <p>
                     You have selected a firmware:{' '}
                     {selectedFirmware ? selectedFirmware.name : 'no firmware'}
+                    {device ? deviceInfo(device).name : 'no device'}
                 </p>
-                {/* Let user select version */}
             </Dialog.Body>
             <Dialog.Footer>
-                <DialogButton variant="primary" onClick={() => console.log()}>
+                <DialogButton
+                    variant="primary"
+                    onClick={() => console.log(selectedFirmware)}
+                >
                     Add file
                 </DialogButton>
                 <DialogButton

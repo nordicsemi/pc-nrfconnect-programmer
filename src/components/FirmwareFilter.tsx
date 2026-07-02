@@ -17,18 +17,18 @@ export type FilterOptions = Record<string, string[]>;
 const artifactoryUrl = '../resources/firmware/firmwareFilters.json'; // change later
 // const tempUrl = '../resources/firmware/filtertest.json';
 
-// Two options:
-// 1. First get the filter menu, then use the filter options to make a query.
-// The filter options could either be on the same page or be devided between pages
-// Might have to make it impossible to select two options from same category to make query easier
-// 2. Show all firmwares and have a filter menu allowing user to filter what firmwares they want to see
-// This will need us to download properties of firmwares before filtering
-// Will be doing the second option
-
-// Should move this file into ProgramFirmwareModal at some point
-export default () => {
+// Should maybe move this file into ProgramFirmwareModal at some point
+export default ({
+    selectedFilters,
+    handleToggle,
+    clearFilters,
+}: {
+    selectedFilters: FilterOptions;
+    handleToggle: (key: string, value: string) => void;
+    clearFilters: () => void;
+}) => {
     const [filterOptions, setFilterOptions] = useState<FilterOptions>();
-    const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({}); // Maybe pass these as a prop so that the modal knows what filters are selected
+    // const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({}); // Maybe pass these as a prop so that the modal knows what filters are selected
     const [isOpen, setIsOpen] = useState(false);
     const [openKey, setOpenKey] = useState<string | null>(null);
 
@@ -42,17 +42,17 @@ export default () => {
             });
     }, [filterOptions]);
 
-    const handleToggle = (key: string, value: string) => {
-        setSelectedFilters(prev => {
-            const current = prev[key] ?? [];
-            const isChecked = current.includes(value);
+    // const handleToggle = (key: string, value: string) => {
+    //     setSelectedFilters(prev => {
+    //         const current = prev[key] ?? [];
+    //         const isChecked = current.includes(value);
 
-            const updatedFilters = isChecked
-                ? current.filter(v => v !== value)
-                : [...current, value];
-            return { ...prev, [key]: updatedFilters };
-        });
-    };
+    //         const updatedFilters = isChecked
+    //             ? current.filter(v => v !== value)
+    //             : [...current, value];
+    //         return { ...prev, [key]: updatedFilters };
+    //     });
+    // };
     return (
         <>
             <Button variant="secondary" onClick={() => setIsOpen(!isOpen)}>
@@ -70,7 +70,7 @@ export default () => {
             >
                 Print filters
             </Button>
-            <Button variant="secondary" onClick={() => setSelectedFilters({})}>
+            <Button variant="secondary" onClick={() => clearFilters()}>
                 Clear filters
             </Button>
             {isOpen &&
