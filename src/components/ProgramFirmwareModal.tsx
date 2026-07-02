@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
     Button,
@@ -23,6 +23,8 @@ interface Firmware {
 } // change later and make dynamic based on json
 
 type ModalStage = 'firmwareSelection' | 'downloadFirmware';
+
+const url = '../resources/firmware/firmwares.json';
 export default ({
     isVisible,
     onClose,
@@ -30,18 +32,26 @@ export default ({
     isVisible: boolean;
     onClose: () => void;
 }) => {
-    // const [isVisible, setIsVisible] = useState(true);
     const [modalStage, setModalStage] =
         useState<ModalStage>('firmwareSelection');
     // const device = useSelector(selectedDevice);
-    const [firmwares, setFirmwares] = useState<Firmware[]>([
-        { device: 'nRF52', name: 'hello world' },
-        { device: 'nRF9160 DK', name: 'name' },
-    ]);
+    const [firmwares, setFirmwares] = useState<Firmware[]>([]);
+
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then((data: Firmware[]) => {
+                setFirmwares(data);
+                console.log(data);
+                // console.log(firmwares);
+            });
+    }, []);
+    // const [SelectedFilters, setSelectedFilters] = useState<FilterOptions>();
     const [selectedFirmware, setSelectedFirmware] = useState<Firmware>();
 
     const close = () => {
         onClose();
+        setSelectedFirmware(undefined);
         // What else needs to be done when closing the window?
     };
 
@@ -60,6 +70,7 @@ export default ({
                     close={close}
                     setModalStage={setModalStage}
                     selectedFirmware={selectedFirmware}
+                    setSelectedFirmware={setSelectedFirmware}
                 />
             )}
         </Dialog>
@@ -75,7 +86,7 @@ const SelectFirmware = ({
 }: {
     close: () => void;
     setModalStage: (stage: ModalStage) => void;
-    setSelectedFirmware: (formware: Firmware) => void;
+    setSelectedFirmware: (firmware: Firmware) => void;
     firmwares: Firmware[];
 }) => {
     const device = useSelector(selectedDevice);
@@ -129,7 +140,6 @@ const DownloadFirmware = ({
     setSelectedFirmware: (firmware: Firmware | undefined) => void;
 }) => {
     const device = useSelector(selectedDevice);
-    // Should make a type containing all types of firmware
     return (
         <>
             <Dialog.Header title="Download firmware" />

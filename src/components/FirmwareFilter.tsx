@@ -12,7 +12,7 @@ import {
     selectedDevice,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
-type FilterOptions = Record<string, string[]>;
+export type FilterOptions = Record<string, string[]>;
 
 const artifactoryUrl = '../resources/firmware/firmwareFilters.json'; // change later
 // const tempUrl = '../resources/firmware/filtertest.json';
@@ -23,10 +23,12 @@ const artifactoryUrl = '../resources/firmware/firmwareFilters.json'; // change l
 // Might have to make it impossible to select two options from same category to make query easier
 // 2. Show all firmwares and have a filter menu allowing user to filter what firmwares they want to see
 // This will need us to download properties of firmwares before filtering
+// Will be doing the second option
 
+// Should move this file into ProgramFirmwareModal at some point
 export default () => {
     const [filterOptions, setFilterOptions] = useState<FilterOptions>();
-    const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({});
+    const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({}); // Maybe pass these as a prop so that the modal knows what filters are selected
     const [isOpen, setIsOpen] = useState(false);
     const [openKey, setOpenKey] = useState<string | null>(null);
 
