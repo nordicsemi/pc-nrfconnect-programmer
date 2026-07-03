@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
     Button,
@@ -89,7 +89,72 @@ const SelectFirmware = ({
     setSelectedFirmware: (firmware: Firmware) => void;
     firmwares: Firmware[];
 }) => {
+    const [filterOptions, setFilterOptions] = useState<FilterOptions>({});
     const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({});
+    const [visibleFirmwares, setVisibleFirmwares] =
+        useState<Firmware[]>(firmwares);
+
+    // const updateFilterOptions = (data: Firmware[]): FilterOptions => {
+    //     const sets: Record<string, Set<string>> = {};
+
+    //     data.forEach(item => {
+    //         Object.entries(item).forEach(([key, value]) => {
+    //             if (typeof value !== 'string') return;
+    //             (sets[key] ??= new Set()).add(value);
+    //         });
+    //     });
+
+    //     return Object.fromEntries(
+    //         Object.entries(sets).map(([key, set]) => [key, [...set].sort()]),
+    //     );
+    // };
+
+    const updateFilterOptions = useCallback(() => {
+        const keys = new Set<string>();
+        firmwares.forEach(item =>
+            Object.entries(item).forEach(([key, value]) => {
+                if (typeof value === 'string') keys.add(key);
+            }),
+        );
+
+        return Object.fromEntries(
+            [...keys].map(key => {
+                const relevant = firmwares.filter(item =>
+                    Object.entries(selectedFilters).every(
+                        ([filterKey, values]) =>
+                            filterKey === key ||
+                            values.length === 0 ||
+                            values.includes(String(item[filterKey])),
+                    ),
+                );
+
+                const values = new Set<string>();
+                relevant.forEach(item => {
+                    const value = item[key];
+                    if (typeof value === 'string') values.add(value);
+                });
+                return [key, [...values].sort()];
+            }),
+        );
+    }, [firmwares, selectedFilters]);
+
+    useEffect(() => {
+        setFilterOptions(updateFilterOptions());
+        console.log('test1');
+    }, [updateFilterOptions]);
+
+    useEffect(() => {
+        setVisibleFirmwares(
+            firmwares.filter(firmware =>
+                Object.entries(selectedFilters).every(
+                    ([key, values]) =>
+                        values.length === 0 ||
+                        values.includes(String(firmware[key])),
+                ),
+            ),
+        );
+        console.log('test2');
+    }, [selectedFilters, firmwares]);
 
     const handleToggle = (key: string, value: string) => {
         setSelectedFilters(prev => {
@@ -105,8 +170,8 @@ const SelectFirmware = ({
     const clearFilters = () => {
         setSelectedFilters({});
     };
-    const device = useSelector(selectedDevice);
-    const deviceName = device ? deviceInfo(device).name : '';
+    // const device = useSelector(selectedDevice);
+    // const deviceName = device ? deviceInfo(device).name : '';
     return (
         <>
             <Dialog.Header title="Select a firmware" />
@@ -117,23 +182,24 @@ const SelectFirmware = ({
                     selectedFilters={selectedFilters}
                     handleToggle={handleToggle}
                     clearFilters={clearFilters}
+                    filterOptions={filterOptions}
                 />
                 {firmwares.length ? (
                     <div>
                         <p>test</p>
-                        {firmwares
+                        {visibleFirmwares
                             // .filter(
                             //     firmware =>
                             //         firmware.device === deviceName ||
                             //         deviceName === '',
                             // )
-                            .filter(firmware =>
-                                Object.entries(selectedFilters).every(
-                                    ([key, values]) =>
-                                        values.length === 0 ||
-                                        values.includes(String(firmware[key])),
-                                ),
-                            )
+                            // .filter(firmware =>
+                            //     Object.entries(selectedFilters).every(
+                            //         ([key, values]) =>
+                            //             values.length === 0 ||
+                            //             values.includes(String(firmware[key])),
+                            //     ),
+                            // )
                             .map(firmware => (
                                 <div key={firmware.name}>
                                     <Button

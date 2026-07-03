@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
     Button,
@@ -14,7 +14,7 @@ import {
 
 export type FilterOptions = Record<string, string[]>;
 
-const artifactoryUrl = '../resources/firmware/firmwareFilters.json'; // change later
+// const artifactoryUrl = '../resources/firmware/firmwareFilters.json'; // change later
 // const tempUrl = '../resources/firmware/filtertest.json';
 
 // Should maybe move this file into ProgramFirmwareModal at some point
@@ -22,25 +22,27 @@ export default ({
     selectedFilters,
     handleToggle,
     clearFilters,
+    filterOptions,
 }: {
     selectedFilters: FilterOptions;
     handleToggle: (key: string, value: string) => void;
     clearFilters: () => void;
+    filterOptions: FilterOptions;
 }) => {
-    const [filterOptions, setFilterOptions] = useState<FilterOptions>();
+    // const [filterOptions, setFilterOptions] = useState<FilterOptions>();
     // const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({}); // Maybe pass these as a prop so that the modal knows what filters are selected
     const [isOpen, setIsOpen] = useState(false);
     const [openKey, setOpenKey] = useState<string | null>(null);
 
     const device = useSelector(selectedDevice);
 
-    useEffect(() => {
-        fetch(artifactoryUrl)
-            .then(response => response.json())
-            .then(data => {
-                setFilterOptions(data);
-            });
-    }, [filterOptions]);
+    // useEffect(() => {
+    //     fetch(artifactoryUrl)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             setFilterOptions(data);
+    //         });
+    // }, [filterOptions]);
 
     // const handleToggle = (key: string, value: string) => {
     //     setSelectedFilters(prev => {
