@@ -5,6 +5,7 @@
  */
 
 import React, { useState } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
 import { useSelector } from 'react-redux';
 import {
     Button,
@@ -132,6 +133,46 @@ export default ({
                         )}
                     </div>
                 ))}
+            <div>
+                <Dropdown onToggle={() => setIsOpen(!isOpen)}>
+                    <Dropdown.Toggle variant="outline-primary" active={isOpen}>
+                        <span className="mdi mdi-tune" />
+                        Filter
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className="tw-flex">
+                        {Object.entries(filterOptions ?? {}).map(
+                            ([key, values]) => (
+                                <div
+                                    key={key}
+                                    className="tw-flex tw-h-full tw-flex-col tw-justify-center"
+                                >
+                                    <div className="tw-mx-4 tw-mb-2 tw-border-0 tw-border-b tw-border-solid tw-border-gray-300 tw-py-1">
+                                        {key}
+                                    </div>
+                                    {values.map(value => (
+                                        <div key={value}>
+                                            <input
+                                                type="checkbox"
+                                                checked={
+                                                    !!selectedFilters[
+                                                        key
+                                                    ]?.includes(value)
+                                                }
+                                                onChange={() =>
+                                                    handleToggle(key, value)
+                                                }
+                                            />
+                                            <label htmlFor={value}>
+                                                {value}
+                                            </label>
+                                        </div>
+                                    ))}
+                                </div>
+                            ),
+                        )}
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
         </>
     );
 };

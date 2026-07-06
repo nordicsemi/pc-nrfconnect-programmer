@@ -91,8 +91,17 @@ const SelectFirmware = ({
 }) => {
     const [filterOptions, setFilterOptions] = useState<FilterOptions>({});
     const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({});
+    // const [visibleFilters, setVisibleFIlters] = useState<FilterOptions>({});
     const [visibleFirmwares, setVisibleFirmwares] =
         useState<Firmware[]>(firmwares);
+
+    const [filterableKeys, setFilterableKeys] = useState<string[]>([]);
+
+    useEffect(() => {
+        fetch('../resources/firmware/filterKeys.json')
+            .then(res => res.json())
+            .then((data: string[]) => setFilterableKeys(data));
+    }, []);
 
     // const updateFilterOptions = (data: Firmware[]): FilterOptions => {
     //     const sets: Record<string, Set<string>> = {};
@@ -113,7 +122,8 @@ const SelectFirmware = ({
         const keys = new Set<string>();
         firmwares.forEach(item =>
             Object.entries(item).forEach(([key, value]) => {
-                if (typeof value === 'string') keys.add(key);
+                if (typeof value === 'string' && filterableKeys.includes(key))
+                    keys.add(key);
             }),
         );
 
@@ -136,7 +146,7 @@ const SelectFirmware = ({
                 return [key, [...values].sort()];
             }),
         );
-    }, [firmwares, selectedFilters]);
+    }, [firmwares, selectedFilters, filterableKeys]);
 
     useEffect(() => {
         setFilterOptions(updateFilterOptions());
@@ -166,6 +176,7 @@ const SelectFirmware = ({
                 : [...current, value];
             return { ...prev, [key]: updatedFilters };
         });
+        console.log(filterableKeys);
     };
     const clearFilters = () => {
         setSelectedFilters({});
