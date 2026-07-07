@@ -139,20 +139,24 @@ export default ({
                         <span className="mdi mdi-tune" />
                         Filter
                     </Dropdown.Toggle>
-                    <Dropdown.Menu className="tw-flex">
+                    <Dropdown.Menu className="tw-flex tw-px-2">
                         {Object.entries(filterOptions ?? {}).map(
                             ([key, values]) => (
                                 <div
                                     key={key}
-                                    className="tw-flex tw-h-full tw-flex-col tw-justify-center"
+                                    className="tw-mx-4 tw-flex tw-h-full tw-flex-col tw-justify-center"
                                 >
-                                    <div className="tw-mx-4 tw-mb-2 tw-border-0 tw-border-b tw-border-solid tw-border-gray-300 tw-py-1">
+                                    <div className="tw-mb-2 tw-border-0 tw-border-b tw-border-solid tw-border-gray-300 tw-py-1 tw-capitalize">
                                         {key}
                                     </div>
                                     {values.map(value => (
-                                        <div key={value}>
+                                        <div
+                                            key={value}
+                                            className="tw-mb-1 tw-flex tw-justify-start"
+                                        >
                                             <input
                                                 type="checkbox"
+                                                className="checked:tw-accent-nordicBlue-700"
                                                 checked={
                                                     !!selectedFilters[
                                                         key
@@ -162,7 +166,10 @@ export default ({
                                                     handleToggle(key, value)
                                                 }
                                             />
-                                            <label htmlFor={value}>
+                                            <label
+                                                htmlFor={value}
+                                                className="tw-my-0 tw-ml-1"
+                                            >
                                                 {value}
                                             </label>
                                         </div>
