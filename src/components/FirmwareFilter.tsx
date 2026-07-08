@@ -33,7 +33,7 @@ export default ({
     // const [filterOptions, setFilterOptions] = useState<FilterOptions>();
     // const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({}); // Maybe pass these as a prop so that the modal knows what filters are selected
     const [isOpen, setIsOpen] = useState(false);
-    const [openKey, setOpenKey] = useState<string | null>(null);
+    // const [openKey, setOpenKey] = useState<string | null>(null);
 
     const device = useSelector(selectedDevice);
 
@@ -76,7 +76,7 @@ export default ({
             <Button variant="secondary" onClick={() => clearFilters()}>
                 Clear filters
             </Button>
-            {isOpen &&
+            {/* {isOpen &&
                 Object.entries(filterOptions ?? {}).map(([key, values]) => (
                     <div
                         key={key}
@@ -132,7 +132,7 @@ export default ({
                             </Button>
                         )}
                     </div>
-                ))}
+                ))} */}
             <div>
                 <Dropdown onToggle={() => setIsOpen(!isOpen)}>
                     <Dropdown.Toggle variant="outline-primary" active={isOpen}>

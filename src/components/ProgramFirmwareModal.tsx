@@ -19,12 +19,14 @@ import FirmwareFilter, { type FilterOptions } from './FirmwareFilter';
 interface Firmware {
     device: string;
     name: string;
-    [props: string]: string | boolean;
-} // change later and make dynamic based on json
+    filename: string;
+    [props: string]: string;
+}
 
 type ModalStage = 'firmwareSelection' | 'downloadFirmware';
 
 const url = '../resources/firmware/firmwares.json';
+// const url = '../resources/firmware/AQLFirmwareList.json';
 export default ({
     isVisible,
     onClose,
@@ -46,6 +48,34 @@ export default ({
                 // fix this function later so that there are no type issues
             });
     }, []);
+
+    // useEffect(() => {
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(
+    //             (data: {
+    //                 results: { properties: Record<string, string[]> }[];
+    //             }) => {
+    //                 const newFirmwares: Firmware[] = (data.results ?? [])
+    //                     .filter(result => result.properties)
+    //                     .map(
+    //                         result =>
+    //                             Object.fromEntries(
+    //                                 Object.entries(result.properties).map(
+    //                                     ([key, values]) => [
+    //                                         key,
+    //                                         (values[0] ?? '').replace(
+    //                                             /_/g,
+    //                                             ' ',
+    //                                         ),
+    //                                     ],
+    //                                 ),
+    //                             ) as Firmware,
+    //                     );
+    //                 setFirmwares(newFirmwares);
+    //             },
+    //         );
+    // }, []);
     // const [SelectedFilters, setSelectedFilters] = useState<FilterOptions>();
     const [selectedFirmware, setSelectedFirmware] = useState<Firmware>();
 
@@ -91,7 +121,7 @@ const SelectFirmware = ({
 }) => {
     const [filterOptions, setFilterOptions] = useState<FilterOptions>({});
     const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({});
-    // const [visibleFilters, setVisibleFIlters] = useState<FilterOptions>({});
+    const [visibleFilters, setVisibleFilters] = useState<FilterOptions>({});
     const [visibleFirmwares, setVisibleFirmwares] =
         useState<Firmware[]>(firmwares);
 
@@ -103,20 +133,33 @@ const SelectFirmware = ({
             .then((data: string[]) => setFilterableKeys(data));
     }, []);
 
-    // const updateFilterOptions = (data: Firmware[]): FilterOptions => {
-    //     const sets: Record<string, Set<string>> = {};
+    const generateFilterOptions = useCallback(
+        (data: Firmware[]): FilterOptions => {
+            const sets: Record<string, Set<string>> = {};
 
-    //     data.forEach(item => {
-    //         Object.entries(item).forEach(([key, value]) => {
-    //             if (typeof value !== 'string') return;
-    //             (sets[key] ??= new Set()).add(value);
-    //         });
-    //     });
+            data.forEach(item => {
+                Object.entries(item).forEach(([key, value]) => {
+                    if (
+                        typeof value === 'string' &&
+                        filterableKeys.includes(key)
+                    )
+                        (sets[key] ??= new Set()).add(value);
+                });
+            });
 
-    //     return Object.fromEntries(
-    //         Object.entries(sets).map(([key, set]) => [key, [...set].sort()]),
-    //     );
-    // };
+            return Object.fromEntries(
+                Object.entries(sets).map(([key, set]) => [
+                    key,
+                    [...set].sort(),
+                ]),
+            );
+        },
+        [filterableKeys],
+    );
+
+    useEffect(() => {
+        setFilterOptions(generateFilterOptions(firmwares));
+    }, [firmwares, generateFilterOptions]);
 
     const updateFilterOptions = useCallback(() => {
         const keys = new Set<string>();
@@ -149,7 +192,7 @@ const SelectFirmware = ({
     }, [firmwares, selectedFilters, filterableKeys]);
 
     useEffect(() => {
-        setFilterOptions(updateFilterOptions());
+        setVisibleFilters(updateFilterOptions());
         console.log('test1');
     }, [updateFilterOptions]);
 
@@ -195,9 +238,8 @@ const SelectFirmware = ({
                     clearFilters={clearFilters}
                     filterOptions={filterOptions}
                 />
-                {firmwares.length ? (
-                    <div>
-                        <p>test</p>
+                {visibleFirmwares.length ? (
+                    <div className="tw-mt-5 tw-border-0 tw-border-b tw-border-solid tw-border-gray-50">
                         {visibleFirmwares
                             // .filter(
                             //     firmware =>
@@ -212,16 +254,32 @@ const SelectFirmware = ({
                             //     ),
                             // )
                             .map(firmware => (
-                                <div key={firmware.name}>
-                                    <Button
-                                        variant="secondary"
-                                        onClick={() => {
-                                            setSelectedFirmware(firmware);
-                                            setModalStage('downloadFirmware');
-                                        }}
-                                    >
-                                        {firmware.name}
-                                    </Button>
+                                <div
+                                    key={`${firmware.name}${firmware.device}`}
+                                    className="tw- tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3"
+                                >
+                                    <div className="tw-flex tw-w-full tw-flex-1 tw-flex-col tw-items-start">
+                                        <div className="tw-text-base">
+                                            {firmware.name}
+                                        </div>
+                                        <div className="tw-text-sm">
+                                            {firmware.description}
+                                        </div>
+                                    </div>
+                                    <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
+                                        <Button
+                                            variant="primary"
+                                            size="lg"
+                                            onClick={() => {
+                                                setSelectedFirmware(firmware);
+                                                setModalStage(
+                                                    'downloadFirmware',
+                                                );
+                                            }}
+                                        >
+                                            Select
+                                        </Button>
+                                    </div>
                                 </div>
                             ))}
                     </div>

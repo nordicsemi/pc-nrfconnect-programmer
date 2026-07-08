@@ -1,0 +1,1816 @@
+{
+    "results": [
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf52833dk_hello_world.hex",
+            "created": "2026-07-01T14:23:49.788Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:49.788Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:49.943Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf52833dk"],
+                "filename": ["nrf52833dk_hello_world.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["hello_world"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf52833dk_hello_world.hex",
+            "mimeType": "application/octet-stream",
+            "size": "52543",
+            "checksums": {
+                "sha1": "3d40793bffaf1938085644b01426158601aa6a84",
+                "md5": "27a069d144b602e8ca9ee0c64826c871",
+                "sha256": "1598ae37f5135bef1c59ec64458887b452a509ea6ab5185375de6d92d64d41de"
+            },
+            "originalChecksums": {
+                "sha256": "1598ae37f5135bef1c59ec64458887b452a509ea6ab5185375de6d92d64d41de"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf52833dk_hello_world.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf52833dk_lbs.hex",
+            "created": "2026-07-01T14:23:50.246Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:50.246Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:50.549Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf52833dk"],
+                "filename": ["nrf52833dk_lbs.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["lbs"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf52833dk_lbs.hex",
+            "mimeType": "application/octet-stream",
+            "size": "500143",
+            "checksums": {
+                "sha1": "0a5b44478229c268e0aa08e09b9d858fe62dbab4",
+                "md5": "ebc64d5883d462dfb8dcc8860c0fa391",
+                "sha256": "abdef0647706523f771827ef9f7134f60630b006a6fff32b7ac10408f033c1c6"
+            },
+            "originalChecksums": {
+                "sha256": "abdef0647706523f771827ef9f7134f60630b006a6fff32b7ac10408f033c1c6"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf52833dk_lbs.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf52833dk_peripheral_uart.hex",
+            "created": "2026-07-01T14:23:50.750Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:50.750Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:51.256Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf52833dk"],
+                "filename": ["nrf52833dk_peripheral_uart.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["peripheral_uart"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf52833dk_peripheral_uart.hex",
+            "mimeType": "application/octet-stream",
+            "size": "581001",
+            "checksums": {
+                "sha1": "cbc3849c9d8125118fab0ac001bcde1a3b496abc",
+                "md5": "b7089d3f6572e81f5281777dcd5a3f7f",
+                "sha256": "34a22380b55f8c3f0b646702885d9cef0d9799b3b2d6c69ce0117a51aa0bbfa4"
+            },
+            "originalChecksums": {
+                "sha256": "34a22380b55f8c3f0b646702885d9cef0d9799b3b2d6c69ce0117a51aa0bbfa4"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf52833dk_peripheral_uart.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf52840dk_hello_world.hex",
+            "created": "2026-07-01T14:23:51.527Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:51.527Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:51.653Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf52840dk"],
+                "filename": ["nrf52840dk_hello_world.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["hello_world"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf52840dk_hello_world.hex",
+            "mimeType": "application/octet-stream",
+            "size": "61747",
+            "checksums": {
+                "sha1": "019aeb15c0102104978dd63360768dda92e8080e",
+                "md5": "bc2c4aeee2c7c33341f7adf6cadc683d",
+                "sha256": "af3457010369bb8c2b6eced0633e6bada8a8a6e3d6a55a1b9c225aa7b34204a2"
+            },
+            "originalChecksums": {
+                "sha256": "af3457010369bb8c2b6eced0633e6bada8a8a6e3d6a55a1b9c225aa7b34204a2"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf52840dk_hello_world.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf52840dk_lbs.hex",
+            "created": "2026-07-01T14:23:51.825Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:51.825Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:52.181Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf52840dk"],
+                "filename": ["nrf52840dk_lbs.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["lbs"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf52840dk_lbs.hex",
+            "mimeType": "application/octet-stream",
+            "size": "543100",
+            "checksums": {
+                "sha1": "5e01c0a10c6de9dcf912f761a19026c1c62791d7",
+                "md5": "47de13bb442ecfc97073ac77477a4e22",
+                "sha256": "2c730c7acec0775a251be15ef934924f58de8ce9f63dae7181a4fb0145c0f8fd"
+            },
+            "originalChecksums": {
+                "sha256": "2c730c7acec0775a251be15ef934924f58de8ce9f63dae7181a4fb0145c0f8fd"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf52840dk_lbs.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf52840dk_peripheral_uart.hex",
+            "created": "2026-07-01T14:23:52.364Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:52.364Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:52.663Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf52840dk"],
+                "filename": ["nrf52840dk_peripheral_uart.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["peripheral_uart"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf52840dk_peripheral_uart.hex",
+            "mimeType": "application/octet-stream",
+            "size": "624112",
+            "checksums": {
+                "sha1": "ff6a97fd9024ddd17a5984f490214d32b3256cdb",
+                "md5": "56b7af55709b3bd0f5edfc8291a31b29",
+                "sha256": "f143d5433a4f1fe03b5b54a4d16564c813589dfd3680696aafda7e05f0660052"
+            },
+            "originalChecksums": {
+                "sha256": "f143d5433a4f1fe03b5b54a4d16564c813589dfd3680696aafda7e05f0660052"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf52840dk_peripheral_uart.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf52dk_hello_world.hex",
+            "created": "2026-07-01T14:23:52.977Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:52.977Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:53.058Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf52dk"],
+                "filename": ["nrf52dk_hello_world.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["hello_world"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf52dk_hello_world.hex",
+            "mimeType": "application/octet-stream",
+            "size": "52756",
+            "checksums": {
+                "sha1": "2dcc03d1a964dde23fb931d7415833447f3d2b57",
+                "md5": "8938140fe1d2d16e047a14673c7252f1",
+                "sha256": "17038c12fb287798d989800b6df10c9b558d575f2823bdacc0c69a8eeee48b62"
+            },
+            "originalChecksums": {
+                "sha256": "17038c12fb287798d989800b6df10c9b558d575f2823bdacc0c69a8eeee48b62"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf52dk_hello_world.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf52dk_lbs.hex",
+            "created": "2026-07-01T14:23:53.276Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:53.276Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:53.573Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf52dk"],
+                "filename": ["nrf52dk_lbs.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["lbs"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf52dk_lbs.hex",
+            "mimeType": "application/octet-stream",
+            "size": "494772",
+            "checksums": {
+                "sha1": "e51be4ed7a3fa573c1e29a873058a84d7532dc84",
+                "md5": "a568f8199c3300e8ee2c7187db6969b7",
+                "sha256": "a1acffd35283e85d72d28df13b56821b93f3d6ae4149e07fc3c64c2c4f0f66c8"
+            },
+            "originalChecksums": {
+                "sha256": "a1acffd35283e85d72d28df13b56821b93f3d6ae4149e07fc3c64c2c4f0f66c8"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf52dk_lbs.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf52dk_peripheral_uart.hex",
+            "created": "2026-07-01T14:23:53.973Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:53.973Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:54.253Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf52dk"],
+                "filename": ["nrf52dk_peripheral_uart.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["peripheral_uart"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf52dk_peripheral_uart.hex",
+            "mimeType": "application/octet-stream",
+            "size": "575396",
+            "checksums": {
+                "sha1": "2f0de01574702cd965e4bfe02301b106951277d7",
+                "md5": "196bd73e86a4653753ba9c14b7d9a3e4",
+                "sha256": "0ccedc71f21e6b8512ceb737f33280ff58a9662b6a75d4b1b3a2ba39aa1ede66"
+            },
+            "originalChecksums": {
+                "sha256": "0ccedc71f21e6b8512ceb737f33280ff58a9662b6a75d4b1b3a2ba39aa1ede66"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf52dk_peripheral_uart.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf53dk_hello_world.hex",
+            "created": "2026-07-01T14:23:54.469Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:54.469Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:54.597Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf53dk"],
+                "filename": ["nrf53dk_hello_world.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["hello_world"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf53dk_hello_world.hex",
+            "mimeType": "application/octet-stream",
+            "size": "65177",
+            "checksums": {
+                "sha1": "00dbae01f003341e5cde5a08f3281e8ec08bb491",
+                "md5": "bfb6df56124a3a20728d41f63559e354",
+                "sha256": "72bdd6f60f83c23455bbe9de11edb9f11d412e43b320aae55529cf489df0075e"
+            },
+            "originalChecksums": {
+                "sha256": "72bdd6f60f83c23455bbe9de11edb9f11d412e43b320aae55529cf489df0075e"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf53dk_hello_world.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf53dk_lbs_app.hex",
+            "created": "2026-07-01T14:23:54.792Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:54.792Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:55.031Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf53dk"],
+                "filename": ["nrf53dk_lbs_app.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["lbs_app"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf53dk_lbs_app.hex",
+            "mimeType": "application/octet-stream",
+            "size": "422544",
+            "checksums": {
+                "sha1": "0515d20384a5f08d67ce59c5d8b40e0ddf15998f",
+                "md5": "9569a73b8194fa183d3d75b0e3057c51",
+                "sha256": "e958d7258128fc6e651e42d683c943d396291248df2f213bf43d65c602b992a3"
+            },
+            "originalChecksums": {
+                "sha256": "e958d7258128fc6e651e42d683c943d396291248df2f213bf43d65c602b992a3"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf53dk_lbs_app.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf53dk_peripheral_uart_app.hex",
+            "created": "2026-07-01T14:23:55.227Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:55.227Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:55.507Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf53dk"],
+                "filename": ["nrf53dk_peripheral_uart_app.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["peripheral_uart_app"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf53dk_peripheral_uart_app.hex",
+            "mimeType": "application/octet-stream",
+            "size": "546896",
+            "checksums": {
+                "sha1": "ec0dbe8867638e0ebee93b351e0314fbb3746abe",
+                "md5": "4e0d8ba7a9e53cb14dd13262e3fec097",
+                "sha256": "fcc95e205f02244047d96accf74000fe1bcb4285e5462f117773a7e9cf6b82b7"
+            },
+            "originalChecksums": {
+                "sha256": "fcc95e205f02244047d96accf74000fe1bcb4285e5462f117773a7e9cf6b82b7"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf53dk_peripheral_uart_app.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54l15dk_hello_world.hex",
+            "created": "2026-07-01T14:23:55.811Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:55.811Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:55.903Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54l15dk"],
+                "filename": ["nrf54l15dk_hello_world.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["hello_world"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54l15dk_hello_world.hex",
+            "mimeType": "application/octet-stream",
+            "size": "70032",
+            "checksums": {
+                "sha1": "6ec36ac05265bba43992645c22795f292d621817",
+                "md5": "4f64060dc105dcb350d7ec8633e837f8",
+                "sha256": "9fcd4b29acad30081fde59a2a511c6e3fa701e335e9de2c561bdc5a162ab7f8d"
+            },
+            "originalChecksums": {
+                "sha256": "9fcd4b29acad30081fde59a2a511c6e3fa701e335e9de2c561bdc5a162ab7f8d"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54l15dk_hello_world.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54l15dk_lbs.hex",
+            "created": "2026-07-01T14:23:56.090Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:56.090Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:56.391Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54l15dk"],
+                "filename": ["nrf54l15dk_lbs.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["lbs"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54l15dk_lbs.hex",
+            "mimeType": "application/octet-stream",
+            "size": "573900",
+            "checksums": {
+                "sha1": "7d2ddde1f5f752a100bb413f5fe60a7b48861c1b",
+                "md5": "6b020d95eea0ad1c57059ebd967046b2",
+                "sha256": "034f6d0d085d876c5fd94c9749ce5d0fa2c7046e6ca45775858f3cd502a5b9a5"
+            },
+            "originalChecksums": {
+                "sha256": "034f6d0d085d876c5fd94c9749ce5d0fa2c7046e6ca45775858f3cd502a5b9a5"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54l15dk_lbs.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54l15dk_peripheral_uart.hex",
+            "created": "2026-07-01T14:23:56.588Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:56.588Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:56.856Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54l15dk"],
+                "filename": ["nrf54l15dk_peripheral_uart.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["peripheral_uart"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54l15dk_peripheral_uart.hex",
+            "mimeType": "application/octet-stream",
+            "size": "664608",
+            "checksums": {
+                "sha1": "206e3c645fae8106baba23ba47d42c053335e89a",
+                "md5": "3c8971e833bb33bba7761e0fca8bfde2",
+                "sha256": "ede990c74e4e5eeade0f6637e4b77a716feb479846e8f1cf0b4be6d9da161ef7"
+            },
+            "originalChecksums": {
+                "sha256": "ede990c74e4e5eeade0f6637e4b77a716feb479846e8f1cf0b4be6d9da161ef7"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54l15dk_peripheral_uart.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54lm20dk_hello_world.hex",
+            "created": "2026-07-01T14:23:57.110Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:57.110Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:57.228Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54lm20dk"],
+                "filename": ["nrf54lm20dk_hello_world.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["hello_world"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54lm20dk_hello_world.hex",
+            "mimeType": "application/octet-stream",
+            "size": "87884",
+            "checksums": {
+                "sha1": "69c5cf3de100cd3c210e693ad0f0a02aaa36a30a",
+                "md5": "b4681f0542e90b90c4278b572e71935a",
+                "sha256": "9c5862b6c31247c39f75ccc3d410524eddfb8ee7462d4f9b5ddbbb4f0cda7998"
+            },
+            "originalChecksums": {
+                "sha256": "9c5862b6c31247c39f75ccc3d410524eddfb8ee7462d4f9b5ddbbb4f0cda7998"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54lm20dk_hello_world.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54lm20dk_lbs.hex",
+            "created": "2026-07-01T14:23:57.631Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:57.631Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:57.882Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54lm20dk"],
+                "filename": ["nrf54lm20dk_lbs.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["lbs"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54lm20dk_lbs.hex",
+            "mimeType": "application/octet-stream",
+            "size": "533856",
+            "checksums": {
+                "sha1": "d23fda9e524460c1f3ad1ee66190547921b7e454",
+                "md5": "28f87c6ff4f7bebf41e09deb1fb3444c",
+                "sha256": "7ce519367deab1253733b73e296be684b5f421921f385ff7bb4632b98c143003"
+            },
+            "originalChecksums": {
+                "sha256": "7ce519367deab1253733b73e296be684b5f421921f385ff7bb4632b98c143003"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54lm20dk_lbs.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54lm20dk_peripheral_uart.hex",
+            "created": "2026-07-01T14:23:58.085Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:58.085Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:58.378Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54lm20dk"],
+                "filename": ["nrf54lm20dk_peripheral_uart.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["peripheral_uart"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54lm20dk_peripheral_uart.hex",
+            "mimeType": "application/octet-stream",
+            "size": "619172",
+            "checksums": {
+                "sha1": "a60d51927585551e61fe18c7945fc22f8baa92c9",
+                "md5": "9d02f921bc4c90c31d78e26fd497c686",
+                "sha256": "4fc42937ceb0a154b1baa3bcf46977f8f56278e448e50ee7e9de93cff36d2569"
+            },
+            "originalChecksums": {
+                "sha256": "4fc42937ceb0a154b1baa3bcf46977f8f56278e448e50ee7e9de93cff36d2569"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54lm20dk_peripheral_uart.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54lm20dk_power_profiling.hex",
+            "created": "2026-07-01T14:23:58.576Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:58.576Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:58.875Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54lm20dk"],
+                "filename": ["nrf54lm20dk_power_profiling.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["power_profiling"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54lm20dk_power_profiling.hex",
+            "mimeType": "application/octet-stream",
+            "size": "531376",
+            "checksums": {
+                "sha1": "728c10f4eb171f6e2a4dada45969d2b6952012f9",
+                "md5": "7156caa96ec1c58828debb65c9d85ab3",
+                "sha256": "b2c9bfc70df3381493a1d75720ec9adf0e112ba08015e7f65d93591505c0e54f"
+            },
+            "originalChecksums": {
+                "sha256": "b2c9bfc70df3381493a1d75720ec9adf0e112ba08015e7f65d93591505c0e54f"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54lm20dk_power_profiling.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54ls05dk_hello_world.hex",
+            "created": "2026-07-01T14:23:59.148Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:59.148Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:59.230Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54ls05dk"],
+                "filename": ["nrf54ls05dk_hello_world.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["hello_world"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54ls05dk_hello_world.hex",
+            "mimeType": "application/octet-stream",
+            "size": "68516",
+            "checksums": {
+                "sha1": "6b7e7135baae3a9539bdbe661bf5c4eb85d6f892",
+                "md5": "dbf1b5c3f4aaaf7b7ad15cf22a4a9ab5",
+                "sha256": "3bd498aef5a0a3439549ec4bfdead73dd5353689f1680a1a5fb0cfd6d06f9951"
+            },
+            "originalChecksums": {
+                "sha256": "3bd498aef5a0a3439549ec4bfdead73dd5353689f1680a1a5fb0cfd6d06f9951"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54ls05dk_hello_world.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54ls05dk_lbs.hex",
+            "created": "2026-07-01T14:23:59.419Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:59.419Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:23:59.749Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54ls05dk"],
+                "filename": ["nrf54ls05dk_lbs.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["lbs"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54ls05dk_lbs.hex",
+            "mimeType": "application/octet-stream",
+            "size": "500696",
+            "checksums": {
+                "sha1": "f30bfd3080fb7725f4a731ba9298989a99bc41e1",
+                "md5": "0c8f612db9937064932516e86d7f8862",
+                "sha256": "2dee1fef596706a6a9573c7e093c5f51a90f8bbd2155dd7c8393b985244c8060"
+            },
+            "originalChecksums": {
+                "sha256": "2dee1fef596706a6a9573c7e093c5f51a90f8bbd2155dd7c8393b985244c8060"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54ls05dk_lbs.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54ls05dk_peripheral_uart.hex",
+            "created": "2026-07-01T14:23:59.944Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:23:59.944Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:00.375Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54ls05dk"],
+                "filename": ["nrf54ls05dk_peripheral_uart.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["peripheral_uart"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54ls05dk_peripheral_uart.hex",
+            "mimeType": "application/octet-stream",
+            "size": "583748",
+            "checksums": {
+                "sha1": "d1a55f560d7423e6deb3265a7d8d008547b1a2fc",
+                "md5": "4b383e7ffcd9beeac90bf1a2a218ea59",
+                "sha256": "25b00da1f96a708ae8b87648a1f160f31d638c41550014accc7540e9a3298dfc"
+            },
+            "originalChecksums": {
+                "sha256": "25b00da1f96a708ae8b87648a1f160f31d638c41550014accc7540e9a3298dfc"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54ls05dk_peripheral_uart.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54ls05dk_power_profiling.hex",
+            "created": "2026-07-01T14:24:00.561Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:00.561Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:00.828Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54ls05dk"],
+                "filename": ["nrf54ls05dk_power_profiling.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["power_profiling"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54ls05dk_power_profiling.hex",
+            "mimeType": "application/octet-stream",
+            "size": "471464",
+            "checksums": {
+                "sha1": "08732718c60fc6f9ee08ef5ddae2d4c5554ca10a",
+                "md5": "ca73a3fc779212fbb0bd8dec03a99415",
+                "sha256": "74ad9a9a623e3975443840ed8bfd6f066d0c062a6ec504b2d57fd6a635413cd7"
+            },
+            "originalChecksums": {
+                "sha256": "74ad9a9a623e3975443840ed8bfd6f066d0c062a6ec504b2d57fd6a635413cd7"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54ls05dk_power_profiling.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54lv10dk_hello_world.hex",
+            "created": "2026-07-01T14:24:01.254Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:01.254Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:01.371Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54lv10dk"],
+                "filename": ["nrf54lv10dk_hello_world.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["hello_world"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54lv10dk_hello_world.hex",
+            "mimeType": "application/octet-stream",
+            "size": "84160",
+            "checksums": {
+                "sha1": "74eb47895d4b5429b140ef51189970b87e3adeaf",
+                "md5": "bb7dd1fbb5dbfcf1eea78c10ff72f40a",
+                "sha256": "309af4eea4ddc196bf2d4806c7cbb4a096708470333bc8dd721be91888b544a1"
+            },
+            "originalChecksums": {
+                "sha256": "309af4eea4ddc196bf2d4806c7cbb4a096708470333bc8dd721be91888b544a1"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54lv10dk_hello_world.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54lv10dk_lbs.hex",
+            "created": "2026-07-01T14:24:01.564Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:01.564Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:01.964Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54lv10dk"],
+                "filename": ["nrf54lv10dk_lbs.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["lbs"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54lv10dk_lbs.hex",
+            "mimeType": "application/octet-stream",
+            "size": "531028",
+            "checksums": {
+                "sha1": "38e39a59f7b28732540b6c2fea3f0d5c607f34b3",
+                "md5": "fdb076b21b00084ca47241d07d3af38b",
+                "sha256": "6a3f3f2ee406b90c2f6172a29c28a498f265735219f22faabc1c96d790546cad"
+            },
+            "originalChecksums": {
+                "sha256": "6a3f3f2ee406b90c2f6172a29c28a498f265735219f22faabc1c96d790546cad"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54lv10dk_lbs.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54lv10dk_peripheral_uart.hex",
+            "created": "2026-07-01T14:24:02.187Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:02.187Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:02.463Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54lv10dk"],
+                "filename": ["nrf54lv10dk_peripheral_uart.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["peripheral_uart"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54lv10dk_peripheral_uart.hex",
+            "mimeType": "application/octet-stream",
+            "size": "615288",
+            "checksums": {
+                "sha1": "e35eb5d23965e32b647dfde91385ff2269908b52",
+                "md5": "025c60c3923d65afdbb5fa9df990172d",
+                "sha256": "f8bb689a68acb74de8c38f68e8e2f1092f4239ec012ad6884c6243ce64d5a0bb"
+            },
+            "originalChecksums": {
+                "sha256": "f8bb689a68acb74de8c38f68e8e2f1092f4239ec012ad6884c6243ce64d5a0bb"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54lv10dk_peripheral_uart.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf54lv10dk_power_profiling.hex",
+            "created": "2026-07-01T14:24:02.723Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:02.723Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:03.168Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf54lv10dk"],
+                "filename": ["nrf54lv10dk_power_profiling.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["power_profiling"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf54lv10dk_power_profiling.hex",
+            "mimeType": "application/octet-stream",
+            "size": "510348",
+            "checksums": {
+                "sha1": "ef728ff19bb17a181116cf004c99885de4642b38",
+                "md5": "e665e7a3aff1c1c192c61fbab317fa03",
+                "sha256": "271e1e348a8b50a725b92163996e2ae29e548c0e2793832aff8028914b99e33f"
+            },
+            "originalChecksums": {
+                "sha256": "271e1e348a8b50a725b92163996e2ae29e548c0e2793832aff8028914b99e33f"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf54lv10dk_power_profiling.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf7002dk_wifi_ble_provisioning_sample_ncs2.9.0_merged.hex",
+            "created": "2026-07-01T14:24:03.347Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:03.347Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:04.035Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf7002dk"],
+                "filename": [
+                    "nrf7002dk_wifi_ble_provisioning_sample_ncs2.9.0_merged.hex"
+                ],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["wifi_ble_provisioning_sample_ncs2.9.0_merged"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf7002dk_wifi_ble_provisioning_sample_ncs2.9.0_merged.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1712322",
+            "checksums": {
+                "sha1": "482e43958f11b8c291e47f7ebc71ebc02f36eef5",
+                "md5": "1befbe4b7960bcdb3e11bad455897675",
+                "sha256": "ca1fd717868066dd84f3d32ab2ddac9183baa349fdef26b8465d067ac0c4e77a"
+            },
+            "originalChecksums": {
+                "sha256": "ca1fd717868066dd84f3d32ab2ddac9183baa349fdef26b8465d067ac0c4e77a"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf7002dk_wifi_ble_provisioning_sample_ncs2.9.0_merged.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf7002dk_wifi_scan_sample_ncs2.9.0.hex",
+            "created": "2026-07-01T14:24:04.329Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:04.329Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:04.669Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf7002dk"],
+                "filename": ["nrf7002dk_wifi_scan_sample_ncs2.9.0.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["wifi_scan_sample_ncs2.9.0"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf7002dk_wifi_scan_sample_ncs2.9.0.hex",
+            "mimeType": "application/octet-stream",
+            "size": "431956",
+            "checksums": {
+                "sha1": "3043cd72087cbadd8366d3324714aed9a3ecd712",
+                "md5": "b5aeef6164eed6140debb4e47da01ff9",
+                "sha256": "546cff320f3443f048cd7d89a4ebb1b7867ff00caeb4a48d060017524df409b0"
+            },
+            "originalChecksums": {
+                "sha256": "546cff320f3443f048cd7d89a4ebb1b7867ff00caeb4a48d060017524df409b0"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf7002dk_wifi_scan_sample_ncs2.9.0.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9151dk_asset_tracker.hex",
+            "created": "2026-07-01T14:24:04.833Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:04.833Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:05.684Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9151dk"],
+                "filename": ["nrf9151dk_asset_tracker.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["asset_tracker"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9151dk_asset_tracker.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1122926",
+            "checksums": {
+                "sha1": "b4a50124b01dcdc44e3ebf4c7f64093eca8e791c",
+                "md5": "11aaa595b308c214ec436fab45fbf1ff",
+                "sha256": "aadadff6cd8976be5fd1e0e1815fc861d9594021810470f7a74be636d461b39e"
+            },
+            "originalChecksums": {
+                "sha256": "aadadff6cd8976be5fd1e0e1815fc861d9594021810470f7a74be636d461b39e"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9151dk_asset_tracker.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9151dk_asset_tracker_template.hex",
+            "created": "2026-07-01T14:24:05.865Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:05.865Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:06.568Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9151dk"],
+                "filename": ["nrf9151dk_asset_tracker_template.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["asset_tracker_template"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9151dk_asset_tracker_template.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1477064",
+            "checksums": {
+                "sha1": "8591fc608040250c40df445b6fd8a3836b131e0c",
+                "md5": "a39d917c143f61b466de914d6e6c86cc",
+                "sha256": "b02b17b0e02210216be3fe9f72a495246d26fcbe4170edbbd334c23199a9bead"
+            },
+            "originalChecksums": {
+                "sha256": "b02b17b0e02210216be3fe9f72a495246d26fcbe4170edbbd334c23199a9bead"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9151dk_asset_tracker_template.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9151dk_modem_shell.hex",
+            "created": "2026-07-01T14:24:06.765Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:06.765Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:07.327Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9151dk"],
+                "filename": ["nrf9151dk_modem_shell.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["modem_shell"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9151dk_modem_shell.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1793562",
+            "checksums": {
+                "sha1": "9a0034b2e988a3588349008a3c49995138999952",
+                "md5": "e2b7ed86e3565002a2893f71e11a28dd",
+                "sha256": "22f297f919e5426dedca6c598a989107c9f80e98e25ce33df46e852f5f6b5ed7"
+            },
+            "originalChecksums": {
+                "sha256": "22f297f919e5426dedca6c598a989107c9f80e98e25ce33df46e852f5f6b5ed7"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9151dk_modem_shell.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9151dk_serial_lte_modem.hex",
+            "created": "2026-07-01T14:24:07.532Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:07.532Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:07.889Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9151dk"],
+                "filename": ["nrf9151dk_serial_lte_modem.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["serial_lte_modem"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9151dk_serial_lte_modem.hex",
+            "mimeType": "application/octet-stream",
+            "size": "891372",
+            "checksums": {
+                "sha1": "10d28cb6d4f83d5f57ffdfe82fabce72b8dc9c48",
+                "md5": "f6e5228ccde6a78d81e25d13ab91a0ac",
+                "sha256": "3693b9f891ad6753c60a27345b542839d0b7c1a3fd8622c90ab6c2065714577d"
+            },
+            "originalChecksums": {
+                "sha256": "3693b9f891ad6753c60a27345b542839d0b7c1a3fd8622c90ab6c2065714577d"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9151dk_serial_lte_modem.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9160dk_asset_tracker.hex",
+            "created": "2026-07-01T14:24:08.083Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:08.083Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:08.763Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9160dk"],
+                "filename": ["nrf9160dk_asset_tracker.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["asset_tracker"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_asset_tracker.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1122498",
+            "checksums": {
+                "sha1": "094324151f8855098d74bc0e5f6589ac0b26f6aa",
+                "md5": "63ed9d897e3dfcfaa9d09fb3f9d7fe8e",
+                "sha256": "ca4fcb73a24e097dade6c85b91b4f7a8c900c0ab116b170dc5b153df3b4d8907"
+            },
+            "originalChecksums": {
+                "sha256": "ca4fcb73a24e097dade6c85b91b4f7a8c900c0ab116b170dc5b153df3b4d8907"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_asset_tracker.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9160dk_asset_tracker_v2_debug_2023-03-02_8f26142b.hex",
+            "created": "2026-07-01T14:24:08.949Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:08.949Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:09.534Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9160dk"],
+                "filename": [
+                    "nrf9160dk_asset_tracker_v2_debug_2023-03-02_8f26142b.hex"
+                ],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["assettrackerdebug"],
+                "type": ["Application"],
+                "version": ["2.4.1"]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_asset_tracker_v2_debug_2023-03-02_8f26142b.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1069668",
+            "checksums": {
+                "sha1": "a6027451a039d547184a3bfefcb0c4950aa02ef5",
+                "md5": "e3a516a8029c0866b9e6d104b02fd5ee",
+                "sha256": "c5a50ed524846d20b7c72e8784a9c24639ed2fa3113b8b54d1bda47efeb3d7f7"
+            },
+            "originalChecksums": {
+                "sha256": "c5a50ed524846d20b7c72e8784a9c24639ed2fa3113b8b54d1bda47efeb3d7f7"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_asset_tracker_v2_debug_2023-03-02_8f26142b.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9160dk_modem_shell.hex",
+            "created": "2026-07-01T14:24:09.718Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:09.718Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:10.322Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9160dk"],
+                "filename": ["nrf9160dk_modem_shell.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["modem_shell"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_modem_shell.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1793538",
+            "checksums": {
+                "sha1": "565c5d5045b5276ad86c48c81ce67dd26c15b5ee",
+                "md5": "b791b64d446a3a6f2e503c3052d5ded0",
+                "sha256": "cd0a01fa1be2e4efeb7b8124c9d244a8f26cc013dce2b58e405a1267a610b723"
+            },
+            "originalChecksums": {
+                "sha256": "cd0a01fa1be2e4efeb7b8124c9d244a8f26cc013dce2b58e405a1267a610b723"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_modem_shell.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9160dk_modem_shell_with_trace_ncs_v2_3_0_2023_05_04.hex",
+            "created": "2026-07-01T14:24:10.519Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:10.519Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:10.794Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9160dk"],
+                "filename": [
+                    "nrf9160dk_modem_shell_with_trace_ncs_v2_3_0_2023_05_04.hex"
+                ],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["modemshelltrace"],
+                "type": ["Application"],
+                "version": ["2.4.0"]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_modem_shell_with_trace_ncs_v2_3_0_2023_05_04.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1674304",
+            "checksums": {
+                "sha1": "e6bb1bdb7a60a981600fcc463020e238d6bc7661",
+                "md5": "4eced077c924222fa0aa0882dd40a27e",
+                "sha256": "d999bba1947221d463f7296b593bafe25541626575252b3bc8010bde55239bdd"
+            },
+            "originalChecksums": {
+                "sha256": "d999bba1947221d463f7296b593bafe25541626575252b3bc8010bde55239bdd"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_modem_shell_with_trace_ncs_v2_3_0_2023_05_04.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9160dk_serial_lte_modem.hex",
+            "created": "2026-07-01T14:24:10.972Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:10.972Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:11.218Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9160dk"],
+                "filename": ["nrf9160dk_serial_lte_modem.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["serial_lte_modem"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_serial_lte_modem.hex",
+            "mimeType": "application/octet-stream",
+            "size": "891260",
+            "checksums": {
+                "sha1": "c82013e3d932b4f1fbacc5d123745f5503fd7300",
+                "md5": "6952c3a096645318650ecfe4e4abe37a",
+                "sha256": "da0de717ce34c887fc82c51b3db171bc809300aab65d9d618371a990983b14dd"
+            },
+            "originalChecksums": {
+                "sha256": "da0de717ce34c887fc82c51b3db171bc809300aab65d9d618371a990983b14dd"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_serial_lte_modem.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9160dk_slm-with-trace.hex",
+            "created": "2026-07-01T14:24:11.408Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:11.408Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:11.747Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9160dk"],
+                "filename": ["nrf9160dk_slm-with-trace.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["slm"],
+                "type": ["Application"],
+                "version": ["1.1.0"]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_slm-with-trace.hex",
+            "mimeType": "application/octet-stream",
+            "size": "899612",
+            "checksums": {
+                "sha1": "3ee66e4b10b3e23fc8ccb91072da6c4c91feab02",
+                "md5": "53ef606d7c40a9ac7989951dedaee04b",
+                "sha256": "55e3e6c4b5e0890427d3d4ab70e229e32656564f461a8c3ae6b71942e9af5960"
+            },
+            "originalChecksums": {
+                "sha256": "55e3e6c4b5e0890427d3d4ab70e229e32656564f461a8c3ae6b71942e9af5960"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_slm-with-trace.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9161dk_asset_tracker.hex",
+            "created": "2026-07-01T14:24:11.944Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:11.944Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:12.527Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9161dk"],
+                "filename": ["nrf9161dk_asset_tracker.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["asset_tracker"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9161dk_asset_tracker.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1123102",
+            "checksums": {
+                "sha1": "04d95230d2437c3b8e22f6e5cf49b59a492d366c",
+                "md5": "8c32abbfd258b1c33241f72491649018",
+                "sha256": "f613185f9e0586ccfe91543434135bac05a6d8243896607fcb6ccc8e95825410"
+            },
+            "originalChecksums": {
+                "sha256": "f613185f9e0586ccfe91543434135bac05a6d8243896607fcb6ccc8e95825410"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9161dk_asset_tracker.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9161dk_asset_tracker_template.hex",
+            "created": "2026-07-01T14:24:12.735Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:12.735Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:13.385Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9161dk"],
+                "filename": ["nrf9161dk_asset_tracker_template.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["asset_tracker_template"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9161dk_asset_tracker_template.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1229686",
+            "checksums": {
+                "sha1": "2f15c3726d2bdcadd85b40a413ace06719f1d6ce",
+                "md5": "e40d5795f40b167be352efb712f6477d",
+                "sha256": "21c43e3b47bf63f1268fa73e7f43a2932c03fbed5960ff4c32dc2269c7305b18"
+            },
+            "originalChecksums": {
+                "sha256": "21c43e3b47bf63f1268fa73e7f43a2932c03fbed5960ff4c32dc2269c7305b18"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9161dk_asset_tracker_template.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9161dk_modem_shell.hex",
+            "created": "2026-07-01T14:24:13.585Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:13.585Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:14.247Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9161dk"],
+                "filename": ["nrf9161dk_modem_shell.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["modem_shell"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9161dk_modem_shell.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1793562",
+            "checksums": {
+                "sha1": "5fc94ddeb1d7eaa14dc9de997a9e9d0a4c3170d7",
+                "md5": "ba1db469dce7033c64efb1921347e1f7",
+                "sha256": "660a0b7b5e794dfd9e494cd483925d0d9edded05e1080fcdf745c34e957c68ce"
+            },
+            "originalChecksums": {
+                "sha256": "660a0b7b5e794dfd9e494cd483925d0d9edded05e1080fcdf745c34e957c68ce"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9161dk_modem_shell.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/nrf9161dk_serial_lte_modem.hex",
+            "created": "2026-07-01T14:24:14.413Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:14.413Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:14.801Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["nrf9161dk"],
+                "filename": ["nrf9161dk_serial_lte_modem.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["serial_lte_modem"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9161dk_serial_lte_modem.hex",
+            "mimeType": "application/octet-stream",
+            "size": "891376",
+            "checksums": {
+                "sha1": "b115bf0d914a61ea37bc2c28280f99293e33cca9",
+                "md5": "485d0f156212c5fff9791a1f388790b4",
+                "sha256": "b656888fcaf3b2f975d7258748330a0209a1a6afcc0d46bd2c946a0d1bfdfeff"
+            },
+            "originalChecksums": {
+                "sha256": "b656888fcaf3b2f975d7258748330a0209a1a6afcc0d46bd2c946a0d1bfdfeff"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/nrf9161dk_serial_lte_modem.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/thingy91_asset_tracker_v2_debug_2023-03-02_8f26142b.hex",
+            "created": "2026-07-01T14:24:14.990Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:14.990Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:15.262Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["thingy91"],
+                "filename": [
+                    "thingy91_asset_tracker_v2_debug_2023-03-02_8f26142b.hex"
+                ],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["assettracker"],
+                "type": ["Application"],
+                "version": ["2.5.0"]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/thingy91_asset_tracker_v2_debug_2023-03-02_8f26142b.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1055332",
+            "checksums": {
+                "sha1": "35d5516dc7059a49361217073a0e61335543c2ce",
+                "md5": "0d54265a103112374aa03dc1de884ac0",
+                "sha256": "ef1a9877b3df5f48f2b05dfe4b031d9d97e6a93a9aee06ec059f67a93e297cb5"
+            },
+            "originalChecksums": {
+                "sha256": "ef1a9877b3df5f48f2b05dfe4b031d9d97e6a93a9aee06ec059f67a93e297cb5"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/thingy91_asset_tracker_v2_debug_2023-03-02_8f26142b.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/thingy91_modem_shell_debug_2023-03-02_8f26142b.hex",
+            "created": "2026-07-01T14:24:15.438Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:15.438Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:15.780Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["thingy91"],
+                "filename": [
+                    "thingy91_modem_shell_debug_2023-03-02_8f26142b.hex"
+                ],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["modemshell"],
+                "type": ["Application"],
+                "version": ["2.4.0"]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/thingy91_modem_shell_debug_2023-03-02_8f26142b.hex",
+            "mimeType": "application/octet-stream",
+            "size": "1048556",
+            "checksums": {
+                "sha1": "d4a5b86a0a0418c21b4fa87208dcafbe2629dd53",
+                "md5": "9b031f1552f51ef7a7c3ae2cd6e84368",
+                "sha256": "3406ed0406312b3176e215a4dc7cafaf964f30517992f2d1d1c2c9351b96e96b"
+            },
+            "originalChecksums": {
+                "sha256": "3406ed0406312b3176e215a4dc7cafaf964f30517992f2d1d1c2c9351b96e96b"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/thingy91_modem_shell_debug_2023-03-02_8f26142b.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/thingy91_serial_lte_modem_debug_2023-03-02_8f26142b.hex",
+            "created": "2026-07-01T14:24:15.971Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:15.971Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:16.209Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["thingy91"],
+                "filename": [
+                    "thingy91_serial_lte_modem_debug_2023-03-02_8f26142b.hex"
+                ],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["serialltemodem"],
+                "type": ["Application"],
+                "version": ["1.0.3"]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/thingy91_serial_lte_modem_debug_2023-03-02_8f26142b.hex",
+            "mimeType": "application/octet-stream",
+            "size": "835088",
+            "checksums": {
+                "sha1": "63f8494d2083e9498f2413ed9cb33acf05fe0eed",
+                "md5": "2385cce0df9fc68ce9c78d76b524d9bd",
+                "sha256": "c1c4c14b440fefdbc19144a5ef4ac937ef5f044d38d5a01dc31c4d5215eac30c"
+            },
+            "originalChecksums": {
+                "sha256": "c1c4c14b440fefdbc19144a5ef4ac937ef5f044d38d5a01dc31c4d5215eac30c"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/thingy91_serial_lte_modem_debug_2023-03-02_8f26142b.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/thingy91x_asset_tracker_template.zip",
+            "created": "2026-07-01T14:24:16.399Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:16.399Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:16.713Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["thingy91x"],
+                "filename": ["thingy91x_asset_tracker_template.zip"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["asset_tracker_template"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/thingy91x_asset_tracker_template.zip",
+            "mimeType": "application/zip",
+            "size": "566381",
+            "checksums": {
+                "sha1": "99965595cc21cd0d662d48c23c97fea706fa2ba2",
+                "md5": "5bbbc403257924f0b9cf910e84b26c6f",
+                "sha256": "a20e5a5c819727e169e24a7e0df464435e79c19814571ab8df0c1111eb0d9fb4"
+            },
+            "originalChecksums": {
+                "sha256": "a20e5a5c819727e169e24a7e0df464435e79c19814571ab8df0c1111eb0d9fb4"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/thingy91x_asset_tracker_template.zip"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/thingy91x_connectivity_bridge.zip",
+            "created": "2026-07-01T14:24:16.883Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:16.883Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:17.179Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["thingy91x"],
+                "filename": ["thingy91x_connectivity_bridge.zip"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["connectivity_bridge"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/thingy91x_connectivity_bridge.zip",
+            "mimeType": "application/zip",
+            "size": "413648",
+            "checksums": {
+                "sha1": "598dbb34f3be4f2eceac6d82aecafa46eba452bb",
+                "md5": "c04ca6ae6f73b1fc1b93175069147861",
+                "sha256": "e5732a62ffc21c075ae6825835838d604fdae164187b71fadadef13357527e42"
+            },
+            "originalChecksums": {
+                "sha256": "e5732a62ffc21c075ae6825835838d604fdae164187b71fadadef13357527e42"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/thingy91x_connectivity_bridge.zip"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/thingy91x_hello.nrfcloud.zip",
+            "created": "2026-07-01T14:24:17.370Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:17.370Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:17.658Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["thingy91x"],
+                "filename": ["thingy91x_hello.nrfcloud.zip"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["hello.nrfcloud"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/thingy91x_hello.nrfcloud.zip",
+            "mimeType": "application/zip",
+            "size": "548151",
+            "checksums": {
+                "sha1": "b1d5673d6ce8be33b52a213443ec42896f8ff772",
+                "md5": "99e84647b8d375cca9c44c4ee4af485f",
+                "sha256": "7e5bec95e61f7552630f189487ecf8b5f00ce9ba95f2ee7a302b3e260ad97d9b"
+            },
+            "originalChecksums": {
+                "sha256": "7e5bec95e61f7552630f189487ecf8b5f00ce9ba95f2ee7a302b3e260ad97d9b"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/thingy91x_hello.nrfcloud.zip"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/thingy91x_modem_shell.zip",
+            "created": "2026-07-01T14:24:17.856Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:17.856Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:18.263Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["thingy91x"],
+                "filename": ["thingy91x_modem_shell.zip"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["modem_shell"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/thingy91x_modem_shell.zip",
+            "mimeType": "application/zip",
+            "size": "681828",
+            "checksums": {
+                "sha1": "57dd2fd0342fac2f4e8b41108db02773f274269b",
+                "md5": "8ce80a63688dd3f0508797cdb0ad1f14",
+                "sha256": "e2f6ac6401cb570e743e31db693493040909a01e0b063ef1f85e8c9dfa679471"
+            },
+            "originalChecksums": {
+                "sha256": "e2f6ac6401cb570e743e31db693493040909a01e0b063ef1f85e8c9dfa679471"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/thingy91x_modem_shell.zip"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Application/thingy91x_serial_lte_modem.zip",
+            "created": "2026-07-01T14:24:18.450Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:18.450Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:18.638Z",
+            "properties": {
+                "core": ["Application"],
+                "device": ["thingy91x"],
+                "filename": ["thingy91x_serial_lte_modem.zip"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["serial_lte_modem"],
+                "type": ["Application"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/thingy91x_serial_lte_modem.zip",
+            "mimeType": "application/zip",
+            "size": "320548",
+            "checksums": {
+                "sha1": "d75cd74c07079c792f1a05e05a44064d2d435846",
+                "md5": "3c9d6043dec18e9dbcdae1d16668bbdb",
+                "sha256": "dbac015591665af45d9689ebd988a85f869e922d16bc9f562654fd37556638a6"
+            },
+            "originalChecksums": {
+                "sha256": "dbac015591665af45d9689ebd988a85f869e922d16bc9f562654fd37556638a6"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Application/thingy91x_serial_lte_modem.zip"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Modem/mfw_nrf9151_2.0.4.zip",
+            "created": "2026-07-01T14:24:23.679Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:23.679Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:24.316Z",
+            "properties": {
+                "core": ["Modem"],
+                "device": ["nrf9151dk"],
+                "filename": ["mfw_nrf91x1_2.0.4.zip"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["2.0.4"],
+                "type": ["Modem"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Modem/mfw_nrf9151_2.0.4.zip",
+            "mimeType": "application/zip",
+            "size": "6033338",
+            "checksums": {
+                "sha1": "8e92c4e440d63e18b90ca0267ae788ebc221fa8c",
+                "md5": "b49f7f0c82c4a1f4ab0c3a367df85cce",
+                "sha256": "60a44f339d2d6d7821a0ea65418cea06499302faa49f7b08844fd803e6f550ad"
+            },
+            "originalChecksums": {
+                "sha256": "60a44f339d2d6d7821a0ea65418cea06499302faa49f7b08844fd803e6f550ad"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Modem/mfw_nrf9151_2.0.4.zip"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Modem/mfw_nrf9160_1.3.7.zip",
+            "created": "2026-07-01T14:24:22.844Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:22.844Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:23.493Z",
+            "properties": {
+                "core": ["Modem"],
+                "device": ["nrf9160dk"],
+                "filename": ["mfw_nrf9160_1.3.7.zip"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["modemfirmware"],
+                "type": ["Modem"],
+                "version": ["1.3.7"]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Modem/mfw_nrf9160_1.3.7.zip",
+            "mimeType": "application/zip",
+            "size": "5740219",
+            "checksums": {
+                "sha1": "642a6f97784a06004eadaebdb42a4ac13f060a42",
+                "md5": "38eb5d38592cd41282c4d79394124615",
+                "sha256": "c93559d5f0c06761e872b8d45d2034a57670e01090cea30cba08172862d3b1a8"
+            },
+            "originalChecksums": {
+                "sha256": "c93559d5f0c06761e872b8d45d2034a57670e01090cea30cba08172862d3b1a8"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Modem/mfw_nrf9160_1.3.7.zip"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Modem/mfw_nrf9161_2.0.4.zip",
+            "created": "2026-07-01T14:24:23.679Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:23.679Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:24.316Z",
+            "properties": {
+                "core": ["Modem"],
+                "device": ["nrf9161dk"],
+                "filename": ["mfw_nrf91x1_2.0.4.zip"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["2.0.4"],
+                "type": ["Modem"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Modem/mfw_nrf9161_2.0.4.zip",
+            "mimeType": "application/zip",
+            "size": "6033338",
+            "checksums": {
+                "sha1": "8e92c4e440d63e18b90ca0267ae788ebc221fa8c",
+                "md5": "b49f7f0c82c4a1f4ab0c3a367df85cce",
+                "sha256": "60a44f339d2d6d7821a0ea65418cea06499302faa49f7b08844fd803e6f550ad"
+            },
+            "originalChecksums": {
+                "sha256": "60a44f339d2d6d7821a0ea65418cea06499302faa49f7b08844fd803e6f550ad"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Modem/mfw_nrf9161_2.0.4.zip"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Modem/mfw_nrf91x1_2.0.4.zip",
+            "created": "2026-07-01T14:24:23.679Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:23.679Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:24.316Z",
+            "properties": {
+                "core": ["Modem"],
+                "device": ["nrf91x1dk"],
+                "filename": ["mfw_nrf91x1_2.0.4.zip"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["2.0.4"],
+                "type": ["Modem"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Modem/mfw_nrf91x1_2.0.4.zip",
+            "mimeType": "application/zip",
+            "size": "6033338",
+            "checksums": {
+                "sha1": "8e92c4e440d63e18b90ca0267ae788ebc221fa8c",
+                "md5": "b49f7f0c82c4a1f4ab0c3a367df85cce",
+                "sha256": "60a44f339d2d6d7821a0ea65418cea06499302faa49f7b08844fd803e6f550ad"
+            },
+            "originalChecksums": {
+                "sha256": "60a44f339d2d6d7821a0ea65418cea06499302faa49f7b08844fd803e6f550ad"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Modem/mfw_nrf91x1_2.0.4.zip"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Network/nrf53dk_lbs_net.hex",
+            "created": "2026-07-01T14:24:24.512Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:24.512Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:24.816Z",
+            "properties": {
+                "core": ["Network"],
+                "device": ["nrf53dk"],
+                "filename": ["nrf53dk_lbs_net.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["lbs_net"],
+                "type": ["Network"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Network/nrf53dk_lbs_net.hex",
+            "mimeType": "application/octet-stream",
+            "size": "474320",
+            "checksums": {
+                "sha1": "254c1b57283907133674d69c31c1601644b2591b",
+                "md5": "c819072c0449dfd40b22320bae97d77e",
+                "sha256": "95da1aba07998fbc32c52d9098e4db9bb50adaad006eed1dcd65584ed5c74d8e"
+            },
+            "originalChecksums": {
+                "sha256": "95da1aba07998fbc32c52d9098e4db9bb50adaad006eed1dcd65584ed5c74d8e"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Network/nrf53dk_lbs_net.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Network/nrf53dk_peripheral_uart_net.hex",
+            "created": "2026-07-01T14:24:25.050Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:25.050Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:25.304Z",
+            "properties": {
+                "core": ["Network"],
+                "device": ["nrf53dk"],
+                "filename": ["nrf53dk_peripheral_uart_net.hex"],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["peripheral_uart_net"],
+                "type": ["Network"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Network/nrf53dk_peripheral_uart_net.hex",
+            "mimeType": "application/octet-stream",
+            "size": "442030",
+            "checksums": {
+                "sha1": "9d5ff1978a5a2b8dcc1cec6226baf09183cf11b7",
+                "md5": "f67cb3a721c7e97aaed3a91ce32e3b11",
+                "sha256": "e74abc62ace09704cba30867ed29ab15f0094cdfd659b78d36863da049cd1fdc"
+            },
+            "originalChecksums": {
+                "sha256": "e74abc62ace09704cba30867ed29ab15f0094cdfd659b78d36863da049cd1fdc"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Network/nrf53dk_peripheral_uart_net.hex"
+        },
+        {
+            "repo": "swtools",
+            "path": "/external/ncd/summer_project/firmware/Network/nrf7002dk_wifi_ble_provisioning_sample_ncs2.9.0_merged_CPUNET.hex",
+            "created": "2026-07-01T14:24:25.496Z",
+            "createdBy": "soli",
+            "lastModified": "2026-07-01T14:24:25.496Z",
+            "modifiedBy": "soli",
+            "lastUpdated": "2026-07-01T14:24:25.737Z",
+            "properties": {
+                "core": ["Network"],
+                "device": ["nrf7002dk"],
+                "filename": [
+                    "nrf7002dk_wifi_ble_provisioning_sample_ncs2.9.0_merged_CPUNET.hex"
+                ],
+                "latest": ["true"],
+                "main_download": ["true"],
+                "name": ["wifi_ble_provisioning_sample_ncs2.9.0_merged_CPUNET"],
+                "type": ["Network"],
+                "version": [""]
+            },
+            "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Network/nrf7002dk_wifi_ble_provisioning_sample_ncs2.9.0_merged_CPUNET.hex",
+            "mimeType": "application/octet-stream",
+            "size": "428588",
+            "checksums": {
+                "sha1": "af9a9dabd6b7d37717374437d3b87b7867309904",
+                "md5": "6f53dc3686ca8e4c31ced651c6793bb9",
+                "sha256": "d64df3f9620ac6f0b03ea8b487990e352d775708ea2dce204642de5942b3f048"
+            },
+            "originalChecksums": {
+                "sha256": "d64df3f9620ac6f0b03ea8b487990e352d775708ea2dce204642de5942b3f048"
+            },
+            "uri": "https://files.nordicsemi.com/artifactory/api/storage/swtools/external/ncd/summer_project/firmware/Network/nrf7002dk_wifi_ble_provisioning_sample_ncs2.9.0_merged_CPUNET.hex"
+        }
+    ]
+}
