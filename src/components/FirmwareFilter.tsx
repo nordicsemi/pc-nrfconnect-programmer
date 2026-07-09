@@ -24,11 +24,13 @@ export default ({
     handleToggle,
     clearFilters,
     filterOptions,
+    visibleFilters,
 }: {
     selectedFilters: FilterOptions;
     handleToggle: (key: string, value: string) => void;
     clearFilters: () => void;
     filterOptions: FilterOptions;
+    visibleFilters: FilterOptions;
 }) => {
     // const [filterOptions, setFilterOptions] = useState<FilterOptions>();
     // const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({}); // Maybe pass these as a prop so that the modal knows what filters are selected
@@ -139,7 +141,7 @@ export default ({
                         <span className="mdi mdi-tune" />
                         Filter
                     </Dropdown.Toggle>
-                    <Dropdown.Menu className="tw-flex tw-px-2">
+                    <Dropdown.Menu className="tw-flex tw-flex-wrap tw-px-2">
                         {Object.entries(filterOptions ?? {}).map(
                             ([key, values]) => (
                                 <div
@@ -156,7 +158,13 @@ export default ({
                                         >
                                             <input
                                                 type="checkbox"
-                                                className="checked:tw-accent-nordicBlue-700"
+                                                id={value}
+                                                className="peer checked:tw-accent-nordicBlue-700"
+                                                disabled={
+                                                    !visibleFilters[
+                                                        key
+                                                    ]?.includes(value)
+                                                }
                                                 checked={
                                                     !!selectedFilters[
                                                         key
@@ -168,7 +176,7 @@ export default ({
                                             />
                                             <label
                                                 htmlFor={value}
-                                                className="tw-my-0 tw-ml-1"
+                                                className={`tw-my-0 tw-ml-1 ${!visibleFilters[key]?.includes(value) ? 'tw-text-gray-200' : ''}`}
                                             >
                                                 {value}
                                             </label>

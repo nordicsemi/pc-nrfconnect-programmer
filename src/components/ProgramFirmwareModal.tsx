@@ -237,6 +237,7 @@ const SelectFirmware = ({
                     handleToggle={handleToggle}
                     clearFilters={clearFilters}
                     filterOptions={filterOptions}
+                    visibleFilters={visibleFilters}
                 />
                 {visibleFirmwares.length ? (
                     <div className="tw-mt-5 tw-border-0 tw-border-b tw-border-solid tw-border-gray-50">
