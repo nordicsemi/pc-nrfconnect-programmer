@@ -18,15 +18,22 @@ import FirmwareFilter, { type FilterOptions } from './FirmwareFilter';
 
 interface Firmware {
     device: string;
+    displayName: string;
+    description: string;
     name: string;
     filename: string;
-    [props: string]: string;
+    [props: string]: string | string[];
+}
+
+interface VisibleFirmware extends Omit<Firmware, 'device' | 'filename'> {
+    devices: string[];
 }
 
 type ModalStage = 'firmwareSelection' | 'downloadFirmware';
 
-const url = '../resources/firmware/firmwares.json';
+// const url = '../resources/firmware/firmwares.json';
 // const url = '../resources/firmware/AQLFirmwareList.json';
+const url = '../resources/firmware/tempTestData.json';
 export default ({
     isVisible,
     onClose,
@@ -39,49 +46,50 @@ export default ({
     // const device = useSelector(selectedDevice);
     const [firmwares, setFirmwares] = useState<Firmware[]>([]);
 
-    useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then((data: Firmware[]) => {
-                setFirmwares(data);
-                console.log(data);
-                // fix this function later so that there are no type issues
-            });
-    }, []);
-
     // useEffect(() => {
     //     fetch(url)
     //         .then(res => res.json())
-    //         .then(
-    //             (data: {
-    //                 results: { properties: Record<string, string[]> }[];
-    //             }) => {
-    //                 const newFirmwares: Firmware[] = (data.results ?? [])
-    //                     .filter(result => result.properties)
-    //                     .map(
-    //                         result =>
-    //                             Object.fromEntries(
-    //                                 Object.entries(result.properties).map(
-    //                                     ([key, values]) => [
-    //                                         key,
-    //                                         (values[0] ?? '').replace(
-    //                                             /_/g,
-    //                                             ' ',
-    //                                         ),
-    //                                     ],
-    //                                 ),
-    //                             ) as Firmware,
-    //                     );
-    //                 setFirmwares(newFirmwares);
-    //             },
-    //         );
+    //         .then((data: Firmware[]) => {
+    //             setFirmwares(data);
+    //             console.log(data);
+    //             // fix this function later so that there are no type issues
+    //         });
     // }, []);
+
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then(
+                (data: {
+                    results: { properties: Record<string, string[]> }[];
+                }) => {
+                    const newFirmwares: Firmware[] = (data.results ?? [])
+                        .filter(result => result.properties)
+                        .map(
+                            result =>
+                                Object.fromEntries(
+                                    Object.entries(result.properties).map(
+                                        ([key, values]) => [
+                                            key,
+                                            (values[0] ?? '').replace(
+                                                /_/g,
+                                                ' ',
+                                            ),
+                                        ],
+                                    ),
+                                ) as Firmware,
+                        );
+                    setFirmwares(newFirmwares);
+                },
+            );
+    }, []);
     // const [SelectedFilters, setSelectedFilters] = useState<FilterOptions>();
-    const [selectedFirmware, setSelectedFirmware] = useState<Firmware>();
+    const [selectedFirmware, setSelectedFirmware] = useState<VisibleFirmware>();
 
     const close = () => {
         onClose();
         setSelectedFirmware(undefined);
+        setModalStage('firmwareSelection');
         // What else needs to be done when closing the window?
     };
 
@@ -116,14 +124,15 @@ const SelectFirmware = ({
 }: {
     close: () => void;
     setModalStage: (stage: ModalStage) => void;
-    setSelectedFirmware: (firmware: Firmware) => void;
+    setSelectedFirmware: (firmware: VisibleFirmware) => void;
     firmwares: Firmware[];
 }) => {
     const [filterOptions, setFilterOptions] = useState<FilterOptions>({});
     const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({});
     const [visibleFilters, setVisibleFilters] = useState<FilterOptions>({});
-    const [visibleFirmwares, setVisibleFirmwares] =
-        useState<Firmware[]>(firmwares);
+    const [visibleFirmwares, setVisibleFirmwares] = useState<VisibleFirmware[]>(
+        [],
+    );
 
     const [filterableKeys, setFilterableKeys] = useState<string[]>([]);
 
@@ -196,18 +205,43 @@ const SelectFirmware = ({
         console.log('test1');
     }, [updateFilterOptions]);
 
+    // useEffect(() => {
+    //     setVisibleFirmwares(
+    //         firmwares.filter(firmware =>
+    //             Object.entries(selectedFilters).every(
+    //                 ([key, values]) =>
+    //                     values.length === 0 ||
+    //                     values.includes(String(firmware[key])),
+    //             ),
+    //         ),
+    //     );
+    //     console.log('test2');
+    // }, [selectedFilters, firmwares]);
+
     useEffect(() => {
-        setVisibleFirmwares(
-            firmwares.filter(firmware =>
-                Object.entries(selectedFilters).every(
-                    ([key, values]) =>
-                        values.length === 0 ||
-                        values.includes(String(firmware[key])),
-                ),
+        const filteredFirmwares = firmwares.filter(firmware =>
+            Object.entries(selectedFilters).every(
+                ([key, values]) =>
+                    values.length === 0 ||
+                    values.includes(String(firmware[key])),
             ),
         );
-        console.log('test2');
-    }, [selectedFilters, firmwares]);
+        const groupedFirmwares = filteredFirmwares.reduce<VisibleFirmware[]>(
+            (result, firmware) => {
+                const { device, filename: _filename, ...rest } = firmware;
+                const existing = result.find(fw => fw.name === rest.name);
+                if (existing) {
+                    existing.devices.push(device);
+                } else {
+                    result.push({ ...rest, devices: [device] });
+                }
+
+                return result;
+            },
+            [],
+        );
+        setVisibleFirmwares(groupedFirmwares);
+    }, [firmwares, selectedFilters]);
 
     const handleToggle = (key: string, value: string) => {
         setSelectedFilters(prev => {
@@ -261,10 +295,13 @@ const SelectFirmware = ({
                                 >
                                     <div className="tw-flex tw-w-full tw-flex-1 tw-flex-col tw-items-start">
                                         <div className="tw-text-base">
-                                            {firmware.name}
+                                            {firmware.displayName}
                                         </div>
                                         <div className="tw-text-sm">
                                             {firmware.description}
+                                        </div>
+                                        <div className="tw-text-xs tw-text-gray-400">
+                                            {firmware.devices.join(', ')}
                                         </div>
                                     </div>
                                     <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
@@ -303,19 +340,24 @@ const DownloadFirmware = ({
 }: {
     close: () => void;
     setModalStage: (stage: ModalStage) => void;
-    selectedFirmware: Firmware | undefined;
-    setSelectedFirmware: (firmware: Firmware | undefined) => void;
+    selectedFirmware: VisibleFirmware | undefined;
+    setSelectedFirmware: (firmware: VisibleFirmware | undefined) => void;
 }) => {
     const device = useSelector(selectedDevice);
     return (
         <>
             <Dialog.Header title="Download firmware" />
             <Dialog.Body>
-                <p>
+                <div>
                     You have selected a firmware:{' '}
-                    {selectedFirmware ? selectedFirmware.name : 'no firmware'}
+                    {selectedFirmware
+                        ? selectedFirmware.displayName
+                        : 'no firmware'}
+                </div>
+                <div>
+                    Selected device:{' '}
                     {device ? deviceInfo(device).name : 'no device'}
-                </p>
+                </div>
             </Dialog.Body>
             <Dialog.Footer>
                 <DialogButton
