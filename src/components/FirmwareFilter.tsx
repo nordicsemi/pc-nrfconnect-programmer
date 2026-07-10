@@ -6,11 +6,11 @@
 
 import React, { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import {
     Button,
-    deviceInfo,
-    selectedDevice,
+    // deviceInfo,
+    // selectedDevice,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 export type FilterOptions = Record<string, string[]>;
@@ -37,7 +37,7 @@ export default ({
     const [isOpen, setIsOpen] = useState(false);
     // const [openKey, setOpenKey] = useState<string | null>(null);
 
-    const device = useSelector(selectedDevice);
+    // const device = useSelector(selectedDevice);
 
     // useEffect(() => {
     //     fetch(artifactoryUrl)
@@ -60,7 +60,7 @@ export default ({
     // };
     return (
         <>
-            <Button variant="secondary" onClick={() => setIsOpen(!isOpen)}>
+            {/* <Button variant="secondary" onClick={() => setIsOpen(!isOpen)}>
                 Open filter
             </Button>
             <Button
@@ -77,7 +77,7 @@ export default ({
             </Button>
             <Button variant="secondary" onClick={() => clearFilters()}>
                 Clear filters
-            </Button>
+            </Button> */}
             {/* {isOpen &&
                 Object.entries(filterOptions ?? {}).map(([key, values]) => (
                     <div
@@ -135,14 +135,14 @@ export default ({
                         )}
                     </div>
                 ))} */}
-            <div>
+            <div className="tw-flex-shrink-0">
                 <Dropdown onToggle={() => setIsOpen(!isOpen)}>
                     <Dropdown.Toggle variant="outline-primary" active={isOpen}>
                         <span className="mdi mdi-tune" />
                         Filter
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <div className="tw-flex tw-flex-wrap tw-px-2 tw-pb-2">
+                        <div className="tw-flex tw-w-max tw-flex-shrink-0 tw-flex-wrap tw-px-2 tw-pb-2">
                             {Object.entries(filterOptions ?? {}).map(
                                 ([key, values]) => (
                                     <div

@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
     Button,
@@ -133,6 +133,7 @@ const SelectFirmware = ({
     const [visibleFirmwares, setVisibleFirmwares] = useState<VisibleFirmware[]>(
         [],
     );
+    const [nameFilter, setNameFilter] = useState('');
 
     const [filterableKeys, setFilterableKeys] = useState<string[]>([]);
 
@@ -219,13 +220,23 @@ const SelectFirmware = ({
     // }, [selectedFilters, firmwares]);
 
     useEffect(() => {
-        const filteredFirmwares = firmwares.filter(firmware =>
-            Object.entries(selectedFilters).every(
-                ([key, values]) =>
-                    values.length === 0 ||
-                    values.includes(String(firmware[key])),
-            ),
-        );
+        const filteredFirmwares = firmwares
+            .filter(firmware =>
+                Object.entries(selectedFilters).every(
+                    ([key, values]) =>
+                        values.length === 0 ||
+                        values.includes(String(firmware[key])),
+                ),
+            )
+            .filter(
+                firmware =>
+                    firmware.displayName
+                        .toLowerCase()
+                        .includes(nameFilter.toLowerCase()) ||
+                    firmware.description
+                        .toLowerCase()
+                        .includes(nameFilter.toLowerCase()),
+            );
         const groupedFirmwares = filteredFirmwares.reduce<VisibleFirmware[]>(
             (result, firmware) => {
                 const { device, filename: _filename, ...rest } = firmware;
@@ -241,7 +252,7 @@ const SelectFirmware = ({
             [],
         );
         setVisibleFirmwares(groupedFirmwares);
-    }, [firmwares, selectedFilters]);
+    }, [firmwares, selectedFilters, nameFilter]);
 
     const handleToggle = (key: string, value: string) => {
         setSelectedFilters(prev => {
@@ -266,13 +277,19 @@ const SelectFirmware = ({
             <Dialog.Body>
                 <p>Select a program</p>
                 {/* Let user select type of firmware here */}
-                <FirmwareFilter
-                    selectedFilters={selectedFilters}
-                    handleToggle={handleToggle}
-                    clearFilters={clearFilters}
-                    filterOptions={filterOptions}
-                    visibleFilters={visibleFilters}
-                />
+                <div className="tw-flex">
+                    <FirmwareFilter
+                        selectedFilters={selectedFilters}
+                        handleToggle={handleToggle}
+                        clearFilters={clearFilters}
+                        filterOptions={filterOptions}
+                        visibleFilters={visibleFilters}
+                    />
+                    <FirmwareSearchbar
+                        value={nameFilter}
+                        onChange={setNameFilter}
+                    />
+                </div>
                 {visibleFirmwares.length ? (
                     <div className="tw-mt-5 tw-border-0 tw-border-b tw-border-solid tw-border-gray-50">
                         {visibleFirmwares
@@ -377,5 +394,25 @@ const DownloadFirmware = ({
                 <DialogButton onClick={close}>Close</DialogButton>
             </Dialog.Footer>
         </>
+    );
+};
+
+const FirmwareSearchbar = ({
+    value,
+    onChange,
+}: {
+    value: string;
+    onChange: (value: string) => void;
+}) => {
+    const searchFieldREf = useRef<HTMLInputElement>(null);
+    return (
+        <input
+            type="text"
+            placeholder="Search..."
+            value={value}
+            ref={searchFieldREf}
+            onChange={e => onChange(e.target.value)}
+            onFocus={() => searchFieldREf.current?.select()}
+        />
     );
 };
