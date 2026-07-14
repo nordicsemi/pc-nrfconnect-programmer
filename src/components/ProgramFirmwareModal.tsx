@@ -277,7 +277,7 @@ const SelectFirmware = ({
             <Dialog.Body>
                 <p>Select a program</p>
                 {/* Let user select type of firmware here */}
-                <div className="tw-flex">
+                <div className="tw-flex tw-justify-start">
                     <FirmwareFilter
                         selectedFilters={selectedFilters}
                         handleToggle={handleToggle}
@@ -404,15 +404,16 @@ const FirmwareSearchbar = ({
     value: string;
     onChange: (value: string) => void;
 }) => {
-    const searchFieldREf = useRef<HTMLInputElement>(null);
+    const searchFieldRef = useRef<HTMLInputElement>(null);
     return (
         <input
             type="text"
             placeholder="Search..."
+            className="tw-ml-3 tw-rounded-none tw-border tw-border-solid tw-border-nordicBlue tw-px-2 tw-text-gray-700 placeholder:tw-text-nordicBlue-500 focus:tw-rounded-none focus:tw-border-solid focus:tw-outline focus:tw-outline-2 focus:-tw-outline-offset-2 focus:tw-outline-nordicBlue"
             value={value}
-            ref={searchFieldREf}
+            ref={searchFieldRef}
             onChange={e => onChange(e.target.value)}
-            onFocus={() => searchFieldREf.current?.select()}
+            onFocus={() => searchFieldRef.current?.select()}
         />
     );
 };
