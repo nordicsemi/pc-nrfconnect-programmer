@@ -29,7 +29,11 @@ interface VisibleFirmware extends Omit<Firmware, 'device' | 'filename'> {
     devices: string[];
 }
 
-type ModalStage = 'firmwareSelection' | 'downloadFirmware';
+type ModalStage =
+    | 'firmwareSelection'
+    | 'deviceSelection'
+    | 'versionSelection'
+    | 'downloadFirmware';
 
 // const url = '../resources/firmware/firmwares.json';
 // const url = '../resources/firmware/AQLFirmwareList.json';
@@ -89,7 +93,7 @@ export default ({
     const close = () => {
         onClose();
         setSelectedFirmware(undefined);
-        setModalStage('firmwareSelection');
+        setModalStage('firmwareSelection'); // This looks weird when closing
         // What else needs to be done when closing the window?
     };
 
@@ -101,6 +105,13 @@ export default ({
                     setModalStage={setModalStage}
                     setSelectedFirmware={setSelectedFirmware}
                     firmwares={firmwares}
+                />
+            )}
+            {modalStage === 'deviceSelection' && selectedFirmware && (
+                <SelectDevice
+                    selectedFirmware={selectedFirmware}
+                    close={close}
+                    setModalStage={setModalStage}
                 />
             )}
             {modalStage === 'downloadFirmware' && (
@@ -328,7 +339,7 @@ const SelectFirmware = ({
                                             onClick={() => {
                                                 setSelectedFirmware(firmware);
                                                 setModalStage(
-                                                    'downloadFirmware',
+                                                    'deviceSelection',
                                                 );
                                             }}
                                         >
@@ -343,6 +354,71 @@ const SelectFirmware = ({
                 )}
             </Dialog.Body>
             <Dialog.Footer>
+                <DialogButton onClick={close}>Close</DialogButton>
+            </Dialog.Footer>
+        </>
+    );
+};
+
+const SelectDevice = ({
+    selectedFirmware,
+    close,
+    setModalStage,
+}: {
+    selectedFirmware: VisibleFirmware;
+    close: () => void;
+    setModalStage: (stage: ModalStage) => void;
+}) => {
+    const device = useSelector(selectedDevice);
+    const deviceName = device ? deviceInfo(device).name : '';
+    return (
+        <>
+            <Dialog.Header title="Select device" />
+            <Dialog.Body>
+                {deviceName ? (
+                    <>
+                        <div>You have selected {deviceName}</div>
+                        {selectedFirmware.devices.includes(
+                            deviceName.toLowerCase().replace(' ', ''),
+                        ) ? (
+                            <div>
+                                If you want to continue with your selected
+                                device, click next
+                            </div>
+                        ) : (
+                            <div>
+                                Your selected firmware is not compatible with
+                                your device. Please choose another firmware or
+                                change to another device.
+                            </div>
+                        )}
+                    </>
+                ) : (
+                    <div>Please select a device</div>
+                )}
+                <div>{selectedFirmware.devices}</div>
+                <div>
+                    {selectedFirmware.devices.map(d => (
+                        <div key={d}>{d}</div>
+                    ))}
+                </div>
+            </Dialog.Body>
+            <Dialog.Footer>
+                <DialogButton
+                    variant="primary"
+                    onClick={() => {
+                        setModalStage('downloadFirmware');
+                    }}
+                >
+                    Next
+                </DialogButton>
+                <DialogButton
+                    onClick={() => {
+                        setModalStage('firmwareSelection');
+                    }}
+                >
+                    Back
+                </DialogButton>
                 <DialogButton onClick={close}>Close</DialogButton>
             </Dialog.Footer>
         </>
