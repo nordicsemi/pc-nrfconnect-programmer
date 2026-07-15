@@ -47,7 +47,6 @@ export default ({
 }) => {
     const [modalStage, setModalStage] =
         useState<ModalStage>('firmwareSelection');
-    // const device = useSelector(selectedDevice);
     const [firmwares, setFirmwares] = useState<Firmware[]>([]);
 
     // useEffect(() => {
@@ -56,7 +55,6 @@ export default ({
     //         .then((data: Firmware[]) => {
     //             setFirmwares(data);
     //             console.log(data);
-    //             // fix this function later so that there are no type issues
     //         });
     // }, []);
 
@@ -87,7 +85,6 @@ export default ({
                 },
             );
     }, []);
-    // const [SelectedFilters, setSelectedFilters] = useState<FilterOptions>();
     const [selectedFirmware, setSelectedFirmware] = useState<VisibleFirmware>();
 
     const close = () => {
@@ -126,7 +123,6 @@ export default ({
     );
 };
 
-// Should allow user to select what kind of firmware they want to download
 const SelectFirmware = ({
     close,
     setModalStage,
@@ -280,14 +276,11 @@ const SelectFirmware = ({
     const clearFilters = () => {
         setSelectedFilters({});
     };
-    // const device = useSelector(selectedDevice);
-    // const deviceName = device ? deviceInfo(device).name : '';
     return (
         <>
             <Dialog.Header title="Select a firmware" />
             <Dialog.Body>
                 <p>Select a program</p>
-                {/* Let user select type of firmware here */}
                 <div className="tw-flex tw-justify-start">
                     <FirmwareFilter
                         selectedFilters={selectedFilters}
@@ -303,51 +296,36 @@ const SelectFirmware = ({
                 </div>
                 {visibleFirmwares.length ? (
                     <div className="tw-mt-5 tw-border-0 tw-border-b tw-border-solid tw-border-gray-50">
-                        {visibleFirmwares
-                            // .filter(
-                            //     firmware =>
-                            //         firmware.device === deviceName ||
-                            //         deviceName === '',
-                            // )
-                            // .filter(firmware =>
-                            //     Object.entries(selectedFilters).every(
-                            //         ([key, values]) =>
-                            //             values.length === 0 ||
-                            //             values.includes(String(firmware[key])),
-                            //     ),
-                            // )
-                            .map(firmware => (
-                                <div
-                                    key={`${firmware.name}${firmware.device}`}
-                                    className="tw- tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3"
-                                >
-                                    <div className="tw-flex tw-w-full tw-flex-1 tw-flex-col tw-items-start">
-                                        <div className="tw-text-base">
-                                            {firmware.displayName}
-                                        </div>
-                                        <div className="tw-text-sm">
-                                            {firmware.description}
-                                        </div>
-                                        <div className="tw-text-xs tw-text-gray-400">
-                                            {firmware.devices.join(', ')}
-                                        </div>
+                        {visibleFirmwares.map(firmware => (
+                            <div
+                                key={`${firmware.name}${firmware.device}`}
+                                className="tw- tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3"
+                            >
+                                <div className="tw-flex tw-w-full tw-flex-1 tw-flex-col tw-items-start">
+                                    <div className="tw-text-base">
+                                        {firmware.displayName}
                                     </div>
-                                    <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
-                                        <Button
-                                            variant="primary"
-                                            size="lg"
-                                            onClick={() => {
-                                                setSelectedFirmware(firmware);
-                                                setModalStage(
-                                                    'deviceSelection',
-                                                );
-                                            }}
-                                        >
-                                            Select
-                                        </Button>
+                                    <div className="tw-text-sm">
+                                        {firmware.description}
+                                    </div>
+                                    <div className="tw-text-xs tw-text-gray-400">
+                                        {firmware.devices.join(', ')}
                                     </div>
                                 </div>
-                            ))}
+                                <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
+                                    <Button
+                                        variant="primary"
+                                        size="lg"
+                                        onClick={() => {
+                                            setSelectedFirmware(firmware);
+                                            setModalStage('deviceSelection');
+                                        }}
+                                    >
+                                        Select
+                                    </Button>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 ) : (
                     <p>no firmwares</p>
