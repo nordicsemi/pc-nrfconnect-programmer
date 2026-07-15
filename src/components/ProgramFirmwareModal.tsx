@@ -7,12 +7,16 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
+    type AResponse,
+    ArtifactoryClient,
     Button,
     deviceInfo,
     Dialog,
     DialogButton,
+    getAppDataDir,
     selectedDevice,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
+import { join } from 'path';
 
 import FirmwareFilter, { type FilterOptions } from './FirmwareFilter';
 
@@ -38,6 +42,13 @@ type ModalStage =
 // const url = '../resources/firmware/firmwares.json';
 // const url = '../resources/firmware/AQLFirmwareList.json';
 const url = '../resources/firmware/tempTestData.json';
+
+const client = new ArtifactoryClient(
+    'files.nordicsemi.com',
+    'swtools',
+    join(getAppDataDir(), 'firmwares'),
+);
+
 export default ({
     isVisible,
     onClose,
@@ -59,31 +70,26 @@ export default ({
     // }, []);
 
     useEffect(() => {
+        // client
+        //    .searchArtifactory({ latest: 'true', type: 'Application' })
         fetch(url)
             .then(res => res.json())
-            .then(
-                (data: {
-                    results: { properties: Record<string, string[]> }[];
-                }) => {
-                    const newFirmwares: Firmware[] = (data.results ?? [])
-                        .filter(result => result.properties)
-                        .map(
-                            result =>
-                                Object.fromEntries(
-                                    Object.entries(result.properties).map(
-                                        ([key, values]) => [
-                                            key,
-                                            (values[0] ?? '').replace(
-                                                /_/g,
-                                                ' ',
-                                            ),
-                                        ],
-                                    ),
-                                ) as Firmware,
-                        );
-                    setFirmwares(newFirmwares);
-                },
-            );
+            .then((data: AResponse) => {
+                const newFirmwares: Firmware[] = (data ?? [])
+                    .filter(result => result.properties)
+                    .map(
+                        result =>
+                            Object.fromEntries(
+                                Object.entries(result.properties).map(
+                                    ([key, values]) => [
+                                        key,
+                                        (values[0] ?? '').replace(/_/g, ' '),
+                                    ],
+                                ),
+                            ) as Firmware,
+                    );
+                setFirmwares(newFirmwares);
+            });
     }, []);
     const [selectedFirmware, setSelectedFirmware] = useState<VisibleFirmware>();
 

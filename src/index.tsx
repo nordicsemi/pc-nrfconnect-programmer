@@ -9,7 +9,6 @@ import {
     App,
     render,
     telemetry,
-    // Testpane,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import AppMainView from './components/AppMainView';
@@ -27,10 +26,7 @@ render(
         appReducer={appReducer}
         deviceSelect={<DeviceSelector />}
         sidePanel={<ControlPanel />}
-        panes={[
-            { name: 'Programmer', Main: AppMainView },
-            // { name: 'Artifactory', Main: Testpane },
-        ]}
+        panes={[{ name: 'Programmer', Main: AppMainView }]}
         documentation={DocumentationSections}
     />,
 );
