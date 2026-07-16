@@ -387,7 +387,9 @@ const SelectFirmware = ({
                 )}
             </Dialog.Body>
             <Dialog.Footer>
-                <DialogButton onClick={close}>Close</DialogButton>
+                <DialogButton variant="primary-outline" onClick={close}>
+                    Close
+                </DialogButton>
             </Dialog.Footer>
         </>
     );
@@ -469,6 +471,7 @@ const SelectVersion = ({
             </Dialog.Body>
             <Dialog.Footer>
                 <DialogButton
+                    variant="primary-outline"
                     onClick={() => {
                         setModalStage('firmwareSelection');
                         setSelectedFirmware(undefined);
@@ -478,6 +481,7 @@ const SelectVersion = ({
                     Back
                 </DialogButton>
                 <DialogButton
+                    variant="primary-outline"
                     onClick={() => {
                         close();
                         setVersion('');
@@ -526,13 +530,16 @@ const DownloadFirmware = ({
                     Add file
                 </DialogButton>
                 <DialogButton
+                    variant="primary-outline"
                     onClick={() => {
                         setModalStage('versionSelection');
                     }}
                 >
                     Back
                 </DialogButton>
-                <DialogButton onClick={close}>Close</DialogButton>
+                <DialogButton variant="primary-outline" onClick={close}>
+                    Close
+                </DialogButton>
             </Dialog.Footer>
         </>
     );
