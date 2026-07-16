@@ -8,36 +8,16 @@
         "modifiedBy": "soli",
         "lastUpdated": "2026-07-01T14:23:53.058Z",
         "properties": {
-            "core": [
-                "Application"
-            ],
-            "device": [
-                "nrf52dk"
-            ],
-            "filename": [
-                "nrf52dk_hello_world.hex"
-            ],
-            "latest": [
-                "true"
-            ],
-            "main_download": [
-                "true"
-            ],
-            "displayName": [
-                "Hello World"
-            ],
-            "description": [
-                "Print \"Hello World\" to a console using UART."
-            ],
-            "name": [
-                "hello_world"
-            ],
-            "type": [
-                "Application"
-            ],
-            "version": [
-                ""
-            ]
+            "core": ["Application"],
+            "device": ["nrf52dk"],
+            "filename": ["nrf52dk_hello_world.hex"],
+            "latest": ["true"],
+            "main_download": ["true"],
+            "displayName": ["Hello World"],
+            "description": ["Print \"Hello World\" to a console using UART."],
+            "name": ["hello_world"],
+            "type": ["Application"],
+            "version": [""]
         },
         "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf52dk_hello_world.hex",
         "mimeType": "application/octet-stream",
@@ -61,36 +41,18 @@
         "modifiedBy": "soli",
         "lastUpdated": "2026-07-01T14:23:53.573Z",
         "properties": {
-            "core": [
-                "Application"
-            ],
-            "device": [
-                "nrf52dk"
-            ],
-            "filename": [
-                "nrf52dk_lbs.hex"
-            ],
-            "latest": [
-                "true"
-            ],
-            "main_download": [
-                "true"
-            ],
-            "name": [
-                "lbs"
-            ],
-            "displayName": [
-                "Peripheral LED Button Service"
-            ],
+            "core": ["Application"],
+            "device": ["nrf52dk"],
+            "filename": ["nrf52dk_lbs.hex"],
+            "latest": ["true"],
+            "main_download": ["true"],
+            "name": ["lbs"],
+            "displayName": ["Peripheral LED Button Service"],
             "description": [
                 "Sample for controlling LEDs and buttons on the DK. Test it with Bluetooth® LE in the Evaluate step."
             ],
-            "type": [
-                "Application"
-            ],
-            "version": [
-                ""
-            ]
+            "type": ["Application"],
+            "version": [""]
         },
         "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf52dk_lbs.hex",
         "mimeType": "application/octet-stream",
@@ -114,36 +76,18 @@
         "modifiedBy": "soli",
         "lastUpdated": "2026-07-01T14:23:54.253Z",
         "properties": {
-            "core": [
-                "Application"
-            ],
-            "device": [
-                "nrf52dk"
-            ],
-            "filename": [
-                "nrf52dk_peripheral_uart.hex"
-            ],
-            "latest": [
-                "true"
-            ],
-            "main_download": [
-                "true"
-            ],
-            "name": [
-                "peripheral_uart"
-            ],
-            "displayName": [
-                "Peripheral UART"
-            ],
+            "core": ["Application"],
+            "device": ["nrf52dk"],
+            "filename": ["nrf52dk_peripheral_uart.hex"],
+            "latest": ["true"],
+            "main_download": ["true"],
+            "name": ["peripheral_uart"],
+            "displayName": ["Peripheral UART"],
             "description": [
                 "Sample for emulating UART over Bluetooth® LE. Test it with Bluetooth® LE in the Evaluate step."
             ],
-            "type": [
-                "Application"
-            ],
-            "version": [
-                ""
-            ]
+            "type": ["Application"],
+            "version": [""]
         },
         "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf52dk_peripheral_uart.hex",
         "mimeType": "application/octet-stream",
@@ -167,36 +111,16 @@
         "modifiedBy": "soli",
         "lastUpdated": "2026-07-01T14:23:54.597Z",
         "properties": {
-            "core": [
-                "Application"
-            ],
-            "device": [
-                "nrf53dk"
-            ],
-            "filename": [
-                "nrf53dk_hello_world.hex"
-            ],
-            "latest": [
-                "true"
-            ],
-            "main_download": [
-                "true"
-            ],
-            "name": [
-                "hello_world"
-            ],
-            "displayName": [
-                "Hello World"
-            ],
-            "description": [
-                "Print \"Hello World\" to a console using UART."
-            ],
-            "type": [
-                "Application"
-            ],
-            "version": [
-                ""
-            ]
+            "core": ["Application"],
+            "device": ["nrf53dk"],
+            "filename": ["nrf53dk_hello_world.hex"],
+            "latest": ["true"],
+            "main_download": ["true"],
+            "name": ["hello_world"],
+            "displayName": ["Hello World"],
+            "description": ["Print \"Hello World\" to a console using UART."],
+            "type": ["Application"],
+            "version": [""]
         },
         "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf53dk_hello_world.hex",
         "mimeType": "application/octet-stream",
@@ -220,36 +144,18 @@
         "modifiedBy": "soli",
         "lastUpdated": "2026-07-01T14:23:55.031Z",
         "properties": {
-            "core": [
-                "Application"
-            ],
-            "device": [
-                "nrf53dk"
-            ],
-            "filename": [
-                "nrf53dk_lbs_app.hex"
-            ],
-            "latest": [
-                "true"
-            ],
-            "main_download": [
-                "true"
-            ],
-            "name": [
-                "lbs"
-            ],
-            "displayName": [
-                "Peripheral LED Button Service"
-            ],
+            "core": ["Application"],
+            "device": ["nrf53dk"],
+            "filename": ["nrf53dk_lbs_app.hex"],
+            "latest": ["true"],
+            "main_download": ["true"],
+            "name": ["lbs"],
+            "displayName": ["Peripheral LED Button Service"],
             "description": [
                 "Sample for controlling LEDs and buttons on the DK. Test it with Bluetooth® LE in the Evaluate step."
             ],
-            "type": [
-                "Application"
-            ],
-            "version": [
-                ""
-            ]
+            "type": ["Application"],
+            "version": [""]
         },
         "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf53dk_lbs_app.hex",
         "mimeType": "application/octet-stream",
@@ -273,36 +179,18 @@
         "modifiedBy": "soli",
         "lastUpdated": "2026-07-01T14:23:55.507Z",
         "properties": {
-            "core": [
-                "Application"
-            ],
-            "device": [
-                "nrf53dk"
-            ],
-            "filename": [
-                "nrf53dk_peripheral_uart_app.hex"
-            ],
-            "latest": [
-                "true"
-            ],
-            "main_download": [
-                "true"
-            ],
-            "name": [
-                "peripheral_uart"
-            ],
-            "displayName": [
-                "Peripheral UART"
-            ],
+            "core": ["Application"],
+            "device": ["nrf53dk"],
+            "filename": ["nrf53dk_peripheral_uart_app.hex"],
+            "latest": ["true"],
+            "main_download": ["true"],
+            "name": ["peripheral_uart"],
+            "displayName": ["Peripheral UART"],
             "description": [
                 "Sample for emulating UART over Bluetooth® LE. Test it with Bluetooth® LE in the Evaluate step."
             ],
-            "type": [
-                "Application"
-            ],
-            "version": [
-                ""
-            ]
+            "type": ["Application"],
+            "version": [""]
         },
         "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf53dk_peripheral_uart_app.hex",
         "mimeType": "application/octet-stream",
@@ -326,36 +214,18 @@
         "modifiedBy": "soli",
         "lastUpdated": "2026-07-01T14:24:08.763Z",
         "properties": {
-            "core": [
-                "Application"
-            ],
-            "device": [
-                "nrf9160dk"
-            ],
-            "filename": [
-                "nrf9160dk_asset_tracker.hex"
-            ],
-            "latest": [
-                "true"
-            ],
-            "main_download": [
-                "true"
-            ],
-            "name": [
-                "asset_tracker"
-            ],
-            "displayName": [
-                "Asset Tracking"
-            ],
+            "core": ["Application"],
+            "device": ["nrf9160dk"],
+            "filename": ["nrf9160dk_asset_tracker.hex"],
+            "latest": ["true"],
+            "main_download": ["true"],
+            "name": ["asset_tracker"],
+            "displayName": ["Asset Tracking"],
             "description": [
                 "Evaluate cloud interaction, location services, GNSS, and real-time configurations."
             ],
-            "type": [
-                "Application"
-            ],
-            "version": [
-                ""
-            ]
+            "type": ["Application"],
+            "version": [""]
         },
         "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_asset_tracker.hex",
         "mimeType": "application/octet-stream",
@@ -379,36 +249,16 @@
         "modifiedBy": "soli",
         "lastUpdated": "2026-07-01T14:24:10.322Z",
         "properties": {
-            "core": [
-                "Application"
-            ],
-            "device": [
-                "nrf9160dk"
-            ],
-            "filename": [
-                "nrf9160dk_modem_shell.hex"
-            ],
-            "latest": [
-                "true"
-            ],
-            "main_download": [
-                "true"
-            ],
-            "name": [
-                "modem_shell"
-            ],
-            "displayName": [
-                "Shell Command Line Interface"
-            ],
-            "description": [
-                "Evaluate throughput, connectivity, and more."
-            ],
-            "type": [
-                "Application"
-            ],
-            "version": [
-                ""
-            ]
+            "core": ["Application"],
+            "device": ["nrf9160dk"],
+            "filename": ["nrf9160dk_modem_shell.hex"],
+            "latest": ["true"],
+            "main_download": ["true"],
+            "name": ["modem_shell"],
+            "displayName": ["Shell Command Line Interface"],
+            "description": ["Evaluate throughput, connectivity, and more."],
+            "type": ["Application"],
+            "version": [""]
         },
         "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_modem_shell.hex",
         "mimeType": "application/octet-stream",
@@ -432,36 +282,16 @@
         "modifiedBy": "soli",
         "lastUpdated": "2026-07-01T14:24:11.218Z",
         "properties": {
-            "core": [
-                "Application"
-            ],
-            "device": [
-                "nrf9160dk"
-            ],
-            "filename": [
-                "nrf9160dk_serial_lte_modem.hex"
-            ],
-            "latest": [
-                "true"
-            ],
-            "main_download": [
-                "true"
-            ],
-            "name": [
-                "serial_lte_modem"
-            ],
-            "displayName": [
-                "AT Commands"
-            ],
-            "description": [
-                "Evaluate the cellular modem using AT commands."
-            ],
-            "type": [
-                "Application"
-            ],
-            "version": [
-                ""
-            ]
+            "core": ["Application"],
+            "device": ["nrf9160dk"],
+            "filename": ["nrf9160dk_serial_lte_modem.hex"],
+            "latest": ["true"],
+            "main_download": ["true"],
+            "name": ["serial_lte_modem"],
+            "displayName": ["AT Commands"],
+            "description": ["Evaluate the cellular modem using AT commands."],
+            "type": ["Application"],
+            "version": [""]
         },
         "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9160dk_serial_lte_modem.hex",
         "mimeType": "application/octet-stream",
@@ -485,36 +315,18 @@
         "modifiedBy": "soli",
         "lastUpdated": "2026-07-01T14:24:12.527Z",
         "properties": {
-            "core": [
-                "Application"
-            ],
-            "device": [
-                "nrf9161dk"
-            ],
-            "filename": [
-                "nrf9161dk_asset_tracker.hex"
-            ],
-            "latest": [
-                "true"
-            ],
-            "main_download": [
-                "true"
-            ],
-            "name": [
-                "asset_tracker"
-            ],
-            "displayName": [
-                "Asset Tracking"
-            ],
+            "core": ["Application"],
+            "device": ["nrf9161dk"],
+            "filename": ["nrf9161dk_asset_tracker.hex"],
+            "latest": ["true"],
+            "main_download": ["true"],
+            "name": ["asset_tracker"],
+            "displayName": ["Asset Tracking"],
             "description": [
                 "Evaluate cloud interaction, location services, GNSS, and real-time configurations."
             ],
-            "type": [
-                "Application"
-            ],
-            "version": [
-                ""
-            ]
+            "type": ["Application"],
+            "version": [""]
         },
         "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9161dk_asset_tracker.hex",
         "mimeType": "application/octet-stream",
@@ -538,36 +350,16 @@
         "modifiedBy": "soli",
         "lastUpdated": "2026-07-01T14:24:14.247Z",
         "properties": {
-            "core": [
-                "Application"
-            ],
-            "device": [
-                "nrf9161dk"
-            ],
-            "filename": [
-                "nrf9161dk_modem_shell.hex"
-            ],
-            "latest": [
-                "true"
-            ],
-            "main_download": [
-                "true"
-            ],
-            "name": [
-                "modem_shell"
-            ],
-            "displayName": [
-                "Shell Command Line Interface"
-            ],
-            "description": [
-                "Evaluate throughput, connectivity, and more."
-            ],
-            "type": [
-                "Application"
-            ],
-            "version": [
-                ""
-            ]
+            "core": ["Application"],
+            "device": ["nrf9161dk"],
+            "filename": ["nrf9161dk_modem_shell.hex"],
+            "latest": ["true"],
+            "main_download": ["true"],
+            "name": ["modem_shell"],
+            "displayName": ["Shell Command Line Interface"],
+            "description": ["Evaluate throughput, connectivity, and more."],
+            "type": ["Application"],
+            "version": [""]
         },
         "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9161dk_modem_shell.hex",
         "mimeType": "application/octet-stream",
@@ -591,36 +383,16 @@
         "modifiedBy": "soli",
         "lastUpdated": "2026-07-01T14:24:14.801Z",
         "properties": {
-            "core": [
-                "Application"
-            ],
-            "device": [
-                "nrf9161dk"
-            ],
-            "filename": [
-                "nrf9161dk_serial_lte_modem.hex"
-            ],
-            "latest": [
-                "true"
-            ],
-            "main_download": [
-                "true"
-            ],
-            "name": [
-                "serial_lte_modem"
-            ],
-            "displayName": [
-                "AT Commands"
-            ],
-            "description": [
-                "Evaluate the cellular modem using AT commands."
-            ],
-            "type": [
-                "Application"
-            ],
-            "version": [
-                ""
-            ]
+            "core": ["Application"],
+            "device": ["nrf9161dk"],
+            "filename": ["nrf9161dk_serial_lte_modem.hex"],
+            "latest": ["true"],
+            "main_download": ["true"],
+            "name": ["serial_lte_modem"],
+            "displayName": ["AT Commands"],
+            "description": ["Evaluate the cellular modem using AT commands."],
+            "type": ["Application"],
+            "version": [""]
         },
         "downloadUri": "https://files.nordicsemi.com/artifactory/swtools/external/ncd/summer_project/firmware/Application/nrf9161dk_serial_lte_modem.hex",
         "mimeType": "application/octet-stream",
