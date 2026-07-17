@@ -71,7 +71,7 @@ export default ({
 
     useEffect(() => {
         client
-            .searchArtifactory({ latest: 'true', type: 'Modem' })
+            .searchArtifactory({ latest: 'true', type: 'Application' })
             // fetch(url)
             //     .then(res => res.json())
             .then((data: AResponse) => {
@@ -417,7 +417,7 @@ const SelectVersion = ({
     useEffect(() => {
         client
             .searchArtifactory({
-                type: 'Modem',
+                type: 'Application',
                 device: firmwareDevice,
                 name: String(selectedFirmware.name),
             })
