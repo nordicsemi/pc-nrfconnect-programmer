@@ -33,8 +33,8 @@ export default ({
                     <span className="mdi mdi-tune" />
                     Filter
                 </Dropdown.Toggle>
-                <Dropdown.Menu className="tw-w-max tw-max-w-[568px]">
-                    <div className="tw-flex tw-flex-row tw-flex-wrap tw-px-2 tw-pb-2">
+                <Dropdown.Menu className="tw-w-max tw-max-w-[568px] tw-border tw-border-solid tw-border-gray-300 tw-pt-0">
+                    <div className="tw-flex tw-max-h-60 tw-flex-row tw-flex-wrap tw-overflow-y-auto tw-px-2 tw-py-2">
                         {Object.entries(filterOptions ?? {}).map(
                             ([key, values]) => (
                                 <div
@@ -69,7 +69,7 @@ export default ({
                                             />
                                             <label
                                                 htmlFor={value}
-                                                className={`tw-my-0 tw-ml-1 tw-max-w-[200px] tw-break-words ${!visibleFilters[key]?.includes(value) ? 'tw-text-gray-200' : ''}`}
+                                                className={`tw-my-0 tw-ml-1 tw-max-w-[150px] tw-break-words ${!visibleFilters[key]?.includes(value) ? 'tw-text-gray-200' : ''}`}
                                             >
                                                 {value}
                                             </label>
@@ -79,7 +79,7 @@ export default ({
                             ),
                         )}
                     </div>
-                    <div className="tw-flex tw-justify-end tw-px-2">
+                    <div className="tw-flex tw-justify-end tw-px-2 tw-pt-2">
                         <Button
                             variant="primary-outline"
                             onClick={() => clearFilters()}
