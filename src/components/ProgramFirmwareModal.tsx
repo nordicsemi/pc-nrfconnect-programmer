@@ -318,10 +318,10 @@ const SelectFirmware = ({
                         />
                     </div>
                     {visibleFirmwares.length ? (
-                        <div className="tw-mt-5 tw-min-h-0 tw-flex-1 tw-overflow-y-auto tw-border-0 tw-border-b tw-border-solid tw-border-gray-100">
+                        <div className="tw-mt-5 tw-min-h-[35vh] tw-flex-1 tw-overflow-y-auto tw-border-0 tw-border-t tw-border-solid tw-border-gray-100">
                             {visibleFirmwares.map(firmware => (
                                 <div key={`${firmware.name}${firmware.device}`}>
-                                    <div className="tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3">
+                                    <div className="tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-t-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3">
                                         <div className="tw-flex tw-w-full tw-flex-1 tw-flex-col tw-items-start">
                                             <div className="tw-text-base">
                                                 {
