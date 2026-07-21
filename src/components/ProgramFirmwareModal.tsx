@@ -71,7 +71,7 @@ export default ({
 
     useEffect(() => {
         client
-            .searchArtifactory({ latest: 'true', type: 'Application' })
+            .searchArtifactory({ latest: 'true' })
             // fetch(url)
             //     .then(res => res.json())
             .then((data: AResponse) => {
@@ -320,8 +320,11 @@ const SelectFirmware = ({
                     {visibleFirmwares.length ? (
                         <div className="tw-mt-5 tw-min-h-[35vh] tw-flex-1 tw-overflow-y-auto tw-border-0 tw-border-t tw-border-solid tw-border-gray-100">
                             {visibleFirmwares.map(firmware => (
-                                <div key={`${firmware.name}${firmware.device}`}>
-                                    <div className="tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-t-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3">
+                                <div
+                                    key={`${firmware.name}${firmware.device}`}
+                                    className="tw-border tw-border-t-0 tw-border-solid tw-border-gray-100"
+                                >
+                                    <div className="tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-px-5 tw-py-3">
                                         <div className="tw-flex tw-w-full tw-flex-1 tw-flex-col tw-items-start">
                                             <div className="tw-text-base">
                                                 {
@@ -364,7 +367,7 @@ const SelectFirmware = ({
                                         </div>
                                     </div>
                                     {firmware === selectedFirmware && (
-                                        <div className="tw-flex tw-flex-wrap tw-justify-start tw-border tw-border-y-0 tw-border-solid tw-border-gray-100 tw-px-4 tw-pb-2">
+                                        <div className="tw-flex tw-flex-wrap tw-justify-start tw-px-4 tw-pb-2">
                                             {firmware.devices.map(device => (
                                                 <Button
                                                     key={device}
