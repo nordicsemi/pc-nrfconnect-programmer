@@ -170,6 +170,22 @@ const SelectFirmware = ({
         fetch('../resources/firmware/filterKeys.json')
             .then(res => res.json())
             .then((data: string[]) => setFilterableKeys(data));
+        console.log('test');
+    }, []);
+
+    const initialDevice = useRef(useSelector(selectedDevice));
+
+    useEffect(() => {
+        const device = initialDevice.current;
+        if (device) {
+            const deviceName = deviceInfo(device)?.name;
+            if (deviceName) {
+                setSelectedFilters(prev => ({
+                    ...prev,
+                    device: [deviceName.toLowerCase().replace(' ', '')],
+                }));
+            }
+        }
     }, []);
 
     const generateFilterOptions = useCallback(
