@@ -87,7 +87,7 @@ export default ({
                     );
                 setFirmwares(newFirmwares);
             });
-        console.log('test');
+        // console.log('test');
     }, []);
     const [selectedFirmware, setSelectedFirmware] = useState<VisibleFirmware>();
     const [firmwareDevice, setFirmwareDevice] = useState('');
@@ -232,7 +232,7 @@ const SelectFirmware = ({
 
     useEffect(() => {
         setVisibleFilters(updateFilterOptions());
-        console.log('test1');
+        // console.log('test1');
     }, [updateFilterOptions]);
 
     // useEffect(() => {
@@ -293,7 +293,7 @@ const SelectFirmware = ({
                 : [...current, value];
             return { ...prev, [key]: updatedFilters };
         });
-        console.log(filterableKeys);
+        // console.log(filterableKeys);
     };
     const clearFilters = () => {
         setSelectedFilters({});
@@ -359,6 +359,18 @@ const SelectFirmware = ({
                                                         setSelectedFirmware(
                                                             firmware,
                                                         );
+                                                        if (
+                                                            firmware.devices
+                                                                .length === 1
+                                                        ) {
+                                                            setFirmwareDevice(
+                                                                firmware
+                                                                    .devices[0],
+                                                            );
+                                                            setModalStage(
+                                                                'versionSelection',
+                                                            );
+                                                        }
                                                     }
                                                 }}
                                             >
@@ -366,27 +378,30 @@ const SelectFirmware = ({
                                             </Button>
                                         </div>
                                     </div>
-                                    {firmware === selectedFirmware && (
-                                        <div className="tw-flex tw-flex-wrap tw-justify-start tw-px-4 tw-pb-2">
-                                            {firmware.devices.map(device => (
-                                                <Button
-                                                    key={device}
-                                                    variant="primary-outline"
-                                                    onClick={() => {
-                                                        setModalStage(
-                                                            'versionSelection',
-                                                        );
-                                                        setFirmwareDevice(
-                                                            device,
-                                                        );
-                                                    }}
-                                                    className="tw-m-1 tw-flex-shrink-0"
-                                                >
-                                                    {device}
-                                                </Button>
-                                            ))}
-                                        </div>
-                                    )}
+                                    {firmware === selectedFirmware &&
+                                        firmware.devices.length > 1 && (
+                                            <div className="tw-flex tw-flex-wrap tw-justify-start tw-px-4 tw-pb-2">
+                                                {firmware.devices.map(
+                                                    device => (
+                                                        <Button
+                                                            key={device}
+                                                            variant="primary-outline"
+                                                            onClick={() => {
+                                                                setModalStage(
+                                                                    'versionSelection',
+                                                                );
+                                                                setFirmwareDevice(
+                                                                    device,
+                                                                );
+                                                            }}
+                                                            className="tw-m-1 tw-flex-shrink-0"
+                                                        >
+                                                            {device}
+                                                        </Button>
+                                                    ),
+                                                )}
+                                            </div>
+                                        )}
                                 </div>
                             ))}
                         </div>
@@ -426,7 +441,6 @@ const SelectVersion = ({
     useEffect(() => {
         client
             .searchArtifactory({
-                type: 'Application',
                 device: firmwareDevice,
                 name: String(selectedFirmware.name),
             })
@@ -520,15 +534,13 @@ const DownloadFirmware = ({
             <Dialog.Header title="Download firmware" />
             <Dialog.Body>
                 <div>
-                    You have selected a firmware:{' '}
-                    {selectedFirmware
-                        ? selectedFirmware.displayName
-                        : 'no firmware'}
+                    Selected firmware:{' '}
+                    {selectedFirmware ? selectedFirmware.name : 'no firmware'}
                 </div>
+                <div>Firmware device: {firmwareDevice}</div>
                 <div>
                     Selected device:{' '}
                     {device ? deviceInfo(device).name : 'no device'}
-                    {firmwareDevice}
                 </div>
             </Dialog.Body>
             <Dialog.Footer>
