@@ -15,6 +15,7 @@ import {
     DialogButton,
     getAppDataDir,
     selectedDevice,
+    useHotKey,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import { join } from 'path';
 
@@ -593,6 +594,13 @@ const FirmwareSearchbar = ({
     onChange: (value: string) => void;
 }) => {
     const searchFieldRef = useRef<HTMLInputElement>(null);
+
+    useHotKey({
+        hotKey: ['mod+e'],
+        title: 'Focus search field',
+        isGlobal: false,
+        action: () => searchFieldRef.current?.focus(),
+    });
     return (
         <input
             type="text"
