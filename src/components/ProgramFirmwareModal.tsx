@@ -77,6 +77,9 @@ export default ({
             .then((data: AResponse) => {
                 const newFirmwares: Firmware[] = (data ?? [])
                     .filter(result => result.properties)
+                    .filter(
+                        result => result.properties.type?.[0] !== 'Dependency',
+                    )
                     .map(
                         result =>
                             Object.fromEntries(
