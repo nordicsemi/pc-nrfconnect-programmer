@@ -96,6 +96,8 @@ export default ({
     }, []);
     const [selectedFirmware, setSelectedFirmware] = useState<VisibleFirmware>();
     const [firmwareDevice, setFirmwareDevice] = useState('');
+    const [selectedFirmwareVersion, setSelectedFirmwareVersion] =
+        useState<Firmware>();
 
     const close = () => {
         onClose();
@@ -132,14 +134,14 @@ export default ({
                     setModalStage={setModalStage}
                     setSelectedFirmware={setSelectedFirmware}
                     setFirmwareDevice={setFirmwareDevice}
+                    setSelectedFirmwareVersion={setSelectedFirmwareVersion}
                 />
             )}
             {modalStage === 'downloadFirmware' && (
                 <DownloadFirmware
                     close={close}
                     setModalStage={setModalStage}
-                    selectedFirmware={selectedFirmware}
-                    firmwareDevice={firmwareDevice}
+                    selectedFirmware={selectedFirmwareVersion}
                 />
             )}
         </Dialog>
@@ -349,12 +351,13 @@ const SelectFirmware = ({
                                         <div className="tw-flex tw-w-full tw-flex-1 tw-flex-col tw-items-start">
                                             <div className="tw-text-base">
                                                 {
-                                                    String(
-                                                        firmware.name,
-                                                    ).replace(
-                                                        /_/g,
-                                                        ' ',
-                                                    ) /* change to displayName */
+                                                    firmware.displayName ??
+                                                        String(
+                                                            firmware.name,
+                                                        ).replace(
+                                                            /_/g,
+                                                            ' ',
+                                                        ) /* change to displayName */
                                                 }
                                             </div>
                                             <div className="tw-text-sm">
@@ -447,6 +450,7 @@ const SelectVersion = ({
     setModalStage,
     setSelectedFirmware,
     setFirmwareDevice,
+    setSelectedFirmwareVersion,
 }: {
     selectedFirmware: VisibleFirmware;
     firmwareDevice: string;
@@ -454,10 +458,10 @@ const SelectVersion = ({
     setModalStage: (stage: ModalStage) => void;
     setSelectedFirmware: (firmware: VisibleFirmware | undefined) => void;
     setFirmwareDevice: (device: string) => void;
+    setSelectedFirmwareVersion: (firmware: Firmware) => void;
 }) => {
-    const [version, setVersion] = useState('');
     //  const [verions, setVersions] = useState<string[]>([]);
-    const [temp, setTemp] = useState<Firmware[]>([]);
+    const [firmwares, setFirmwares] = useState<Firmware[]>([]);
     const [versionFilter, setVersionFilter] = useState('');
 
     useEffect(() => {
@@ -477,14 +481,13 @@ const SelectVersion = ({
                                 ),
                             ) as Firmware,
                     );
-                setTemp(newFirmwares);
+                setFirmwares(newFirmwares);
             });
     }, [firmwareDevice, selectedFirmware]);
     return (
         <>
             <Dialog.Header title="Select version" />
             <Dialog.Body>
-                <div>{version}</div>
                 <div>Selected firmware: {selectedFirmware.name}</div>
                 <div>Selected device: {firmwareDevice}</div>
                 <div className="tw-flex tw-h-8">
@@ -494,7 +497,7 @@ const SelectVersion = ({
                     />
                 </div>
                 <div className="tw-mt-5 tw-border-0 tw-border-b tw-border-solid tw-border-gray-100">
-                    {temp
+                    {firmwares
                         .filter(
                             f =>
                                 f.version
@@ -522,7 +525,7 @@ const SelectVersion = ({
                             >
                                 <div>
                                     <div className="tw-text-base">
-                                        {f.name}
+                                        {f.displayName}
                                         {f.version}
                                     </div>
                                     <div className="t-text-xs tw-text-gray-400">
@@ -535,6 +538,7 @@ const SelectVersion = ({
                                         size="lg"
                                         onClick={() => {
                                             setModalStage('downloadFirmware');
+                                            setSelectedFirmwareVersion(f);
                                         }}
                                     >
                                         Select
@@ -559,7 +563,6 @@ const SelectVersion = ({
                     variant="primary-outline"
                     onClick={() => {
                         close();
-                        setVersion('');
                     }}
                 >
                     Close
@@ -573,27 +576,43 @@ const DownloadFirmware = ({
     close,
     setModalStage,
     selectedFirmware,
-    firmwareDevice,
 }: {
     close: () => void;
     setModalStage: (stage: ModalStage) => void;
-    selectedFirmware: VisibleFirmware | undefined;
-    firmwareDevice: string;
+    selectedFirmware: Firmware | undefined;
 }) => {
     const device = useSelector(selectedDevice);
+    const deviceName = device ? deviceInfo(device).name : 'no device';
     return (
         <>
             <Dialog.Header title="Download firmware" />
             <Dialog.Body>
-                <div>
-                    Selected firmware:{' '}
-                    {selectedFirmware ? selectedFirmware.name : 'no firmware'}
-                </div>
-                <div>Firmware device: {firmwareDevice}</div>
-                <div>
-                    Selected device:{' '}
-                    {device ? deviceInfo(device).name : 'no device'}
-                </div>
+                {selectedFirmware ? (
+                    <div>
+                        <div className="tw-text-lg">
+                            {selectedFirmware.displayName ??
+                                selectedFirmware.name}
+                        </div>
+                        <div>{selectedFirmware.description}</div>
+                        {device &&
+                            !(
+                                deviceName?.toLowerCase().replace(' ', '') ===
+                                selectedFirmware.device
+                                    .toLowerCase()
+                                    .replace(' ', '')
+                            ) && (
+                                <div>
+                                    <div>Warning</div>
+                                    <div>
+                                        This firmware is not compatible with
+                                        your selected firmware.
+                                    </div>
+                                </div>
+                            )}
+                    </div>
+                ) : (
+                    <div>No firmware</div>
+                )}
             </Dialog.Body>
             <Dialog.Footer>
                 <DialogButton
