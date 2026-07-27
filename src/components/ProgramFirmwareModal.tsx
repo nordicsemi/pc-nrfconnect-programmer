@@ -495,17 +495,25 @@ const SelectVersion = ({
                 </div>
                 <div className="tw-mt-5 tw-border-0 tw-border-b tw-border-solid tw-border-gray-100">
                     {temp
-                        .filter(f =>
-                            f.version
-                                .toLowerCase()
-                                .replace(/\./g, '')
-                                .replace(/ /g, '')
-                                .includes(
+                        .filter(
+                            f =>
+                                f.version
+                                    .toLowerCase()
+                                    .replace(/\./g, '')
+                                    .replace(/ /g, '')
+                                    .includes(
+                                        versionFilter
+                                            .toLowerCase()
+                                            .replace(/\./g, '')
+                                            .replace(/ /g, ''),
+                                    ) ||
+                                ('latest'.includes(
                                     versionFilter
                                         .toLowerCase()
                                         .replace(/\./g, '')
                                         .replace(/ /g, ''),
-                                ),
+                                ) &&
+                                    f.latest === 'true'),
                         )
                         .map(f => (
                             <div
@@ -513,8 +521,13 @@ const SelectVersion = ({
                                 className="tw- tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3"
                             >
                                 <div>
-                                    {f.name}
-                                    {f.version}
+                                    <div className="tw-text-base">
+                                        {f.name}
+                                        {f.version}
+                                    </div>
+                                    <div className="t-text-xs tw-text-gray-400">
+                                        {f.latest === 'true' && 'latest'}
+                                    </div>
                                 </div>
                                 <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
                                     <Button
