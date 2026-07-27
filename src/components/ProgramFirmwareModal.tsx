@@ -27,6 +27,7 @@ interface Firmware {
     description: string;
     name: string;
     filename: string;
+    version: string;
     [props: string]: string | string[];
 }
 
@@ -457,6 +458,7 @@ const SelectVersion = ({
     const [version, setVersion] = useState('');
     //  const [verions, setVersions] = useState<string[]>([]);
     const [temp, setTemp] = useState<Firmware[]>([]);
+    const [versionFilter, setVersionFilter] = useState('');
 
     useEffect(() => {
         client
@@ -487,29 +489,48 @@ const SelectVersion = ({
                     {selectedFirmware.name}
                     {firmwareDevice}
                 </div>
+                <div>
+                    <FirmwareSearchbar
+                        value={versionFilter}
+                        onChange={setVersionFilter}
+                    />
+                </div>
                 <div className="tw-border-0 tw-border-b tw-border-solid tw-border-gray-100">
-                    {temp.map(f => (
-                        <div
-                            key={`${f.name}${f.device}${f.version}`}
-                            className="tw- tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3"
-                        >
-                            <div>
-                                {f.name}
-                                {f.version}
+                    {temp
+                        .filter(f =>
+                            f.version
+                                .toLowerCase()
+                                .replace(/\./g, '')
+                                .replace(/ /g, '')
+                                .includes(
+                                    versionFilter
+                                        .toLowerCase()
+                                        .replace(/\./g, '')
+                                        .replace(/ /g, ''),
+                                ),
+                        )
+                        .map(f => (
+                            <div
+                                key={`${f.name}${f.device}${f.version}`}
+                                className="tw- tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3"
+                            >
+                                <div>
+                                    {f.name}
+                                    {f.version}
+                                </div>
+                                <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
+                                    <Button
+                                        variant="primary"
+                                        size="lg"
+                                        onClick={() => {
+                                            setModalStage('downloadFirmware');
+                                        }}
+                                    >
+                                        Select
+                                    </Button>
+                                </div>
                             </div>
-                            <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
-                                <Button
-                                    variant="primary"
-                                    size="lg"
-                                    onClick={() => {
-                                        setModalStage('downloadFirmware');
-                                    }}
-                                >
-                                    Select
-                                </Button>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
             </Dialog.Body>
             <Dialog.Footer>
