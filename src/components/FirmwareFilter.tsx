@@ -27,7 +27,7 @@ export default ({
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="tw-flex-shrink-0">
+        <div className="tw-mr-3 tw-flex-shrink-0">
             <Dropdown onToggle={() => setIsOpen(!isOpen)}>
                 <Dropdown.Toggle variant="outline-primary" active={isOpen}>
                     <span className="mdi mdi-tune" />
