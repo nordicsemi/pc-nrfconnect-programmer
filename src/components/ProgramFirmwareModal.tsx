@@ -7,6 +7,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
+    Alert,
     type AResponse,
     ArtifactoryClient,
     Button,
@@ -326,7 +327,9 @@ const SelectFirmware = ({
             <Dialog.Header title="Select a firmware" />
             <div className="tw-flex tw-min-h-0 tw-flex-1 tw-flex-col tw-overflow-hidden [&_.modal-body]:tw-flex [&_.modal-body]:tw-min-h-0 [&_.modal-body]:tw-flex-1 [&_.modal-body]:tw-flex-col [&_.modal-body]:tw-overflow-y-auto">
                 <Dialog.Body>
-                    <p className="tw-flex-shrink-0">Select a program</p>
+                    <p className="tw-flex-shrink-0">
+                        Select which firmware you want to download
+                    </p>
                     <div className="tw-flex tw-flex-shrink-0 tw-justify-start">
                         <FirmwareFilter
                             selectedFilters={selectedFilters}
@@ -488,8 +491,13 @@ const SelectVersion = ({
         <>
             <Dialog.Header title="Select version" />
             <Dialog.Body>
-                <div>Selected firmware: {selectedFirmware.name}</div>
-                <div>Selected device: {firmwareDevice}</div>
+                {/* <div>Selected firmware: {selectedFirmware.name}</div>
+                <div>Selected device: {firmwareDevice}</div> */}
+                <div>
+                    Select which version of{' '}
+                    {selectedFirmware.displayName ?? selectedFirmware.name} you
+                    want to download
+                </div>
                 <div className="tw-flex tw-h-8">
                     <FirmwareSearchbar
                         value={versionFilter}
@@ -594,6 +602,10 @@ const DownloadFirmware = ({
                                 selectedFirmware.name}
                         </div>
                         <div>{selectedFirmware.description}</div>
+                        <div>
+                            <div>Documentation:</div>
+                            <div>{selectedFirmware.documentation}</div>
+                        </div>
                         {device &&
                             !(
                                 deviceName?.toLowerCase().replace(' ', '') ===
@@ -601,13 +613,17 @@ const DownloadFirmware = ({
                                     .toLowerCase()
                                     .replace(' ', '')
                             ) && (
-                                <div>
-                                    <div>Warning</div>
-                                    <div>
-                                        This firmware is not compatible with
-                                        your selected firmware.
-                                    </div>
-                                </div>
+                                // <div>
+                                //     <div>Warning</div>
+                                //     <div>
+                                //         This firmware is not compatible with
+                                //         your selected firmware.
+                                //     </div>
+                                // </div>
+                                <Alert variant="warning">
+                                    This firmware is not compatible with your
+                                    selected device.
+                                </Alert>
                             )}
                     </div>
                 ) : (
