@@ -16,13 +16,13 @@ import {
     DialogButton,
     type Firmware,
     FirmwareClient,
-    // getAppDataDir,
+    getAppDataDir,
     selectedDevice,
     useHotKey,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
+import { join } from 'path';
 
 import FirmwareFilter, { type FilterOptions } from './FirmwareFilter';
-// import { join } from 'path';
 
 // interface Firmware {
 //     device: string;
@@ -38,7 +38,11 @@ interface VisibleFirmware extends Omit<Firmware, 'device' | 'filename'> {
     devices: string[];
 }
 
-const client = new FirmwareClient();
+const client = new FirmwareClient({
+    server: 'files.nordicsemi.com',
+    repo: 'swtools',
+    directory: join(getAppDataDir(), 'firmwares'),
+});
 
 // const fw: Firmware = (await fwclient.listFirmware({}))[0];
 // fwclient.searchVersions(fw);
