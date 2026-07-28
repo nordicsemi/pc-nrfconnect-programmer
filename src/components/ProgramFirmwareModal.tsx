@@ -8,33 +8,50 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
     Alert,
-    type AResponse,
-    ArtifactoryClient,
+    // type AResponse,
+    // ArtifactoryClient,
     Button,
     deviceInfo,
     Dialog,
     DialogButton,
-    getAppDataDir,
+    type Firmware,
+    FirmwareClient,
+    // getAppDataDir,
     selectedDevice,
     useHotKey,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import { join } from 'path';
 
 import FirmwareFilter, { type FilterOptions } from './FirmwareFilter';
+// import { join } from 'path';
 
-interface Firmware {
-    device: string;
-    displayName: string;
-    description: string;
-    name: string;
-    filename: string;
-    version: string;
-    [props: string]: string | string[];
-}
+// interface Firmware {
+//     device: string;
+//     displayName: string;
+//     description: string;
+//     name: string;
+//     filename: string;
+//     version: string;
+//     [props: string]: string | string[];
+// }
 
 interface VisibleFirmware extends Omit<Firmware, 'device' | 'filename'> {
     devices: string[];
 }
+
+const client = new FirmwareClient();
+
+// const fw: Firmware = (await fwclient.listFirmware({}))[0];
+// fwclient.searchVersions(fw);
+
+// listFirmware for the first fetch - returns a list of firmwares
+// searchVersions for the second fetch - fw as input - returns list of strings
+// getFirmware for download - {...fw, version: v}
+
+// Fix everything with device - easy fix: devide[0], but some fw has more devices
+// Make VisibleFirmware work - change the type: should include a list of fw + title and description
+// New onclick functions for fw selection
+// Fix filtering - how should it work with devices
 
 type ModalStage =
     | 'firmwareSelection'
@@ -46,11 +63,11 @@ type ModalStage =
 // const url = '../resources/firmware/AQLFirmwareList.json';
 // const url = '../resources/firmware/tempTestData.json';
 
-const client = new ArtifactoryClient(
-    'files.nordicsemi.com',
-    'swtools',
-    join(getAppDataDir(), 'firmwares'),
-);
+// const client = new ArtifactoryClient(
+//     'files.nordicsemi.com',
+//     'swtools',
+//     join(getAppDataDir(), 'firmwares'),
+// );
 
 export default ({
     isVisible,
@@ -72,28 +89,32 @@ export default ({
     //         });
     // }, []);
 
+    // useEffect(() => {
+    //     client
+    //         .searchArtifactory({ latest: 'true' })
+    //         // fetch(url)
+    //         //     .then(res => res.json())
+    //         .then((data: AResponse) => {
+    //             const newFirmwares: Firmware[] = (data ?? [])
+    //                 .filter(result => result.properties)
+    //                 .filter(
+    //                     result => result.properties.type?.[0] !== 'Dependency',
+    //                 )
+    //                 .map(
+    //                     result =>
+    //                         Object.fromEntries(
+    //                             Object.entries(result.properties).map(
+    //                                 ([key, values]) => [key, values[0] ?? ''],
+    //                             ),
+    //                         ) as Firmware,
+    //                 );
+    //             setFirmwares(newFirmwares);
+    //         });
+    //     // console.log('test');
+    // }, []);
+
     useEffect(() => {
-        client
-            .searchArtifactory({ latest: 'true' })
-            // fetch(url)
-            //     .then(res => res.json())
-            .then((data: AResponse) => {
-                const newFirmwares: Firmware[] = (data ?? [])
-                    .filter(result => result.properties)
-                    .filter(
-                        result => result.properties.type?.[0] !== 'Dependency',
-                    )
-                    .map(
-                        result =>
-                            Object.fromEntries(
-                                Object.entries(result.properties).map(
-                                    ([key, values]) => [key, values[0] ?? ''],
-                                ),
-                            ) as Firmware,
-                    );
-                setFirmwares(newFirmwares);
-            });
-        // console.log('test');
+        client.listFirmware({}).then(setFirmwares);
     }, []);
     const [selectedFirmware, setSelectedFirmware] = useState<VisibleFirmware>();
     const [firmwareDevice, setFirmwareDevice] = useState('');
