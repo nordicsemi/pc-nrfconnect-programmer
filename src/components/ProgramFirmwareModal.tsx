@@ -178,7 +178,6 @@ const SelectFirmware = ({
         fetch('../resources/firmware/filterKeys.json')
             .then(res => res.json())
             .then((data: string[]) => setFilterableKeys(data));
-        console.log('test');
     }, []);
 
     const initialDevice = useRef(useSelector(selectedDevice));
@@ -196,32 +195,28 @@ const SelectFirmware = ({
         }
     }, []);
 
-    const generateFilterOptions = useCallback(
-        (data: Firmware[]): FilterOptions => {
-            const sets: Record<string, Set<string>> = {};
+    const generateFilterOptions = useCallback((): FilterOptions => {
+        const sets: Record<string, Set<string>> = {};
 
-            data.forEach(item => {
-                Object.entries(item).forEach(([key, value]) => {
-                    if (
-                        typeof value === 'string' &&
-                        filterableKeys.includes(key)
-                    )
+        firmwares.forEach(item => {
+            Object.entries(item).forEach(([key, value]) => {
+                if (filterableKeys.includes(key)) {
+                    if (typeof value === 'string') {
                         (sets[key] ??= new Set()).add(value);
-                });
+                    } else if (Array.isArray(value)) {
+                        sets[key] ??= new Set();
+                        value.forEach(v => sets[key].add(String(v)));
+                    }
+                }
             });
-
-            return Object.fromEntries(
-                Object.entries(sets).map(([key, set]) => [
-                    key,
-                    [...set].sort(),
-                ]),
-            );
-        },
-        [filterableKeys],
-    );
+        });
+        return Object.fromEntries(
+            Object.entries(sets).map(([key, set]) => [key, [...set].sort()]),
+        );
+    }, [filterableKeys, firmwares]);
 
     useEffect(() => {
-        setFilterOptions(generateFilterOptions(firmwares));
+        setFilterOptions(generateFilterOptions());
     }, [firmwares, generateFilterOptions]);
 
     const updateFilterOptions = useCallback(() => {
@@ -328,6 +323,12 @@ const SelectFirmware = ({
                     <p className="tw-flex-shrink-0">
                         Select which firmware you want to download
                     </p>
+                    <Button
+                        variant="secondary"
+                        onClick={() => console.log(firmwares)}
+                    >
+                        Test
+                    </Button>
                     <div className="tw-flex tw-flex-shrink-0 tw-justify-start">
                         <FirmwareFilter
                             selectedFilters={selectedFilters}
