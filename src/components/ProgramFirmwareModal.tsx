@@ -65,10 +65,6 @@ type ModalStage =
     | 'versionSelection'
     | 'downloadFirmware';
 
-// const url = '../resources/firmware/firmwares.json';
-// const url = '../resources/firmware/AQLFirmwareList.json';
-// const url = '../resources/firmware/tempTestData.json';
-
 // const client = new ArtifactoryClient(
 //     'files.nordicsemi.com',
 //     'swtools',
@@ -85,15 +81,6 @@ export default ({
     const [modalStage, setModalStage] =
         useState<ModalStage>('firmwareSelection');
     const [firmwares, setFirmwares] = useState<Firmware[]>([]);
-
-    // useEffect(() => {
-    //     fetch(url)
-    //         .then(res => res.json())
-    //         .then((data: Firmware[]) => {
-    //             setFirmwares(data);
-    //             console.log(data);
-    //         });
-    // }, []);
 
     // useEffect(() => {
     //     client
@@ -144,13 +131,6 @@ export default ({
                     firmwares={firmwares}
                 />
             )}
-            {/* {modalStage === 'deviceSelection' && selectedFirmware && (
-                <SelectDevice
-                    selectedFirmware={selectedFirmware}
-                    close={close}
-                    setModalStage={setModalStage}
-                />
-            )} */}
             {modalStage === 'versionSelection' && selectedFirmware && (
                 <SelectVersion
                     selectedFirmware={selectedFirmware}
@@ -276,7 +256,6 @@ const SelectFirmware = ({
 
     useEffect(() => {
         setVisibleFilters(updateFilterOptions());
-        // console.log('test1');
     }, [updateFilterOptions]);
 
     // useEffect(() => {
@@ -337,7 +316,6 @@ const SelectFirmware = ({
                 : [...current, value];
             return { ...prev, [key]: updatedFilters };
         });
-        // console.log(filterableKeys);
     };
     const clearFilters = () => {
         setSelectedFilters({});
@@ -375,15 +353,10 @@ const SelectFirmware = ({
                                     <div className="tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-px-5 tw-py-3">
                                         <div className="tw-flex tw-w-full tw-flex-1 tw-flex-col tw-items-start">
                                             <div className="tw-text-base">
-                                                {
-                                                    firmware.title ??
-                                                        String(
-                                                            firmware.name,
-                                                        ).replace(
-                                                            /_/g,
-                                                            ' ',
-                                                        ) /* change to displayName */
-                                                }
+                                                {firmware.title ??
+                                                    String(
+                                                        firmware.name,
+                                                    ).replace(/_/g, ' ')}
                                             </div>
                                             <div className="tw-text-sm">
                                                 {firmware.description}
@@ -502,8 +475,6 @@ const SelectVersion = ({
         <>
             <Dialog.Header title="Select version" />
             <Dialog.Body>
-                {/* <div>Selected firmware: {selectedFirmware.name}</div>
-                <div>Selected device: {firmwareDevice}</div> */}
                 <div>
                     Select which version of{' '}
                     {selectedFirmware.title ?? selectedFirmware.name} you want
@@ -622,13 +593,6 @@ const DownloadFirmware = ({
                                     .toLowerCase()
                                     .replace(' ', '')
                             ) && (
-                                // <div>
-                                //     <div>Warning</div>
-                                //     <div>
-                                //         This firmware is not compatible with
-                                //         your selected firmware.
-                                //     </div>
-                                // </div>
                                 <Alert variant="warning">
                                     This firmware is not compatible with your
                                     selected device.
@@ -689,68 +653,3 @@ const FirmwareSearchbar = ({
         />
     );
 };
-
-// const SelectDevice = ({
-//     selectedFirmware,
-//     close,
-//     setModalStage,
-// }: {
-//     selectedFirmware: VisibleFirmware;
-//     close: () => void;
-//     setModalStage: (stage: ModalStage) => void;
-// }) => {
-//     const device = useSelector(selectedDevice);
-//     const deviceName = device ? deviceInfo(device).name : '';
-//     return (
-//         <>
-//             <Dialog.Header title="Select device" />
-//             <Dialog.Body>
-//                 {deviceName ? (
-//                     <>
-//                         <div>You have selected {deviceName}</div>
-//                         {selectedFirmware.devices.includes(
-//                             deviceName.toLowerCase().replace(' ', ''),
-//                         ) ? (
-//                             <div>
-//                                 If you want to continue with your selected
-//                                 device, click next
-//                             </div>
-//                         ) : (
-//                             <div>
-//                                 Your selected firmware is not compatible with
-//                                 your device. Please choose another firmware or
-//                                 change to another device.
-//                             </div>
-//                         )}
-//                     </>
-//                 ) : (
-//                     <div>Please select a device</div>
-//                 )}
-//                 <div>{selectedFirmware.devices}</div>
-//                 <div>
-//                     {selectedFirmware.devices.map(d => (
-//                         <div key={d}>{d}</div>
-//                     ))}
-//                 </div>
-//             </Dialog.Body>
-//             <Dialog.Footer>
-//                 <DialogButton
-//                     variant="primary"
-//                     onClick={() => {
-//                         setModalStage('downloadFirmware');
-//                     }}
-//                 >
-//                     Next
-//                 </DialogButton>
-//                 <DialogButton
-//                     onClick={() => {
-//                         setModalStage('firmwareSelection');
-//                     }}
-//                 >
-//                     Back
-//                 </DialogButton>
-//                 <DialogButton onClick={close}>Close</DialogButton>
-//             </Dialog.Footer>
-//         </>
-//     );
-// };
