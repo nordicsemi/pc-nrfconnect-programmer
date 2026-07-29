@@ -38,6 +38,13 @@ interface VisibleFirmware extends Omit<Firmware, 'device' | 'filename'> {
     devices: string[];
 }
 
+interface GroupedFirmware {
+    name: string;
+    title?: string;
+    description?: string;
+    firmwares: Firmware[];
+}
+
 const client = new FirmwareClient({
     server: 'files.nordicsemi.com',
     repo: 'swtools',
@@ -170,6 +177,7 @@ const SelectFirmware = ({
     const [visibleFirmwares, setVisibleFirmwares] = useState<VisibleFirmware[]>(
         [],
     );
+    const [firmwareList, setFirmwareList] = useState<GroupedFirmware[]>([]);
     const [nameFilter, setNameFilter] = useState('');
 
     const [filterableKeys, setFilterableKeys] = useState<string[]>([]);
@@ -301,6 +309,27 @@ const SelectFirmware = ({
         setVisibleFirmwares(groupedFirmwares);
     }, [firmwares, selectedFilters, nameFilter]);
 
+    useEffect(() => {
+        const groupedFirmware = firmwares.reduce<GroupedFirmware[]>(
+            (result, firmware) => {
+                const existing = result.find(fw => fw.name === firmware.name);
+                if (existing) {
+                    existing.firmwares.push(firmware);
+                } else {
+                    result.push({
+                        name: firmware.name,
+                        title: firmware.title,
+                        description: firmware.description,
+                        firmwares: [firmware],
+                    });
+                }
+                return result;
+            },
+            [],
+        );
+        setFirmwareList(groupedFirmware);
+    }, [firmwares]);
+
     const handleToggle = (key: string, value: string) => {
         setSelectedFilters(prev => {
             const current = prev[key] ?? [];
@@ -325,7 +354,10 @@ const SelectFirmware = ({
                     </p>
                     <Button
                         variant="secondary"
-                        onClick={() => console.log(firmwares)}
+                        onClick={() => {
+                            console.log(firmwares);
+                            console.log(firmwareList);
+                        }}
                     >
                         Test
                     </Button>
