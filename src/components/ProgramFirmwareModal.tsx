@@ -379,7 +379,30 @@ const SelectFirmware = ({
     }, [firmwares, selectedFilters, nameFilter]);
 
     useEffect(() => {
-        const groupedFirmware = firmwares.reduce<GroupedFirmware[]>(
+        const filteredFirmwares = firmwares
+            .filter(firmware =>
+                Object.entries(selectedFilters).every(
+                    ([key, values]) =>
+                        values.length === 0 ||
+                        readFirmwareValues(firmware, key).some(value =>
+                            values.includes(value),
+                        ),
+                ),
+            )
+            .filter(
+                firmware =>
+                    firmware.name.toLowerCase().includes(nameFilter) ||
+                    firmware.title
+                        ?.toLowerCase()
+                        .replaceAll(' ', '')
+                        .includes(nameFilter) ||
+                    firmware.description
+                        ?.toLowerCase()
+                        .replaceAll(' ', '')
+                        .includes(nameFilter),
+            );
+
+        const groupedFirmware = filteredFirmwares.reduce<GroupedFirmware[]>(
             (result, firmware) => {
                 const existing = result.find(fw => fw.name === firmware.name);
                 if (existing) {
@@ -397,7 +420,7 @@ const SelectFirmware = ({
             [],
         );
         setFirmwareList(groupedFirmware);
-    }, [firmwares]);
+    }, [firmwares, nameFilter, selectedFilters]);
 
     const handleToggle = (key: string, value: string) => {
         setSelectedFilters(prev => {
@@ -750,7 +773,9 @@ const FirmwareSearchbar = ({
             className="tw-rounded-none tw-border tw-border-solid tw-border-nordicBlue tw-px-2 tw-text-gray-700 placeholder:tw-text-nordicBlue-500 focus:tw-rounded-none focus:tw-border-solid focus:tw-outline focus:tw-outline-2 focus:-tw-outline-offset-2 focus:tw-outline-nordicBlue"
             value={value}
             ref={searchFieldRef}
-            onChange={e => onChange(e.target.value)}
+            onChange={e =>
+                onChange(e.target.value.toLowerCase().replaceAll(' ', ''))
+            }
             onFocus={() => searchFieldRef.current?.select()}
         />
     );
