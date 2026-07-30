@@ -49,6 +49,7 @@ interface GroupedFirmware {
     title?: string;
     description?: string;
     firmwares: Firmware[];
+    devices: string[];
 }
 
 const client = new FirmwareClient({
@@ -185,6 +186,8 @@ const SelectFirmware = ({
     );
     const [firmwareList, setFirmwareList] = useState<GroupedFirmware[]>([]);
     const [nameFilter, setNameFilter] = useState('');
+    const [selectedFirmwareGroup, setSelectedFirmwareGroup] =
+        useState<GroupedFirmware>();
 
     const [filterableKeys, setFilterableKeys] = useState<string[]>([]);
 
@@ -407,12 +410,17 @@ const SelectFirmware = ({
                 const existing = result.find(fw => fw.name === firmware.name);
                 if (existing) {
                     existing.firmwares.push(firmware);
+                    firmware.device.forEach(value => {
+                        if (!existing.devices.includes(value))
+                            existing.devices.push(value);
+                    });
                 } else {
                     result.push({
                         name: firmware.name,
                         title: firmware.title,
                         description: firmware.description,
                         firmwares: [firmware],
+                        devices: [...firmware.device],
                     });
                 }
                 return result;
@@ -468,11 +476,9 @@ const SelectFirmware = ({
                     </div>
                     {visibleFirmwares.length ? (
                         <div className="tw-mt-5 tw-min-h-[35vh] tw-flex-1 tw-overflow-y-auto tw-border-0 tw-border-t tw-border-solid tw-border-gray-100">
-                            {visibleFirmwares.map(firmware => (
+                            {firmwareList.map(firmware => (
                                 <div
-                                    key={
-                                        `${firmware.name}${firmware.devices[0]}` /* check this later */
-                                    }
+                                    key={firmware.name}
                                     className="tw-border tw-border-t-0 tw-border-solid tw-border-gray-100"
                                 >
                                     <div className="tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-px-5 tw-py-3">
@@ -481,13 +487,15 @@ const SelectFirmware = ({
                                                 {firmware.title ??
                                                     String(
                                                         firmware.name,
-                                                    ).replace(/_/g, ' ')}
+                                                    ).replaceAll('_', ' ')}
                                             </div>
                                             <div className="tw-text-sm">
                                                 {firmware.description}
                                             </div>
                                             <div className="tw-text-xs tw-text-gray-400">
-                                                {firmware.devices.join(', ')}
+                                                {firmware.devices
+                                                    .sort()
+                                                    .join(', ')}
                                             </div>
                                         </div>
                                         <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
@@ -496,23 +504,24 @@ const SelectFirmware = ({
                                                 size="lg"
                                                 onClick={() => {
                                                     if (
-                                                        selectedFirmware ===
+                                                        selectedFirmwareGroup ===
                                                         firmware
                                                     ) {
-                                                        setSelectedFirmware(
+                                                        setSelectedFirmwareGroup(
                                                             undefined,
                                                         );
                                                     } else {
-                                                        setSelectedFirmware(
+                                                        setSelectedFirmwareGroup(
                                                             firmware,
                                                         );
                                                         if (
-                                                            firmware.devices
+                                                            firmware.firmwares
                                                                 .length === 1
                                                         ) {
                                                             setModalStage(
                                                                 'versionSelection',
                                                             );
+                                                            // Set selected fw
                                                         }
                                                     }
                                                 }}
@@ -521,7 +530,7 @@ const SelectFirmware = ({
                                             </Button>
                                         </div>
                                     </div>
-                                    {firmware === selectedFirmware &&
+                                    {firmware === selectedFirmwareGroup &&
                                         firmware.devices.length > 1 && (
                                             <div className="tw-flex tw-flex-wrap tw-justify-start tw-px-4 tw-pb-2">
                                                 {firmware.devices.map(
