@@ -4,7 +4,13 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+} from 'react';
 import { useSelector } from 'react-redux';
 import {
     Alert,
@@ -173,7 +179,7 @@ const SelectFirmware = ({
 }) => {
     const [filterOptions, setFilterOptions] = useState<FilterOptions>({});
     const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({});
-    const [visibleFilters, setVisibleFilters] = useState<FilterOptions>({});
+    // const [visibleFilters, setVisibleFilters] = useState<FilterOptions>({});
     const [visibleFirmwares, setVisibleFirmwares] = useState<VisibleFirmware[]>(
         [],
     );
@@ -227,39 +233,102 @@ const SelectFirmware = ({
         setFilterOptions(generateFilterOptions());
     }, [firmwares, generateFilterOptions]);
 
-    const updateFilterOptions = useCallback(() => {
-        const keys = new Set<string>();
-        firmwares.forEach(item =>
-            Object.entries(item).forEach(([key, value]) => {
-                if (typeof value === 'string' && filterableKeys.includes(key))
-                    keys.add(key);
-            }),
-        );
+    // const updateFilterOptions = useCallback(() => {
+    //     const keys = new Set<string>();
+    //     firmwares.forEach(item =>
+    //         Object.entries(item).forEach(([key, value]) => {
+    //             if (typeof value === 'string' && filterableKeys.includes(key))
+    //                 keys.add(key);
+    //         }),
+    //     );
 
-        return Object.fromEntries(
-            [...keys].map(key => {
-                const relevant = firmwares.filter(item =>
-                    Object.entries(selectedFilters).every(
-                        ([filterKey, values]) =>
-                            filterKey === key ||
-                            values.length === 0 ||
-                            values.includes(String(item[filterKey])),
-                    ),
-                );
+    //     return Object.fromEntries(
+    //         [...keys].map(key => {
+    //             const relevant = firmwares.filter(item =>
+    //                 Object.entries(selectedFilters).every(
+    //                     ([filterKey, values]) =>
+    //                         filterKey === key ||
+    //                         values.length === 0 ||
+    //                         values.includes(String(item[filterKey])),
+    //                 ),
+    //             );
 
-                const values = new Set<string>();
-                relevant.forEach(item => {
-                    const value = item[key];
-                    if (typeof value === 'string') values.add(value);
+    //             const values = new Set<string>();
+    //             relevant.forEach(item => {
+    //                 const value = item[key];
+    //                 if (typeof value === 'string') values.add(value);
+    //             });
+    //             return [key, [...values].sort()];
+    //         }),
+    //     );
+    // }, [firmwares, selectedFilters, filterableKeys]);
+
+    const readFirmwareValues = (firmware: Firmware, key: string): string[] => {
+        const value = (firmware as Record<string, unknown>)[key];
+
+        if (Array.isArray(value))
+            return value.filter(v => typeof v === 'string');
+        if (typeof value === 'string') return [value];
+        return [];
+    };
+
+    // const calculateVisibleFilters = (): Record<string, string[]> => {
+    //     const result: Record<string, string[]> = {};
+
+    //     filterableKeys.forEach(filterKey => {
+    //         const compatible = firmwares.filter(firmware =>
+    //             Object.entries(selectedFilters).every(
+    //                 ([key, values]) =>
+    //                     key === filterKey ||
+    //                     values.length === 0 ||
+    //                     readFirmwareValues(firmware, key).some(value =>
+    //                         values.includes(value),
+    //                     ),
+    //             ),
+    //         );
+
+    //         const options = new Set<string>();
+    //         compatible.forEach(firmware => {
+    //             readFirmwareValues(firmware, filterKey).forEach(value => {
+    //                 options.add(value);
+    //             });
+    //         });
+    //         result[filterKey] = [...options].sort();
+    //     });
+
+    //     return result;
+    // };
+
+    const visibleFilters = useMemo(() => {
+        const result: Record<string, string[]> = {};
+
+        filterableKeys.forEach(filterKey => {
+            const compatible = firmwares.filter(firmware =>
+                Object.entries(selectedFilters).every(
+                    ([key, values]) =>
+                        key === filterKey ||
+                        values.length === 0 ||
+                        readFirmwareValues(firmware, key).some(value =>
+                            values.includes(value),
+                        ),
+                ),
+            );
+
+            const options = new Set<string>();
+            compatible.forEach(firmware => {
+                readFirmwareValues(firmware, filterKey).forEach(value => {
+                    options.add(value);
                 });
-                return [key, [...values].sort()];
-            }),
-        );
+            });
+            result[filterKey] = [...options].sort();
+        });
+
+        return result;
     }, [firmwares, selectedFilters, filterableKeys]);
 
-    useEffect(() => {
-        setVisibleFilters(updateFilterOptions());
-    }, [updateFilterOptions]);
+    // useEffect(() => {
+    //     setVisibleFilters(updateFilterOptions());
+    // }, [updateFilterOptions]);
 
     // useEffect(() => {
     //     setVisibleFirmwares(
