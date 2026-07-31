@@ -123,7 +123,7 @@ export default ({
     useEffect(() => {
         client.listFirmware({}).then(setFirmwares);
     }, []);
-    const [selectedFirmware, setSelectedFirmware] = useState<VisibleFirmware>();
+    const [selectedFirmware, setSelectedFirmware] = useState<Firmware>();
     const [selectedFirmwareVersion, setSelectedFirmwareVersion] =
         useState<Firmware>();
 
@@ -141,7 +141,6 @@ export default ({
                     close={close}
                     setModalStage={setModalStage}
                     setSelectedFirmware={setSelectedFirmware}
-                    selectedFirmware={selectedFirmware}
                     firmwares={firmwares}
                 />
             )}
@@ -169,13 +168,11 @@ const SelectFirmware = ({
     close,
     setModalStage,
     setSelectedFirmware,
-    selectedFirmware,
     firmwares,
 }: {
     close: () => void;
     setModalStage: (stage: ModalStage) => void;
-    setSelectedFirmware: (firmware: VisibleFirmware | undefined) => void;
-    selectedFirmware: VisibleFirmware | undefined;
+    setSelectedFirmware: (firmware: Firmware | undefined) => void;
     firmwares: Firmware[];
 }) => {
     const [filterOptions, setFilterOptions] = useState<FilterOptions>({});
@@ -521,7 +518,10 @@ const SelectFirmware = ({
                                                             setModalStage(
                                                                 'versionSelection',
                                                             );
-                                                            // Set selected fw
+                                                            setSelectedFirmware(
+                                                                firmware
+                                                                    .firmwares[0],
+                                                            );
                                                         }
                                                     }
                                                 }}
@@ -533,8 +533,8 @@ const SelectFirmware = ({
                                     {firmware === selectedFirmwareGroup &&
                                         firmware.devices.length > 1 && (
                                             <div className="tw-flex tw-flex-wrap tw-justify-start tw-px-4 tw-pb-2">
-                                                {firmware.devices.map(
-                                                    device => (
+                                                {firmware.firmwares.map(fw =>
+                                                    fw.device.map(device => (
                                                         <Button
                                                             key={device}
                                                             variant="primary-outline"
@@ -542,12 +542,15 @@ const SelectFirmware = ({
                                                                 setModalStage(
                                                                     'versionSelection',
                                                                 );
+                                                                setSelectedFirmware(
+                                                                    fw,
+                                                                );
                                                             }}
                                                             className="tw-m-1 tw-flex-shrink-0"
                                                         >
                                                             {device}
                                                         </Button>
-                                                    ),
+                                                    )),
                                                 )}
                                             </div>
                                         )}
@@ -575,15 +578,19 @@ const SelectVersion = ({
     setSelectedFirmware,
     setSelectedFirmwareVersion,
 }: {
-    selectedFirmware: VisibleFirmware;
+    selectedFirmware: Firmware;
     close: () => void;
     setModalStage: (stage: ModalStage) => void;
-    setSelectedFirmware: (firmware: VisibleFirmware | undefined) => void;
+    setSelectedFirmware: (firmware: Firmware | undefined) => void;
     setSelectedFirmwareVersion: (firmware: Firmware) => void;
 }) => {
-    //  const [verions, setVersions] = useState<string[]>([]);
+    const [versions, setVersions] = useState<string[]>([]);
     const [firmwares] = useState<Firmware[]>([]);
     const [versionFilter, setVersionFilter] = useState('');
+
+    useEffect(() => {
+        client.searchVersions(selectedFirmware).then(setVersions);
+    }, [selectedFirmware]);
 
     // useEffect(() => {
     //     client
@@ -609,6 +616,12 @@ const SelectVersion = ({
         <>
             <Dialog.Header title="Select version" />
             <Dialog.Body>
+                <Button
+                    variant="secondary"
+                    onClick={() => console.log(versions)}
+                >
+                    test
+                </Button>
                 <div>
                     Select which version of{' '}
                     {selectedFirmware.title ?? selectedFirmware.name} you want
