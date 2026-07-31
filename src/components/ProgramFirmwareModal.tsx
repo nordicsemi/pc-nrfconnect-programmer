@@ -404,9 +404,18 @@ const SelectFirmware = ({
         const groupedFirmware = filteredFirmwares.reduce<GroupedFirmware[]>(
             (result, firmware) => {
                 const existing = result.find(fw => fw.name === firmware.name);
+                const filteredDevice = firmware.device.filter(
+                    device =>
+                        !selectedFilters.device ||
+                        selectedFilters.device.length === 0 ||
+                        selectedFilters.device.includes(device),
+                );
                 if (existing) {
-                    existing.firmwares.push(firmware);
-                    firmware.device.forEach(value => {
+                    existing.firmwares.push({
+                        ...firmware,
+                        device: filteredDevice,
+                    });
+                    filteredDevice.forEach(value => {
                         if (!existing.devices.includes(value))
                             existing.devices.push(value);
                     });
@@ -415,8 +424,8 @@ const SelectFirmware = ({
                         name: firmware.name,
                         title: firmware.title,
                         description: firmware.description,
-                        firmwares: [firmware],
-                        devices: [...firmware.device],
+                        firmwares: [{ ...firmware, device: filteredDevice }],
+                        devices: [...filteredDevice],
                     });
                 }
                 return result;
