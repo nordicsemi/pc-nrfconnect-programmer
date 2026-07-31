@@ -11,7 +11,7 @@ import React, {
     useRef,
     useState,
 } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     Alert,
     // type AResponse,
@@ -28,6 +28,7 @@ import {
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import { join } from 'path';
 
+import * as fileActions from '../actions/fileActions';
 import FirmwareFilter, { type FilterOptions } from './FirmwareFilter';
 
 // interface Firmware {
@@ -40,9 +41,9 @@ import FirmwareFilter, { type FilterOptions } from './FirmwareFilter';
 //     [props: string]: string | string[];
 // }
 
-interface VisibleFirmware extends Omit<Firmware, 'device' | 'filename'> {
-    devices: string[];
-}
+// interface VisibleFirmware extends Omit<Firmware, 'device' | 'filename'> {
+//     devices: string[];
+// }
 
 interface GroupedFirmware {
     name: string;
@@ -124,8 +125,7 @@ export default ({
         client.listFirmware({}).then(setFirmwares);
     }, []);
     const [selectedFirmware, setSelectedFirmware] = useState<Firmware>();
-    const [selectedFirmwareVersion, setSelectedFirmwareVersion] =
-        useState<Firmware>();
+    const [selectedVersion, setSelectedVersion] = useState('');
 
     const close = () => {
         onClose();
@@ -150,14 +150,15 @@ export default ({
                     close={close}
                     setModalStage={setModalStage}
                     setSelectedFirmware={setSelectedFirmware}
-                    setSelectedFirmwareVersion={setSelectedFirmwareVersion}
+                    setSelectedVersion={setSelectedVersion}
                 />
             )}
-            {modalStage === 'downloadFirmware' && (
+            {modalStage === 'downloadFirmware' && selectedFirmware && (
                 <DownloadFirmware
                     close={close}
                     setModalStage={setModalStage}
-                    selectedFirmware={selectedFirmwareVersion}
+                    selectedFirmware={selectedFirmware}
+                    selectedVersion={selectedVersion}
                 />
             )}
         </Dialog>
@@ -593,16 +594,15 @@ const SelectVersion = ({
     close,
     setModalStage,
     setSelectedFirmware,
-    setSelectedFirmwareVersion,
+    setSelectedVersion,
 }: {
     selectedFirmware: Firmware;
     close: () => void;
     setModalStage: (stage: ModalStage) => void;
     setSelectedFirmware: (firmware: Firmware | undefined) => void;
-    setSelectedFirmwareVersion: (firmware: Firmware) => void;
+    setSelectedVersion: (version: string) => void;
 }) => {
     const [versions, setVersions] = useState<string[]>([]);
-    const [firmwares] = useState<Firmware[]>([]);
     const [versionFilter, setVersionFilter] = useState('');
 
     useEffect(() => {
@@ -651,40 +651,31 @@ const SelectVersion = ({
                     />
                 </div>
                 <div className="tw-mt-5 tw-border-0 tw-border-b tw-border-solid tw-border-gray-100">
-                    {firmwares
-                        .filter(
-                            f =>
-                                f.version
-                                    .toLowerCase()
-                                    .replace(/\./g, '')
-                                    .replace(/ /g, '')
-                                    .includes(
-                                        versionFilter
-                                            .toLowerCase()
-                                            .replace(/\./g, '')
-                                            .replace(/ /g, ''),
-                                    ) ||
-                                ('latest'.includes(
+                    {versions
+                        .filter(version =>
+                            version
+                                .toLowerCase()
+                                .replace(/\./g, '')
+                                .replace(/ /g, '')
+                                .includes(
                                     versionFilter
                                         .toLowerCase()
                                         .replace(/\./g, '')
                                         .replace(/ /g, ''),
-                                ) &&
-                                    f.latest === 'true'),
+                                ),
                         )
-                        .map(f => (
+                        .map(version => (
                             <div
-                                key={`${f.name}${f.device}${f.version}`}
+                                key={version}
                                 className="tw- tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3"
                             >
                                 <div>
                                     <div className="tw-text-base">
-                                        {f.title}
-                                        {f.version}
+                                        {version}
                                     </div>
-                                    <div className="t-text-xs tw-text-gray-400">
+                                    {/* <div className="t-text-xs tw-text-gray-400">
                                         {f.latest === 'true' && 'latest'}
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
                                     <Button
@@ -692,7 +683,7 @@ const SelectVersion = ({
                                         size="lg"
                                         onClick={() => {
                                             setModalStage('downloadFirmware');
-                                            setSelectedFirmwareVersion(f);
+                                            setSelectedVersion(version);
                                         }}
                                     >
                                         Select
@@ -729,13 +720,20 @@ const DownloadFirmware = ({
     close,
     setModalStage,
     selectedFirmware,
+    selectedVersion,
 }: {
     close: () => void;
     setModalStage: (stage: ModalStage) => void;
-    selectedFirmware: Firmware | undefined;
+    selectedFirmware: Firmware;
+    selectedVersion: string;
 }) => {
     const device = useSelector(selectedDevice);
     const deviceName = device ? deviceInfo(device).name : 'no device';
+
+    const dispatch = useDispatch();
+
+    const openFile = (filename: string) =>
+        dispatch(fileActions.openFile(filename));
     return (
         <>
             <Dialog.Header title="Download firmware" />
@@ -744,6 +742,7 @@ const DownloadFirmware = ({
                     <div>
                         <div className="tw-text-lg">
                             {selectedFirmware.title ?? selectedFirmware.name}
+                            {selectedVersion}
                         </div>
                         <div>{selectedFirmware.description}</div>
                         <div>
@@ -770,7 +769,17 @@ const DownloadFirmware = ({
             <Dialog.Footer>
                 <DialogButton
                     variant="primary"
-                    onClick={() => console.log(selectedFirmware)}
+                    onClick={() => {
+                        console.log(selectedFirmware);
+                        client
+                            .getFirmware({
+                                ...selectedFirmware,
+                                version: selectedVersion,
+                            })
+                            .then(result => {
+                                openFile(result.file);
+                            });
+                    }}
                 >
                     Add file
                 </DialogButton>
