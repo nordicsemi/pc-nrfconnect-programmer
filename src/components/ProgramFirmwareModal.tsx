@@ -178,9 +178,9 @@ const SelectFirmware = ({
     const [filterOptions, setFilterOptions] = useState<FilterOptions>({});
     const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({});
     // const [visibleFilters, setVisibleFilters] = useState<FilterOptions>({});
-    const [visibleFirmwares, setVisibleFirmwares] = useState<VisibleFirmware[]>(
-        [],
-    );
+    // const [visibleFirmwares, setVisibleFirmwares] = useState<VisibleFirmware[]>(
+    //     [],
+    // );
     const [firmwareList, setFirmwareList] = useState<GroupedFirmware[]>([]);
     const [nameFilter, setNameFilter] = useState('');
     const [selectedFirmwareGroup, setSelectedFirmwareGroup] =
@@ -265,7 +265,6 @@ const SelectFirmware = ({
 
     const readFirmwareValues = (firmware: Firmware, key: string): string[] => {
         const value = (firmware as Record<string, unknown>)[key];
-
         if (Array.isArray(value))
             return value.filter(v => typeof v === 'string');
         if (typeof value === 'string') return [value];
@@ -343,40 +342,40 @@ const SelectFirmware = ({
     //     console.log('test2');
     // }, [selectedFilters, firmwares]);
 
-    useEffect(() => {
-        const filteredFirmwares = firmwares
-            .filter(firmware =>
-                Object.entries(selectedFilters).every(
-                    ([key, values]) =>
-                        values.length === 0 ||
-                        values.includes(String(firmware[key])),
-                ),
-            )
-            .filter(
-                firmware =>
-                    firmware.name // change back to displayName when displayName is added to the data
-                        .toLowerCase()
-                        .includes(nameFilter.toLowerCase()) ||
-                    firmware.description
-                        ?.toLowerCase()
-                        .includes(nameFilter.toLowerCase()),
-            );
-        const groupedFirmwares = filteredFirmwares.reduce<VisibleFirmware[]>(
-            (result, firmware) => {
-                const { device, file: _file, ...rest } = firmware;
-                const existing = result.find(fw => fw.name === rest.name);
-                if (existing) {
-                    existing.devices.push(device[0]);
-                } else {
-                    result.push({ ...rest, devices: [device[0]] });
-                }
+    // useEffect(() => {
+    //     const filteredFirmwares = firmwares
+    //         .filter(firmware =>
+    //             Object.entries(selectedFilters).every(
+    //                 ([key, values]) =>
+    //                     values.length === 0 ||
+    //                     values.includes(String(firmware[key])),
+    //             ),
+    //         )
+    //         .filter(
+    //             firmware =>
+    //                 firmware.name // change back to displayName when displayName is added to the data
+    //                     .toLowerCase()
+    //                     .includes(nameFilter.toLowerCase()) ||
+    //                 firmware.description
+    //                     ?.toLowerCase()
+    //                     .includes(nameFilter.toLowerCase()),
+    //         );
+    //     const groupedFirmwares = filteredFirmwares.reduce<VisibleFirmware[]>(
+    //         (result, firmware) => {
+    //             const { device, file: _file, ...rest } = firmware;
+    //             const existing = result.find(fw => fw.name === rest.name);
+    //             if (existing) {
+    //                 existing.devices.push(device[0]);
+    //             } else {
+    //                 result.push({ ...rest, devices: [device[0]] });
+    //             }
 
-                return result;
-            },
-            [],
-        );
-        setVisibleFirmwares(groupedFirmwares);
-    }, [firmwares, selectedFilters, nameFilter]);
+    //             return result;
+    //         },
+    //         [],
+    //     );
+    //     setVisibleFirmwares(groupedFirmwares);
+    // }, [firmwares, selectedFilters, nameFilter]);
 
     useEffect(() => {
         const filteredFirmwares = firmwares
@@ -454,6 +453,7 @@ const SelectFirmware = ({
                         onClick={() => {
                             console.log(firmwares);
                             console.log(firmwareList);
+                            console.log(selectedFilters);
                         }}
                     >
                         Test
@@ -471,7 +471,7 @@ const SelectFirmware = ({
                             onChange={setNameFilter}
                         />
                     </div>
-                    {visibleFirmwares.length ? (
+                    {firmwareList.length ? (
                         <div className="tw-mt-5 tw-min-h-[35vh] tw-flex-1 tw-overflow-y-auto tw-border-0 tw-border-t tw-border-solid tw-border-gray-100">
                             {firmwareList.map(firmware => (
                                 <div
@@ -512,15 +512,18 @@ const SelectFirmware = ({
                                                             firmware,
                                                         );
                                                         if (
-                                                            firmware.firmwares
+                                                            firmware.devices
                                                                 .length === 1
                                                         ) {
                                                             setModalStage(
                                                                 'versionSelection',
                                                             );
                                                             setSelectedFirmware(
-                                                                firmware
-                                                                    .firmwares[0],
+                                                                {
+                                                                    ...firmware
+                                                                        .firmwares[0],
+                                                                    device: firmware.devices,
+                                                                },
                                                             );
                                                         }
                                                     }
@@ -543,7 +546,12 @@ const SelectFirmware = ({
                                                                     'versionSelection',
                                                                 );
                                                                 setSelectedFirmware(
-                                                                    fw,
+                                                                    {
+                                                                        ...fw,
+                                                                        device: [
+                                                                            device,
+                                                                        ],
+                                                                    },
                                                                 );
                                                             }}
                                                             className="tw-m-1 tw-flex-shrink-0"
