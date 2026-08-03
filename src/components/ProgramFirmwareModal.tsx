@@ -28,7 +28,7 @@ interface GroupedFirmware {
     title?: string;
     description?: string;
     firmwares: Firmware[];
-    devices: string[];
+    devices: Set<string>;
 }
 
 const client = new FirmwareClient({
@@ -269,37 +269,40 @@ const SelectFirmware = ({
                         .includes(nameFilter.toLowerCase().replaceAll(' ', '')),
             );
 
-        const groupedFirmware = filteredFirmwares.reduce<GroupedFirmware[]>(
-            (result, firmware) => {
-                const existing = result.find(fw => fw.name === firmware.name);
-                const filteredDevice = firmware.device.filter(
-                    device =>
-                        !selectedFilters.device ||
-                        selectedFilters.device.length === 0 ||
-                        selectedFilters.device.includes(device),
-                );
-                if (existing) {
-                    existing.firmwares.push({
-                        ...firmware,
-                        device: filteredDevice,
-                    });
-                    filteredDevice.forEach(value => {
-                        if (!existing.devices.includes(value))
-                            existing.devices.push(value);
-                    });
-                } else {
-                    result.push({
-                        name: firmware.name,
-                        title: firmware.title,
-                        description: firmware.description,
-                        firmwares: [{ ...firmware, device: filteredDevice }],
-                        devices: [...filteredDevice],
-                    });
-                }
-                return result;
-            },
-            [],
-        );
+        const deviceFilter = selectedFilters.device ?? [];
+
+        const groupedFirmware = [
+            ...filteredFirmwares
+                .reduce<Map<string, GroupedFirmware>>((result, firmware) => {
+                    const existing = result.get(firmware.name);
+                    const filteredDevice = firmware.device.filter(
+                        device =>
+                            deviceFilter.length === 0 ||
+                            deviceFilter.includes(device),
+                    );
+                    if (existing) {
+                        existing.firmwares.push({
+                            ...firmware,
+                            device: filteredDevice,
+                        });
+                        filteredDevice.forEach(value => {
+                            existing.devices.add(value);
+                        });
+                    } else {
+                        result.set(firmware.name, {
+                            name: firmware.name,
+                            title: firmware.title,
+                            description: firmware.description,
+                            firmwares: [
+                                { ...firmware, device: filteredDevice },
+                            ],
+                            devices: new Set(filteredDevice),
+                        });
+                    }
+                    return result;
+                }, new Map())
+                .values(),
+        ];
         return groupedFirmware;
     }, [firmwares, nameFilter, selectedFilters]);
 
@@ -368,7 +371,7 @@ const SelectFirmware = ({
                                                 {firmware.description}
                                             </div>
                                             <div className="tw-text-xs tw-text-gray-400">
-                                                {firmware.devices
+                                                {[...firmware.devices]
                                                     .sort()
                                                     .join(', ')}
                                             </div>
@@ -391,7 +394,7 @@ const SelectFirmware = ({
                                                         );
                                                         if (
                                                             firmware.devices
-                                                                .length === 1
+                                                                .size === 1
                                                         ) {
                                                             setModalStage(
                                                                 'versionSelection',
@@ -400,7 +403,9 @@ const SelectFirmware = ({
                                                                 {
                                                                     ...firmware
                                                                         .firmwares[0],
-                                                                    device: firmware.devices,
+                                                                    device: [
+                                                                        ...firmware.devices,
+                                                                    ],
                                                                 },
                                                             );
                                                         }
@@ -412,7 +417,7 @@ const SelectFirmware = ({
                                         </div>
                                     </div>
                                     {firmware === selectedFirmwareGroup &&
-                                        firmware.devices.length > 1 && (
+                                        firmware.devices.size > 1 && (
                                             <div className="tw-flex tw-flex-wrap tw-justify-start tw-px-4 tw-pb-2">
                                                 {firmware.firmwares.map(fw =>
                                                     fw.device.map(device => (
