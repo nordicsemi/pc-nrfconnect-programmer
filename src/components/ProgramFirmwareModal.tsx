@@ -583,13 +583,18 @@ const DownloadFirmware = ({
     const device = useSelector(selectedDevice);
     const deviceName = device ? deviceInfo(device).name : 'no device';
 
+    const [downloading, setDownloading] = useState(false);
+
     const dispatch = useDispatch();
 
     const openFile = (filename: string) =>
         dispatch(fileActions.openFile(filename));
     return (
         <>
-            <Dialog.Header title="Download firmware" />
+            <Dialog.Header
+                title="Download firmware"
+                showSpinner={downloading}
+            />
             <Dialog.Body>
                 {selectedFirmware ? (
                     <div>
@@ -624,6 +629,7 @@ const DownloadFirmware = ({
                     variant="primary"
                     onClick={() => {
                         console.log(selectedFirmware);
+                        setDownloading(true);
                         client
                             .getFirmware({
                                 ...selectedFirmware,
@@ -631,7 +637,8 @@ const DownloadFirmware = ({
                             })
                             .then(result => {
                                 openFile(result.file);
-                            });
+                            })
+                            .then(close);
                     }}
                 >
                     Add file
