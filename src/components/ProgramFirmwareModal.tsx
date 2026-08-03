@@ -391,15 +391,21 @@ const SelectFirmware = ({
             )
             .filter(
                 firmware =>
-                    firmware.name.toLowerCase().includes(nameFilter) ||
+                    firmware.name
+                        .toLowerCase()
+                        .includes(
+                            nameFilter.toLowerCase().replaceAll(' ', ''),
+                        ) ||
                     firmware.title
                         ?.toLowerCase()
                         .replaceAll(' ', '')
-                        .includes(nameFilter) ||
+                        .includes(
+                            nameFilter.toLowerCase().replaceAll(' ', ''),
+                        ) ||
                     firmware.description
                         ?.toLowerCase()
                         .replaceAll(' ', '')
-                        .includes(nameFilter),
+                        .includes(nameFilter.toLowerCase().replaceAll(' ', '')),
             );
 
         const groupedFirmware = filteredFirmwares.reduce<GroupedFirmware[]>(
@@ -461,9 +467,10 @@ const SelectFirmware = ({
                     <Button
                         variant="secondary"
                         onClick={() => {
-                            console.log(firmwares);
-                            console.log(firmwareList);
-                            console.log(selectedFilters);
+                            // console.log(firmwares);
+                            // console.log(firmwareList);
+                            // console.log(selectedFilters);
+                            console.log(nameFilter.replaceAll(' ', ''));
                         }}
                     >
                         Test
@@ -655,13 +662,13 @@ const SelectVersion = ({
                         .filter(version =>
                             version
                                 .toLowerCase()
-                                .replace(/\./g, '')
-                                .replace(/ /g, '')
+                                .replaceAll(' ', '')
+                                .replaceAll('.', '')
                                 .includes(
                                     versionFilter
                                         .toLowerCase()
-                                        .replace(/\./g, '')
-                                        .replace(/ /g, ''),
+                                        .replaceAll(' ', '')
+                                        .replaceAll('.', ''),
                                 ),
                         )
                         .map(version => (
@@ -821,9 +828,7 @@ const FirmwareSearchbar = ({
             className="tw-rounded-none tw-border tw-border-solid tw-border-nordicBlue tw-px-2 tw-text-gray-700 placeholder:tw-text-nordicBlue-500 focus:tw-rounded-none focus:tw-border-solid focus:tw-outline focus:tw-outline-2 focus:-tw-outline-offset-2 focus:tw-outline-nordicBlue"
             value={value}
             ref={searchFieldRef}
-            onChange={e =>
-                onChange(e.target.value.toLowerCase().replaceAll(' ', ''))
-            }
+            onChange={e => onChange(e.target.value)}
             onFocus={() => searchFieldRef.current?.select()}
         />
     );
