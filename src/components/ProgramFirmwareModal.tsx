@@ -4,13 +4,7 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-import React, {
-    useCallback,
-    useEffect,
-    useMemo,
-    useRef,
-    useState,
-} from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     Alert,
@@ -130,13 +124,13 @@ const SelectFirmware = ({
     setSelectedFirmware: (firmware: Firmware | undefined) => void;
     firmwares: Firmware[];
 }) => {
-    const [filterOptions, setFilterOptions] = useState<FilterOptions>({});
+    // const [filterOptions, setFilterOptions] = useState<FilterOptions>({});
     const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({});
     // const [visibleFilters, setVisibleFilters] = useState<FilterOptions>({});
     // const [visibleFirmwares, setVisibleFirmwares] = useState<VisibleFirmware[]>(
     //     [],
     // );
-    const [firmwareList, setFirmwareList] = useState<GroupedFirmware[]>([]);
+    // const [firmwareList, setFirmwareList] = useState<GroupedFirmware[]>([]);
     const [nameFilter, setNameFilter] = useState('');
     const [selectedFirmwareGroup, setSelectedFirmwareGroup] =
         useState<GroupedFirmware>();
@@ -166,7 +160,7 @@ const SelectFirmware = ({
         }
     }, []);
 
-    const generateFilterOptions = useCallback((): FilterOptions => {
+    const filterOptions = useMemo<FilterOptions>(() => {
         const sets: Record<string, Set<string>> = {};
 
         firmwares.forEach(item => {
@@ -184,11 +178,31 @@ const SelectFirmware = ({
         return Object.fromEntries(
             Object.entries(sets).map(([key, set]) => [key, [...set].sort()]),
         );
-    }, [filterableKeys, firmwares]);
+    }, [firmwares, filterableKeys]);
 
-    useEffect(() => {
-        setFilterOptions(generateFilterOptions());
-    }, [firmwares, generateFilterOptions]);
+    // const generateFilterOptions = useCallback((): FilterOptions => {
+    //     const sets: Record<string, Set<string>> = {};
+
+    //     firmwares.forEach(item => {
+    //         Object.entries(item).forEach(([key, value]) => {
+    //             if (filterableKeys.includes(key)) {
+    //                 if (typeof value === 'string') {
+    //                     (sets[key] ??= new Set()).add(value);
+    //                 } else if (Array.isArray(value)) {
+    //                     sets[key] ??= new Set();
+    //                     value.forEach(v => sets[key].add(String(v)));
+    //                 }
+    //             }
+    //         });
+    //     });
+    //     return Object.fromEntries(
+    //         Object.entries(sets).map(([key, set]) => [key, [...set].sort()]),
+    //     );
+    // }, [filterableKeys, firmwares]);
+
+    // useEffect(() => {
+    //     setFilterOptions(generateFilterOptions());
+    // }, [generateFilterOptions]);
 
     const readFirmwareValues = (firmware: Firmware, key: string): string[] => {
         const value = (firmware as Record<string, unknown>)[key];
@@ -225,7 +239,7 @@ const SelectFirmware = ({
         return result;
     }, [firmwares, selectedFilters, filterableKeys]);
 
-    useEffect(() => {
+    const firmwareList = useMemo<GroupedFirmware[]>(() => {
         const filteredFirmwares = firmwares
             .filter(firmware =>
                 Object.entries(selectedFilters).every(
@@ -286,7 +300,7 @@ const SelectFirmware = ({
             },
             [],
         );
-        setFirmwareList(groupedFirmware);
+        return groupedFirmware;
     }, [firmwares, nameFilter, selectedFilters]);
 
     const handleToggle = (key: string, value: string) => {
