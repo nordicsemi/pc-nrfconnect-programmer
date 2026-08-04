@@ -591,6 +591,7 @@ const DownloadFirmware = ({
     const deviceName = device ? deviceInfo(device).name : 'no device';
 
     const [downloading, setDownloading] = useState(false);
+    const [downloadError, setDownloadError] = useState('');
 
     const dispatch = useDispatch();
 
@@ -635,6 +636,9 @@ const DownloadFirmware = ({
                                     selected device.
                                 </Alert>
                             )}
+                        {downloadError && (
+                            <Alert variant="danger">{downloadError}</Alert>
+                        )}
                     </div>
                 ) : (
                     <div>No firmware</div>
@@ -643,9 +647,11 @@ const DownloadFirmware = ({
             <Dialog.Footer>
                 <DialogButton
                     variant="primary"
+                    disabled={downloading}
                     onClick={() => {
                         console.log(selectedFirmware);
                         setDownloading(true);
+                        setDownloadError('');
                         client
                             .getFirmware({
                                 ...selectedFirmware,
@@ -653,8 +659,13 @@ const DownloadFirmware = ({
                             })
                             .then(result => {
                                 openFile(result.file);
+                                close();
                             })
-                            .then(close);
+                            .catch(err => {
+                                console.error(err);
+                                setDownloadError(String(err));
+                                setDownloading(false);
+                            });
                     }}
                 >
                     Add file
