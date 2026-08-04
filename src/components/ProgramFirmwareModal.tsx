@@ -352,105 +352,112 @@ const SelectFirmware = ({
                             onChange={setNameFilter}
                         />
                     </div>
-                    {firmwareList.length ? (
-                        <div className="tw-mt-5 tw-min-h-[35vh] tw-flex-1 tw-overflow-y-auto tw-border-0 tw-border-t tw-border-solid tw-border-gray-100">
-                            {firmwareList.map(firmware => (
-                                <div
-                                    key={firmware.name}
-                                    className="tw-border tw-border-t-0 tw-border-solid tw-border-gray-100"
-                                >
-                                    <div className="tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-px-5 tw-py-3">
-                                        <div className="tw-flex tw-w-full tw-flex-1 tw-flex-col tw-items-start">
-                                            <div className="tw-text-base">
-                                                {firmware.title ??
-                                                    String(
-                                                        firmware.name,
-                                                    ).replaceAll('_', ' ')}
+                    <div className="tw-mt-5 tw-min-h-[35vh] tw-flex-1 tw-overflow-y-auto">
+                        {firmwareList.length ? (
+                            <>
+                                {firmwareList.map(firmware => (
+                                    <div
+                                        key={firmware.name}
+                                        className="tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 last:tw-border-b"
+                                    >
+                                        <div className="tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-px-5 tw-py-3">
+                                            <div className="tw-flex tw-w-full tw-flex-1 tw-flex-col tw-items-start">
+                                                <div className="tw-text-base">
+                                                    {firmware.title ??
+                                                        String(
+                                                            firmware.name,
+                                                        ).replaceAll('_', ' ')}
+                                                </div>
+                                                <div className="tw-text-sm">
+                                                    {firmware.description}
+                                                </div>
+                                                <div className="tw-text-xs tw-text-gray-400">
+                                                    {[...firmware.devices]
+                                                        .sort()
+                                                        .join(', ')}
+                                                </div>
                                             </div>
-                                            <div className="tw-text-sm">
-                                                {firmware.description}
-                                            </div>
-                                            <div className="tw-text-xs tw-text-gray-400">
-                                                {[...firmware.devices]
-                                                    .sort()
-                                                    .join(', ')}
-                                            </div>
-                                        </div>
-                                        <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
-                                            <Button
-                                                variant="primary"
-                                                size="lg"
-                                                onClick={() => {
-                                                    if (
-                                                        selectedFirmwareGroup ===
-                                                        firmware
-                                                    ) {
-                                                        setSelectedFirmwareGroup(
-                                                            undefined,
-                                                        );
-                                                    } else {
-                                                        setSelectedFirmwareGroup(
-                                                            firmware,
-                                                        );
+                                            <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
+                                                <Button
+                                                    variant="primary"
+                                                    size="lg"
+                                                    onClick={() => {
                                                         if (
-                                                            firmware.devices
-                                                                .size === 1
+                                                            selectedFirmwareGroup ===
+                                                            firmware
                                                         ) {
-                                                            setModalStage(
-                                                                'versionSelection',
+                                                            setSelectedFirmwareGroup(
+                                                                undefined,
                                                             );
-                                                            setSelectedFirmware(
-                                                                {
-                                                                    ...firmware
-                                                                        .firmwares[0],
-                                                                    device: [
-                                                                        ...firmware.devices,
-                                                                    ],
-                                                                },
+                                                        } else {
+                                                            setSelectedFirmwareGroup(
+                                                                firmware,
                                                             );
-                                                        }
-                                                    }
-                                                }}
-                                            >
-                                                Select
-                                            </Button>
-                                        </div>
-                                    </div>
-                                    {firmware === selectedFirmwareGroup &&
-                                        firmware.devices.size > 1 && (
-                                            <div className="tw-flex tw-flex-wrap tw-justify-start tw-px-4 tw-pb-2">
-                                                {firmware.firmwares.map(fw =>
-                                                    fw.device.map(device => (
-                                                        <Button
-                                                            key={device}
-                                                            variant="primary-outline"
-                                                            onClick={() => {
+                                                            if (
+                                                                firmware.devices
+                                                                    .size === 1
+                                                            ) {
                                                                 setModalStage(
                                                                     'versionSelection',
                                                                 );
                                                                 setSelectedFirmware(
                                                                     {
-                                                                        ...fw,
+                                                                        ...firmware
+                                                                            .firmwares[0],
                                                                         device: [
-                                                                            device,
+                                                                            ...firmware.devices,
                                                                         ],
                                                                     },
                                                                 );
-                                                            }}
-                                                            className="tw-m-1 tw-flex-shrink-0"
-                                                        >
-                                                            {device}
-                                                        </Button>
-                                                    )),
-                                                )}
+                                                            }
+                                                        }
+                                                    }}
+                                                >
+                                                    Select
+                                                </Button>
                                             </div>
-                                        )}
-                                </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <p>no firmwares</p>
-                    )}
+                                        </div>
+                                        {firmware === selectedFirmwareGroup &&
+                                            firmware.devices.size > 1 && (
+                                                <div className="tw-flex tw-flex-wrap tw-justify-start tw-px-4 tw-pb-2">
+                                                    {firmware.firmwares.map(
+                                                        fw =>
+                                                            fw.device.map(
+                                                                device => (
+                                                                    <Button
+                                                                        key={
+                                                                            device
+                                                                        }
+                                                                        variant="primary-outline"
+                                                                        onClick={() => {
+                                                                            setModalStage(
+                                                                                'versionSelection',
+                                                                            );
+                                                                            setSelectedFirmware(
+                                                                                {
+                                                                                    ...fw,
+                                                                                    device: [
+                                                                                        device,
+                                                                                    ],
+                                                                                },
+                                                                            );
+                                                                        }}
+                                                                        className="tw-m-1 tw-flex-shrink-0"
+                                                                    >
+                                                                        {device}
+                                                                    </Button>
+                                                                ),
+                                                            ),
+                                                    )}
+                                                </div>
+                                            )}
+                                    </div>
+                                ))}
+                            </>
+                        ) : (
+                            <p>no firmwares</p>
+                        )}
+                    </div>
                 </Dialog.Body>
             </div>
             <Dialog.Footer>
