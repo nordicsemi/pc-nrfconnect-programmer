@@ -7,6 +7,7 @@
 import React from 'react';
 import {
     App,
+    Demopane,
     render,
     telemetry,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
@@ -26,7 +27,10 @@ render(
         appReducer={appReducer}
         deviceSelect={<DeviceSelector />}
         sidePanel={<ControlPanel />}
-        panes={[{ name: 'Programmer', Main: AppMainView }]}
+        panes={[
+            { name: 'Programmer', Main: AppMainView },
+            { name: 'Artifactory', Main: Demopane },
+        ]}
         documentation={DocumentationSections}
     />,
 );
