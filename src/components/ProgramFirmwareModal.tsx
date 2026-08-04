@@ -610,10 +610,19 @@ const DownloadFirmware = ({
                             {selectedVersion}
                         </div>
                         <div>{selectedFirmware.description}</div>
-                        <div>
-                            <div>Documentation:</div>
-                            <div>{selectedFirmware.documentation}</div>
-                        </div>
+                        {selectedFirmware.documentation && (
+                            <div>
+                                <div>Documentation:</div>
+                                <a
+                                    href={selectedFirmware.documentation}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    {selectedFirmware.documentation}
+                                </a>
+                            </div>
+                        )}
+
                         {device &&
                             !(
                                 deviceName?.toLowerCase().replace(' ', '') ===
