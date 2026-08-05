@@ -489,70 +489,95 @@ const SelectVersion = ({
         client.searchVersions(selectedFirmware).then(setVersions);
     }, [selectedFirmware]);
 
+    // const testVersions = [
+    //     '1',
+    //     '2',
+    //     '3',
+    //     '4',
+    //     '5',
+    //     '6',
+    //     '7',
+    //     '8',
+    //     '9',
+    //     '1',
+    //     '2',
+    //     '3',
+    //     '4',
+    //     '5',
+    //     '6',
+    //     '7',
+    //     '8',
+    //     '9',
+    // ];
+
     return (
-        <>
+        <div className="tw-flex tw-max-h-[90vh] tw-flex-col">
             <Dialog.Header title="Select version" />
-            <Dialog.Body>
-                <Button
-                    variant="secondary"
-                    onClick={() => console.log(versions)}
-                >
-                    test
-                </Button>
-                <div>
-                    Select which version of{' '}
-                    {selectedFirmware.title ?? selectedFirmware.name} you want
-                    to download
-                </div>
-                <div className="tw-flex tw-h-8">
-                    <FirmwareSearchbar
-                        value={versionFilter}
-                        onChange={setVersionFilter}
-                    />
-                </div>
-                <div className="tw-mt-5 tw-border-0 tw-border-b tw-border-solid tw-border-gray-100">
-                    {versions
-                        .filter(version =>
-                            version
-                                .toLowerCase()
-                                .replaceAll(' ', '')
-                                .replaceAll('.', '')
-                                .includes(
-                                    versionFilter
-                                        .toLowerCase()
-                                        .replaceAll(' ', '')
-                                        .replaceAll('.', ''),
-                                ),
-                        )
-                        .map(version => (
-                            <div
-                                key={version}
-                                className="tw- tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3"
-                            >
-                                <div>
-                                    <div className="tw-text-base">
-                                        {version}
+            <div className="tw-flex tw-min-h-0 tw-flex-1 tw-flex-col tw-overflow-hidden [&_.modal-body]:tw-flex [&_.modal-body]:tw-min-h-0 [&_.modal-body]:tw-flex-1 [&_.modal-body]:tw-flex-col [&_.modal-body]:tw-overflow-y-auto">
+                <Dialog.Body>
+                    <Button
+                        variant="secondary"
+                        onClick={() => console.log(versions)}
+                    >
+                        test
+                    </Button>
+                    <div>
+                        Select which version of{' '}
+                        {selectedFirmware.title ?? selectedFirmware.name} you
+                        want to download
+                    </div>
+                    <div className="tw-flex tw-h-8 tw-flex-shrink-0">
+                        <FirmwareSearchbar
+                            value={versionFilter}
+                            onChange={setVersionFilter}
+                        />
+                    </div>
+                    <div className="tw-mt-5 tw-flex-1 tw-justify-start tw-overflow-y-auto">
+                        {versions
+                            .filter(version =>
+                                version
+                                    .toLowerCase()
+                                    .replaceAll(' ', '')
+                                    .replaceAll('.', '')
+                                    .includes(
+                                        versionFilter
+                                            .toLowerCase()
+                                            .replaceAll(' ', '')
+                                            .replaceAll('.', ''),
+                                    ),
+                            )
+                            .map(version => (
+                                <div
+                                    key={version}
+                                    className="tw- tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3 last:tw-border-b"
+                                >
+                                    <div>
+                                        <div className="tw-text-base">
+                                            {version}
+                                        </div>
+                                        {/* <div className="t-text-xs tw-text-gray-400">
+                                            {f.latest === 'true' && 'latest'}
+                                        </div> */}
                                     </div>
-                                    {/* <div className="t-text-xs tw-text-gray-400">
-                                        {f.latest === 'true' && 'latest'}
-                                    </div> */}
+                                    <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
+                                        <Button
+                                            variant="primary"
+                                            size="lg"
+                                            onClick={() => {
+                                                setModalStage(
+                                                    'downloadFirmware',
+                                                );
+                                                setSelectedVersion(version);
+                                            }}
+                                        >
+                                            Select
+                                        </Button>
+                                    </div>
                                 </div>
-                                <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
-                                    <Button
-                                        variant="primary"
-                                        size="lg"
-                                        onClick={() => {
-                                            setModalStage('downloadFirmware');
-                                            setSelectedVersion(version);
-                                        }}
-                                    >
-                                        Select
-                                    </Button>
-                                </div>
-                            </div>
-                        ))}
-                </div>
-            </Dialog.Body>
+                            ))}
+                    </div>
+                </Dialog.Body>
+            </div>
             <Dialog.Footer>
                 <DialogButton
                     variant="primary-outline"
@@ -572,7 +597,7 @@ const SelectVersion = ({
                     Close
                 </DialogButton>
             </Dialog.Footer>
-        </>
+        </div>
     );
 };
 
