@@ -52,11 +52,7 @@ const client = new FirmwareClient({
 // npm pack - shared
 // npm i --save-dev path
 
-type ModalStage =
-    | 'firmwareSelection'
-    | 'deviceSelection'
-    | 'versionSelection'
-    | 'downloadFirmware';
+type ModalStage = 'firmwareSelection' | 'versionSelection' | 'downloadFirmware';
 
 export default ({
     isVisible,
@@ -82,6 +78,8 @@ export default ({
         // What else needs to be done when closing the window?
     };
 
+    const [versions, setVersions] = useState<string[]>([]);
+
     return (
         <Dialog isVisible={isVisible} onHide={close}>
             {modalStage === 'firmwareSelection' && (
@@ -89,12 +87,15 @@ export default ({
                     close={close}
                     setModalStage={setModalStage}
                     setSelectedFirmware={setSelectedFirmware}
+                    setVersions={setVersions}
+                    setSelectedVersion={setSelectedVersion}
                     firmwares={firmwares}
                 />
             )}
             {modalStage === 'versionSelection' && selectedFirmware && (
                 <SelectVersion
                     selectedFirmware={selectedFirmware}
+                    versions={versions}
                     close={close}
                     setModalStage={setModalStage}
                     setSelectedFirmware={setSelectedFirmware}
@@ -107,6 +108,7 @@ export default ({
                     setModalStage={setModalStage}
                     selectedFirmware={selectedFirmware}
                     selectedVersion={selectedVersion}
+                    versions={versions}
                 />
             )}
         </Dialog>
@@ -117,11 +119,15 @@ const SelectFirmware = ({
     close,
     setModalStage,
     setSelectedFirmware,
+    setVersions,
+    setSelectedVersion,
     firmwares,
 }: {
     close: () => void;
     setModalStage: (stage: ModalStage) => void;
     setSelectedFirmware: (firmware: Firmware | undefined) => void;
+    setVersions: (versions: string[]) => void;
+    setSelectedVersion: (version: string) => void;
     firmwares: Firmware[];
 }) => {
     // const [filterOptions, setFilterOptions] = useState<FilterOptions>({});
@@ -320,9 +326,24 @@ const SelectFirmware = ({
     const clearFilters = () => {
         setSelectedFilters({});
     };
+    const [spinner, setSpinner] = useState(false);
+    const onSelectedFirmware = (firmware: Firmware) => {
+        setSelectedFirmware(firmware);
+        setSpinner(true);
+        client.searchVersions(firmware).then(versionList => {
+            setVersions(versionList);
+            if (versionList.length > 1) {
+                setModalStage('versionSelection');
+            } else {
+                setModalStage('downloadFirmware');
+                setSelectedVersion(versionList[0]);
+            }
+        });
+    };
+
     return (
         <div className="tw-flex tw-max-h-[90vh] tw-flex-col">
-            <Dialog.Header title="Select a firmware" />
+            <Dialog.Header title="Select a firmware" showSpinner={spinner} />
             <div className="tw-flex tw-min-h-0 tw-flex-1 tw-flex-col tw-overflow-hidden [&_.modal-body]:tw-flex [&_.modal-body]:tw-min-h-0 [&_.modal-body]:tw-flex-1 [&_.modal-body]:tw-flex-col [&_.modal-body]:tw-overflow-y-auto">
                 <Dialog.Body>
                     <p className="tw-flex-shrink-0">
@@ -397,10 +418,10 @@ const SelectFirmware = ({
                                                                 firmware.devices
                                                                     .size === 1
                                                             ) {
-                                                                setModalStage(
-                                                                    'versionSelection',
-                                                                );
-                                                                setSelectedFirmware(
+                                                                // setModalStage(
+                                                                //     'versionSelection',
+                                                                // );
+                                                                onSelectedFirmware(
                                                                     {
                                                                         ...firmware
                                                                             .firmwares[0],
@@ -430,10 +451,10 @@ const SelectFirmware = ({
                                                                         }
                                                                         variant="primary-outline"
                                                                         onClick={() => {
-                                                                            setModalStage(
-                                                                                'versionSelection',
-                                                                            );
-                                                                            setSelectedFirmware(
+                                                                            // setModalStage(
+                                                                            //     'versionSelection',
+                                                                            // );
+                                                                            onSelectedFirmware(
                                                                                 {
                                                                                     ...fw,
                                                                                     device: [
@@ -471,23 +492,25 @@ const SelectFirmware = ({
 
 const SelectVersion = ({
     selectedFirmware,
+    versions,
     close,
     setModalStage,
     setSelectedFirmware,
     setSelectedVersion,
 }: {
     selectedFirmware: Firmware;
+    versions: string[];
     close: () => void;
     setModalStage: (stage: ModalStage) => void;
     setSelectedFirmware: (firmware: Firmware | undefined) => void;
     setSelectedVersion: (version: string) => void;
 }) => {
-    const [versions, setVersions] = useState<string[]>([]);
+    // const [versions, setVersions] = useState<string[]>([]);
     const [versionFilter, setVersionFilter] = useState('');
 
-    useEffect(() => {
-        client.searchVersions(selectedFirmware).then(setVersions);
-    }, [selectedFirmware]);
+    // useEffect(() => {
+    //     client.searchVersions(selectedFirmware).then(setVersions);
+    // }, [selectedFirmware]);
 
     // const testVersions = [
     //     '1',
@@ -606,11 +629,13 @@ const DownloadFirmware = ({
     setModalStage,
     selectedFirmware,
     selectedVersion,
+    versions,
 }: {
     close: () => void;
     setModalStage: (stage: ModalStage) => void;
     selectedFirmware: Firmware;
     selectedVersion: string;
+    versions: string[];
 }) => {
     const device = useSelector(selectedDevice);
     const deviceName = device ? deviceInfo(device).name : 'no device';
@@ -698,7 +723,11 @@ const DownloadFirmware = ({
                 <DialogButton
                     variant="primary-outline"
                     onClick={() => {
-                        setModalStage('versionSelection');
+                        if (versions.length > 1) {
+                            setModalStage('versionSelection');
+                        } else {
+                            setModalStage('firmwareSelection');
+                        }
                     }}
                 >
                     Back
