@@ -572,7 +572,7 @@ const SelectVersion = ({
                             .map(version => (
                                 <div
                                     key={version}
-                                    className="tw- tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3 last:tw-border-b"
+                                    className="tw-flex tw-w-full tw-flex-nowrap tw-justify-between tw-border tw-border-b-0 tw-border-solid tw-border-gray-100 tw-px-5 tw-py-3 last:tw-border-b"
                                 >
                                     <div>
                                         <div className="tw-text-base">
@@ -656,13 +656,22 @@ const DownloadFirmware = ({
             <Dialog.Body>
                 {selectedFirmware ? (
                     <div>
-                        <div className="tw-text-lg">
-                            {selectedFirmware.title ?? selectedFirmware.name}
-                            {selectedVersion}
+                        <div>
+                            <div className="tw-text-lg">
+                                {selectedFirmware.title ??
+                                    selectedFirmware.name}
+                            </div>
+                            {selectedFirmware.version && (
+                                <div className="tw-text-xs">
+                                    Version {selectedFirmware.version}
+                                </div>
+                            )}
                         </div>
-                        <div>{selectedFirmware.description}</div>
+                        <div className="tw-mt-2">
+                            {selectedFirmware.description}
+                        </div>
                         {selectedFirmware.documentation && (
-                            <div>
+                            <div className="tw-mt-2">
                                 <div>Documentation:</div>
                                 <a
                                     href={selectedFirmware.documentation}
