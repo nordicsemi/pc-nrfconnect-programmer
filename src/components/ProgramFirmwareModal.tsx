@@ -294,6 +294,12 @@ const SelectFirmware = ({
                         filteredDevice.forEach(value => {
                             existing.devices.add(value);
                         });
+                        if (!existing.title) {
+                            existing.title = firmware.title;
+                        }
+                        if (!existing.description) {
+                            existing.description = firmware.description;
+                        }
                     } else {
                         result.set(firmware.name, {
                             name: firmware.name,
@@ -389,10 +395,10 @@ const SelectFirmware = ({
                                                             firmware.name,
                                                         ).replaceAll('_', ' ')}
                                                 </div>
-                                                <div className="tw-text-sm">
+                                                <div className="tw-mb-0.5 tw-text-sm tw-text-gray-600">
                                                     {firmware.description}
                                                 </div>
-                                                <div className="tw-text-xs tw-text-gray-400">
+                                                <div className="tw-text-xs tw-text-gray-300">
                                                     {[...firmware.devices]
                                                         .sort()
                                                         .join(', ')}
