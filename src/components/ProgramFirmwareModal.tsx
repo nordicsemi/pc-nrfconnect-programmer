@@ -359,7 +359,7 @@ const SelectFirmware = ({
                         variant="secondary"
                         onClick={() => {
                             // console.log(firmwares);
-                            // console.log(firmwareList);
+                            console.log(firmwareList);
                             // console.log(selectedFilters);
                             console.log(nameFilter.replaceAll(' ', ''));
                         }}
@@ -653,6 +653,21 @@ const DownloadFirmware = ({
 
     const openFile = (filename: string) =>
         dispatch(fileActions.openFile(filename));
+
+    const [depFw, setDepFw] = useState<Firmware>();
+
+    useEffect(() => {
+        if (selectedFirmware.dependencies) {
+            client
+                .fetchFirmware({
+                    name: selectedFirmware.dependencies[0].name,
+                    version: selectedFirmware.dependencies[0].version,
+                    device: selectedFirmware.device,
+                })
+                .then(setDepFw);
+        }
+    }, [selectedFirmware]);
+
     return (
         <>
             <Dialog.Header
@@ -677,7 +692,7 @@ const DownloadFirmware = ({
                             {selectedFirmware.description}
                         </div>
                         {selectedFirmware.documentation && (
-                            <div className="tw-mt-2">
+                            <div className="tw-mb-3 tw-mt-2">
                                 <div>Documentation:</div>
                                 <a
                                     href={selectedFirmware.documentation}
@@ -688,7 +703,21 @@ const DownloadFirmware = ({
                                 </a>
                             </div>
                         )}
-
+                        {/* {selectedFirmware.dependencies && (
+                            <Alert variant="info">
+                                This firmware has dependencies. Make sure you
+                                also download{' '}
+                                {selectedFirmware.dependencies
+                                    .map(dep => `${dep.name} v${dep.version}`)
+                                    .join(', ')}
+                            </Alert>
+                        )} */}
+                        {depFw && (
+                            <Alert variant="info">
+                                This firmware has a dependency. Make sure you
+                                also download {depFw.title} v{depFw.version}
+                            </Alert>
+                        )}
                         {device &&
                             !(
                                 deviceName?.toLowerCase().replace(' ', '') ===
@@ -697,10 +726,11 @@ const DownloadFirmware = ({
                                     .replace(' ', '')
                             ) && (
                                 <Alert variant="warning">
-                                    This firmware is not compatible with your
-                                    selected device.
+                                    Warning: This firmware is not compatible
+                                    with your selected device.
                                 </Alert>
                             )}
+
                         {downloadError && (
                             <Alert variant="danger">{downloadError}</Alert>
                         )}
