@@ -37,6 +37,8 @@ const client = new FirmwareClient({
     directory: join(getAppDataDir(), 'firmwares'),
 });
 
+const filterableKeys = ['device', 'type'];
+
 // const fw: Firmware = (await fwclient.listFirmware({}))[0];
 // fwclient.searchVersions(fw);
 
@@ -70,6 +72,7 @@ export default ({
     }, []);
     const [selectedFirmware, setSelectedFirmware] = useState<Firmware>();
     const [selectedVersion, setSelectedVersion] = useState('');
+    const [compatibleDevice, setCompatibleDevice] = useState<string[]>([]);
 
     const close = () => {
         onClose();
@@ -89,6 +92,7 @@ export default ({
                     setSelectedFirmware={setSelectedFirmware}
                     setVersions={setVersions}
                     setSelectedVersion={setSelectedVersion}
+                    setCompatibleDevice={setCompatibleDevice}
                     firmwares={firmwares}
                 />
             )}
@@ -109,6 +113,7 @@ export default ({
                     selectedFirmware={selectedFirmware}
                     selectedVersion={selectedVersion}
                     versions={versions}
+                    compatibleDevice={compatibleDevice}
                 />
             )}
         </Dialog>
@@ -121,6 +126,7 @@ const SelectFirmware = ({
     setSelectedFirmware,
     setVersions,
     setSelectedVersion,
+    setCompatibleDevice,
     firmwares,
 }: {
     close: () => void;
@@ -128,6 +134,7 @@ const SelectFirmware = ({
     setSelectedFirmware: (firmware: Firmware | undefined) => void;
     setVersions: (versions: string[]) => void;
     setSelectedVersion: (version: string) => void;
+    setCompatibleDevice: (device: string[]) => void;
     firmwares: Firmware[];
 }) => {
     // const [filterOptions, setFilterOptions] = useState<FilterOptions>({});
@@ -141,13 +148,13 @@ const SelectFirmware = ({
     const [selectedFirmwareGroup, setSelectedFirmwareGroup] =
         useState<GroupedFirmware>();
 
-    const [filterableKeys, setFilterableKeys] = useState<string[]>([]);
+    // const [filterableKeys, setFilterableKeys] = useState<string[]>([]);
 
-    useEffect(() => {
-        fetch('../resources/firmware/filterKeys.json')
-            .then(res => res.json())
-            .then((data: string[]) => setFilterableKeys(data));
-    }, []); // This also could be a hardcoded list with the keys if the keys don't have to change that much.
+    // useEffect(() => {
+    //     fetch('../resources/firmware/filterKeys.json')
+    //         .then(res => res.json())
+    //         .then((data: string[]) => setFilterableKeys(data));
+    // }, []); // This also could be a hardcoded list with the keys if the keys don't have to change that much.
     // That would be a less dynamic solution, but would work just as fine with the current Firmware type that already is hardcoded.
     // It might be easier to avoid that extra fetch
 
@@ -184,7 +191,7 @@ const SelectFirmware = ({
         return Object.fromEntries(
             Object.entries(sets).map(([key, set]) => [key, [...set].sort()]),
         );
-    }, [firmwares, filterableKeys]);
+    }, [firmwares]);
 
     // const generateFilterOptions = useCallback((): FilterOptions => {
     //     const sets: Record<string, Set<string>> = {};
@@ -243,7 +250,7 @@ const SelectFirmware = ({
         });
 
         return result;
-    }, [firmwares, selectedFilters, filterableKeys]);
+    }, [firmwares, selectedFilters]);
 
     const firmwareList = useMemo<GroupedFirmware[]>(() => {
         const filteredFirmwares = firmwares
@@ -287,10 +294,7 @@ const SelectFirmware = ({
                             deviceFilter.includes(device),
                     );
                     if (existing) {
-                        existing.firmwares.push({
-                            ...firmware,
-                            device: filteredDevice,
-                        });
+                        existing.firmwares.push(firmware);
                         filteredDevice.forEach(value => {
                             existing.devices.add(value);
                         });
@@ -305,9 +309,7 @@ const SelectFirmware = ({
                             name: firmware.name,
                             title: firmware.title,
                             description: firmware.description,
-                            firmwares: [
-                                { ...firmware, device: filteredDevice },
-                            ],
+                            firmwares: [firmware],
                             devices: new Set(filteredDevice),
                         });
                     }
@@ -333,8 +335,10 @@ const SelectFirmware = ({
         setSelectedFilters({});
     };
     const [spinner, setSpinner] = useState(false);
-    const onSelectedFirmware = (firmware: Firmware) => {
+
+    const onSelectedFirmware = (firmware: Firmware, devices: string[]) => {
         setSelectedFirmware(firmware);
+        setCompatibleDevice(devices);
         setSpinner(true);
         client.searchVersions(firmware).then(versionList => {
             setVersions(versionList);
@@ -355,7 +359,7 @@ const SelectFirmware = ({
                     <p className="tw-flex-shrink-0">
                         Select which firmware you want to download
                     </p>
-                    <Button
+                    {/* <Button
                         variant="secondary"
                         onClick={() => {
                             // console.log(firmwares);
@@ -365,7 +369,7 @@ const SelectFirmware = ({
                         }}
                     >
                         Test
-                    </Button>
+                    </Button> */}
                     <div className="tw-flex tw-flex-shrink-0 tw-justify-start">
                         <FirmwareFilter
                             selectedFilters={selectedFilters}
@@ -435,6 +439,9 @@ const SelectFirmware = ({
                                                                             ...firmware.devices,
                                                                         ],
                                                                     },
+                                                                    firmware
+                                                                        .firmwares[0]
+                                                                        .device,
                                                                 );
                                                             }
                                                         }
@@ -449,8 +456,14 @@ const SelectFirmware = ({
                                                 <div className="tw-flex tw-flex-wrap tw-justify-start tw-px-4 tw-pb-2">
                                                     {firmware.firmwares.map(
                                                         fw =>
-                                                            fw.device.map(
-                                                                device => (
+                                                            fw.device
+                                                                .filter(
+                                                                    device =>
+                                                                        firmware.devices.has(
+                                                                            device,
+                                                                        ),
+                                                                )
+                                                                .map(device => (
                                                                     <Button
                                                                         key={
                                                                             device
@@ -467,14 +480,14 @@ const SelectFirmware = ({
                                                                                         device,
                                                                                     ],
                                                                                 },
+                                                                                fw.device,
                                                                             );
                                                                         }}
                                                                         className="tw-m-1 tw-flex-shrink-0"
                                                                     >
                                                                         {device}
                                                                     </Button>
-                                                                ),
-                                                            ),
+                                                                )),
                                                     )}
                                                 </div>
                                             )}
@@ -544,17 +557,17 @@ const SelectVersion = ({
             <Dialog.Header title="Select version" />
             <div className="tw-flex tw-min-h-0 tw-flex-1 tw-flex-col tw-overflow-hidden [&_.modal-body]:tw-flex [&_.modal-body]:tw-min-h-0 [&_.modal-body]:tw-flex-1 [&_.modal-body]:tw-flex-col [&_.modal-body]:tw-overflow-y-auto">
                 <Dialog.Body>
-                    <Button
+                    {/* <Button
                         variant="secondary"
                         onClick={() => console.log(versions)}
                     >
                         test
-                    </Button>
-                    <div>
+                    </Button> */}
+                    <p>
                         Select which version of{' '}
                         {selectedFirmware.title ?? selectedFirmware.name} you
                         want to download
-                    </div>
+                    </p>
                     <div className="tw-flex tw-h-8 tw-flex-shrink-0">
                         <FirmwareSearchbar
                             value={versionFilter}
@@ -636,12 +649,14 @@ const DownloadFirmware = ({
     selectedFirmware,
     selectedVersion,
     versions,
+    compatibleDevice,
 }: {
     close: () => void;
     setModalStage: (stage: ModalStage) => void;
     selectedFirmware: Firmware;
     selectedVersion: string;
     versions: string[];
+    compatibleDevice: string[];
 }) => {
     const device = useSelector(selectedDevice);
     const deviceName = device ? deviceInfo(device).name : 'no device';
@@ -719,11 +734,15 @@ const DownloadFirmware = ({
                             </Alert>
                         )}
                         {device &&
+                            deviceName &&
                             !(
-                                deviceName?.toLowerCase().replace(' ', '') ===
-                                selectedFirmware.device[0]
-                                    .toLowerCase()
-                                    .replace(' ', '')
+                                deviceName.toLowerCase().replace(' ', '') ===
+                                    selectedFirmware.device[0]
+                                        .toLowerCase()
+                                        .replace(' ', '') ||
+                                compatibleDevice.includes(
+                                    deviceName.toLowerCase().replace(' ', ''),
+                                )
                             ) && (
                                 <Alert variant="warning">
                                     Warning: This firmware is not compatible

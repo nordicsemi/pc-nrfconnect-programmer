@@ -10,7 +10,6 @@ import { Button } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 export type FilterOptions = Record<string, string[]>;
 
-// Should maybe move this file into ProgramFirmwareModal at some point
 export default ({
     selectedFilters,
     handleToggle,
