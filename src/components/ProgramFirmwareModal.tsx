@@ -77,6 +77,8 @@ export default ({
     const close = () => {
         onClose();
         setSelectedFirmware(undefined);
+        setSelectedVersion('');
+        setCompatibleDevice([]);
         setModalStage('firmwareSelection'); // This looks weird when closing
         // What else needs to be done when closing the window?
     };
