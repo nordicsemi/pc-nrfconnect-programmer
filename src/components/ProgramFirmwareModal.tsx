@@ -699,9 +699,9 @@ const DownloadFirmware = ({
                                 {selectedFirmware.title ??
                                     selectedFirmware.name}
                             </div>
-                            {selectedFirmware.version && (
+                            {selectedVersion && (
                                 <div className="tw-text-xs">
-                                    Version {selectedFirmware.version}
+                                    Version {selectedVersion}
                                 </div>
                             )}
                         </div>
