@@ -14,10 +14,10 @@ import {
     DialogButton,
     type Firmware,
     FirmwareClient,
-    getAppDataDir,
     selectedDevice,
     useHotKey,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
+import { tmpdir } from 'os';
 import { join } from 'path';
 
 import * as fileActions from '../actions/fileActions';
@@ -32,9 +32,7 @@ interface GroupedFirmware {
 }
 
 const client = new FirmwareClient({
-    server: 'files.nordicsemi.com',
-    repo: 'swtools',
-    directory: join(getAppDataDir(), 'firmwares'),
+    directory: join(tmpdir(), 'pc-nrfconnect-programmer'),
 });
 
 const filterableKeys = ['device', 'type'];
