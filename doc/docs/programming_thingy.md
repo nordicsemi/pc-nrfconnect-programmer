@@ -5,8 +5,8 @@ You can program the Nordic Thingy application and network core firmware over USB
 You can follow this procedure to update the preloaded firmware on the Nordic Thingy prototyping platforms using the precompiled application firmware available from the [Nordic Semiconductor website](https://www.nordicsemi.com/) for the platform of your choice:
 
 * [Nordic Thingy:91 X Downloads](https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91-X/Download?lang=en#infotabs)
-* [Nordic Thingy:91 Downloads](https://www.nordicsemi.com/Products/Development-hardware/ordic-Thingy-91/Download#infotabs)
-* [Nordic Thingy:53 Downloads](https://www.nordicsemi.com/Products/Development-hardware/ordic-Thingy-53/Downloads?lang=en#infotabs)
+* [Nordic Thingy:91 Downloads](https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-91/Download#infotabs)
+* [Nordic Thingy:53 Downloads](https://www.nordicsemi.com/Products/Development-hardware/Nordic-Thingy-53/Downloads?lang=en#infotabs)
 
 See the `CONTENTS.txt` in the downloaded ZIP archive for the description of the firmware files and their usage.
 
