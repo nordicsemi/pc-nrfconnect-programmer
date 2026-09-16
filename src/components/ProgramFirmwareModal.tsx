@@ -405,7 +405,7 @@ const SelectFirmware = ({
                                                                         key={
                                                                             device
                                                                         }
-                                                                        variant="primary-outline"
+                                                                        variant="secondary"
                                                                         onClick={() => {
                                                                             onSelectedFirmware(
                                                                                 {
@@ -435,7 +435,7 @@ const SelectFirmware = ({
                 </Dialog.Body>
             </div>
             <Dialog.Footer>
-                <DialogButton variant="primary-outline" onClick={close}>
+                <DialogButton variant="secondary" onClick={close}>
                     Close
                 </DialogButton>
             </Dialog.Footer>
@@ -521,7 +521,7 @@ const SelectVersion = ({
             </div>
             <Dialog.Footer>
                 <DialogButton
-                    variant="primary-outline"
+                    variant="secondary"
                     onClick={() => {
                         setModalStage('firmwareSelection');
                         setSelectedFirmware(undefined);
@@ -531,7 +531,7 @@ const SelectVersion = ({
                     Back
                 </DialogButton>
                 <DialogButton
-                    variant="primary-outline"
+                    variant="secondary"
                     onClick={() => {
                         close();
                     }}
@@ -670,7 +670,7 @@ const DownloadFirmware = ({
                     Add file
                 </DialogButton>
                 <DialogButton
-                    variant="primary-outline"
+                    variant="secondary"
                     onClick={() => {
                         if (versions.length > 1) {
                             setModalStage('versionSelection');
@@ -681,7 +681,7 @@ const DownloadFirmware = ({
                 >
                     Back
                 </DialogButton>
-                <DialogButton variant="primary-outline" onClick={close}>
+                <DialogButton variant="secondary" onClick={close}>
                     Close
                 </DialogButton>
             </Dialog.Footer>
