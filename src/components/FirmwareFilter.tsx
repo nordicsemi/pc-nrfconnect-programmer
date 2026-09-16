@@ -9,19 +9,19 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { Button } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 export type FilterOptions = Record<string, string[]>;
-
+// The filter menu is currently made with react bootstrap as this is how the filter menu in launcher was made, but should be changed to its own component
 export default ({
+    filterOptions,
     selectedFilters,
+    visibleFilters,
     handleToggle,
     clearFilters,
-    filterOptions,
-    visibleFilters,
 }: {
+    filterOptions: FilterOptions;
     selectedFilters: FilterOptions;
+    visibleFilters: FilterOptions;
     handleToggle: (key: string, value: string) => void;
     clearFilters: () => void;
-    filterOptions: FilterOptions;
-    visibleFilters: FilterOptions;
 }) => {
     const [isOpen, setIsOpen] = useState(false);
 

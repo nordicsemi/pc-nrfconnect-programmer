@@ -37,21 +37,6 @@ const client = new FirmwareClient({
 
 const filterableKeys = ['device', 'type'];
 
-// const fw: Firmware = (await fwclient.listFirmware({}))[0];
-// fwclient.searchVersions(fw);
-
-// listFirmware for the first fetch - returns a list of firmwares
-// searchVersions for the second fetch - fw as input - returns list of strings
-// getFirmware for download - {...fw, version: v}
-
-// Fix everything with device - easy fix: devide[0], but some fw has more devices
-// Make VisibleFirmware work - change the type: should include a list of fw + title and description
-// New onclick functions for fw selection
-// Fix filtering - how should it work with devices
-
-// npm pack - shared
-// npm i --save-dev path
-
 type ModalStage = 'firmwareSelection' | 'versionSelection' | 'downloadFirmware';
 
 export default ({
@@ -68,52 +53,52 @@ export default ({
     useEffect(() => {
         client.listFirmware({}).then(setFirmwares);
     }, []);
+
     const [selectedFirmware, setSelectedFirmware] = useState<Firmware>();
+    const [versions, setVersions] = useState<string[]>([]);
     const [selectedVersion, setSelectedVersion] = useState('');
     const [compatibleDevice, setCompatibleDevice] = useState<string[]>([]);
 
     const close = () => {
         onClose();
         setSelectedFirmware(undefined);
+        setVersions([]);
         setSelectedVersion('');
         setCompatibleDevice([]);
-        setModalStage('firmwareSelection'); // This looks weird when closing
-        // What else needs to be done when closing the window?
+        setModalStage('firmwareSelection');
     };
-
-    const [versions, setVersions] = useState<string[]>([]);
 
     return (
         <Dialog isVisible={isVisible} onHide={close}>
             {modalStage === 'firmwareSelection' && (
                 <SelectFirmware
-                    close={close}
-                    setModalStage={setModalStage}
+                    firmwares={firmwares}
                     setSelectedFirmware={setSelectedFirmware}
+                    setCompatibleDevice={setCompatibleDevice}
                     setVersions={setVersions}
                     setSelectedVersion={setSelectedVersion}
-                    setCompatibleDevice={setCompatibleDevice}
-                    firmwares={firmwares}
+                    setModalStage={setModalStage}
+                    close={close}
                 />
             )}
             {modalStage === 'versionSelection' && selectedFirmware && (
                 <SelectVersion
-                    selectedFirmware={selectedFirmware}
                     versions={versions}
-                    close={close}
-                    setModalStage={setModalStage}
-                    setSelectedFirmware={setSelectedFirmware}
+                    selectedFirmware={selectedFirmware}
                     setSelectedVersion={setSelectedVersion}
+                    setSelectedFirmware={setSelectedFirmware}
+                    setModalStage={setModalStage}
+                    close={close}
                 />
             )}
             {modalStage === 'downloadFirmware' && selectedFirmware && (
                 <DownloadFirmware
-                    close={close}
-                    setModalStage={setModalStage}
                     selectedFirmware={selectedFirmware}
                     selectedVersion={selectedVersion}
-                    versions={versions}
                     compatibleDevice={compatibleDevice}
+                    versions={versions}
+                    setModalStage={setModalStage}
+                    close={close}
                 />
             )}
         </Dialog>
@@ -121,57 +106,26 @@ export default ({
 };
 
 const SelectFirmware = ({
-    close,
-    setModalStage,
+    firmwares,
     setSelectedFirmware,
+    setCompatibleDevice,
     setVersions,
     setSelectedVersion,
-    setCompatibleDevice,
-    firmwares,
+    setModalStage,
+    close,
 }: {
-    close: () => void;
-    setModalStage: (stage: ModalStage) => void;
+    firmwares: Firmware[];
     setSelectedFirmware: (firmware: Firmware | undefined) => void;
+    setCompatibleDevice: (device: string[]) => void;
     setVersions: (versions: string[]) => void;
     setSelectedVersion: (version: string) => void;
-    setCompatibleDevice: (device: string[]) => void;
-    firmwares: Firmware[];
+    setModalStage: (stage: ModalStage) => void;
+    close: () => void;
 }) => {
-    // const [filterOptions, setFilterOptions] = useState<FilterOptions>({});
     const [selectedFilters, setSelectedFilters] = useState<FilterOptions>({});
-    // const [visibleFilters, setVisibleFilters] = useState<FilterOptions>({});
-    // const [visibleFirmwares, setVisibleFirmwares] = useState<VisibleFirmware[]>(
-    //     [],
-    // );
-    // const [firmwareList, setFirmwareList] = useState<GroupedFirmware[]>([]);
     const [nameFilter, setNameFilter] = useState('');
     const [selectedFirmwareGroup, setSelectedFirmwareGroup] =
         useState<GroupedFirmware>();
-
-    // const [filterableKeys, setFilterableKeys] = useState<string[]>([]);
-
-    // useEffect(() => {
-    //     fetch('../resources/firmware/filterKeys.json')
-    //         .then(res => res.json())
-    //         .then((data: string[]) => setFilterableKeys(data));
-    // }, []); // This also could be a hardcoded list with the keys if the keys don't have to change that much.
-    // That would be a less dynamic solution, but would work just as fine with the current Firmware type that already is hardcoded.
-    // It might be easier to avoid that extra fetch
-
-    const initialDevice = useRef(useSelector(selectedDevice));
-
-    useEffect(() => {
-        const device = initialDevice.current;
-        if (device) {
-            const deviceName = deviceInfo(device)?.name;
-            if (deviceName) {
-                setSelectedFilters(prev => ({
-                    ...prev,
-                    device: [deviceName.toLowerCase().replace(' ', '')],
-                }));
-            }
-        }
-    }, []);
 
     const filterOptions = useMemo<FilterOptions>(() => {
         const sets: Record<string, Set<string>> = {};
@@ -193,29 +147,25 @@ const SelectFirmware = ({
         );
     }, [firmwares]);
 
-    // const generateFilterOptions = useCallback((): FilterOptions => {
-    //     const sets: Record<string, Set<string>> = {};
+    const initialDevice = useRef(useSelector(selectedDevice));
 
-    //     firmwares.forEach(item => {
-    //         Object.entries(item).forEach(([key, value]) => {
-    //             if (filterableKeys.includes(key)) {
-    //                 if (typeof value === 'string') {
-    //                     (sets[key] ??= new Set()).add(value);
-    //                 } else if (Array.isArray(value)) {
-    //                     sets[key] ??= new Set();
-    //                     value.forEach(v => sets[key].add(String(v)));
-    //                 }
-    //             }
-    //         });
-    //     });
-    //     return Object.fromEntries(
-    //         Object.entries(sets).map(([key, set]) => [key, [...set].sort()]),
-    //     );
-    // }, [filterableKeys, firmwares]);
-
-    // useEffect(() => {
-    //     setFilterOptions(generateFilterOptions());
-    // }, [generateFilterOptions]);
+    useEffect(() => {
+        const device = initialDevice.current;
+        if (device) {
+            const deviceName = deviceInfo(device)?.name;
+            if (
+                deviceName &&
+                filterOptions.device.includes(
+                    deviceName.toLowerCase().replaceAll(' ', ''),
+                )
+            ) {
+                setSelectedFilters(prev => ({
+                    ...prev,
+                    device: [deviceName.toLowerCase().replace(' ', '')],
+                }));
+            }
+        }
+    }, [filterOptions]);
 
     const readFirmwareValues = (firmware: Firmware, key: string): string[] => {
         const value = (firmware as Record<string, unknown>)[key];
@@ -226,7 +176,7 @@ const SelectFirmware = ({
     };
 
     const visibleFilters = useMemo(() => {
-        const result: Record<string, string[]> = {};
+        const result: FilterOptions = {};
 
         filterableKeys.forEach(filterKey => {
             const compatible = firmwares.filter(firmware =>
@@ -334,6 +284,7 @@ const SelectFirmware = ({
     const clearFilters = () => {
         setSelectedFilters({});
     };
+
     const [spinner, setSpinner] = useState(false);
 
     const onSelectedFirmware = (firmware: Firmware, devices: string[]) => {
@@ -359,24 +310,13 @@ const SelectFirmware = ({
                     <p className="tw-flex-shrink-0">
                         Select which firmware you want to download
                     </p>
-                    {/* <Button
-                        variant="secondary"
-                        onClick={() => {
-                            // console.log(firmwares);
-                            console.log(firmwareList);
-                            // console.log(selectedFilters);
-                            console.log(nameFilter.replaceAll(' ', ''));
-                        }}
-                    >
-                        Test
-                    </Button> */}
                     <div className="tw-flex tw-flex-shrink-0 tw-justify-start">
                         <FirmwareFilter
+                            filterOptions={filterOptions}
                             selectedFilters={selectedFilters}
+                            visibleFilters={visibleFilters}
                             handleToggle={handleToggle}
                             clearFilters={clearFilters}
-                            filterOptions={filterOptions}
-                            visibleFilters={visibleFilters}
                         />
                         <FirmwareSearchbar
                             value={nameFilter}
@@ -428,9 +368,6 @@ const SelectFirmware = ({
                                                                 firmware.devices
                                                                     .size === 1
                                                             ) {
-                                                                // setModalStage(
-                                                                //     'versionSelection',
-                                                                // );
                                                                 onSelectedFirmware(
                                                                     {
                                                                         ...firmware
@@ -470,9 +407,6 @@ const SelectFirmware = ({
                                                                         }
                                                                         variant="primary-outline"
                                                                         onClick={() => {
-                                                                            // setModalStage(
-                                                                            //     'versionSelection',
-                                                                            // );
                                                                             onSelectedFirmware(
                                                                                 {
                                                                                     ...fw,
@@ -510,59 +444,27 @@ const SelectFirmware = ({
 };
 
 const SelectVersion = ({
-    selectedFirmware,
     versions,
-    close,
-    setModalStage,
-    setSelectedFirmware,
+    selectedFirmware,
     setSelectedVersion,
+    setSelectedFirmware,
+    setModalStage,
+    close,
 }: {
-    selectedFirmware: Firmware;
     versions: string[];
-    close: () => void;
-    setModalStage: (stage: ModalStage) => void;
-    setSelectedFirmware: (firmware: Firmware | undefined) => void;
+    selectedFirmware: Firmware;
     setSelectedVersion: (version: string) => void;
+    setSelectedFirmware: (firmware: Firmware | undefined) => void;
+    setModalStage: (stage: ModalStage) => void;
+    close: () => void;
 }) => {
-    // const [versions, setVersions] = useState<string[]>([]);
     const [versionFilter, setVersionFilter] = useState('');
-
-    // useEffect(() => {
-    //     client.searchVersions(selectedFirmware).then(setVersions);
-    // }, [selectedFirmware]);
-
-    // const testVersions = [
-    //     '1',
-    //     '2',
-    //     '3',
-    //     '4',
-    //     '5',
-    //     '6',
-    //     '7',
-    //     '8',
-    //     '9',
-    //     '1',
-    //     '2',
-    //     '3',
-    //     '4',
-    //     '5',
-    //     '6',
-    //     '7',
-    //     '8',
-    //     '9',
-    // ];
 
     return (
         <div className="tw-flex tw-max-h-[90vh] tw-flex-col">
             <Dialog.Header title="Select version" />
             <div className="tw-flex tw-min-h-0 tw-flex-1 tw-flex-col tw-overflow-hidden [&_.modal-body]:tw-flex [&_.modal-body]:tw-min-h-0 [&_.modal-body]:tw-flex-1 [&_.modal-body]:tw-flex-col [&_.modal-body]:tw-overflow-y-auto">
                 <Dialog.Body>
-                    {/* <Button
-                        variant="secondary"
-                        onClick={() => console.log(versions)}
-                    >
-                        test
-                    </Button> */}
                     <p>
                         Select which version of{' '}
                         {selectedFirmware.title ?? selectedFirmware.name} you
@@ -597,9 +499,6 @@ const SelectVersion = ({
                                         <div className="tw-text-base">
                                             {version}
                                         </div>
-                                        {/* <div className="t-text-xs tw-text-gray-400">
-                                            {f.latest === 'true' && 'latest'}
-                                        </div> */}
                                     </div>
                                     <div className="tw-flex tw-flex-shrink-0 tw-items-center tw-pl-3 tw-pr-2">
                                         <Button
@@ -626,6 +525,7 @@ const SelectVersion = ({
                     onClick={() => {
                         setModalStage('firmwareSelection');
                         setSelectedFirmware(undefined);
+                        // reset versions
                     }}
                 >
                     Back
@@ -644,22 +544,36 @@ const SelectVersion = ({
 };
 
 const DownloadFirmware = ({
-    close,
-    setModalStage,
     selectedFirmware,
     selectedVersion,
-    versions,
     compatibleDevice,
+    versions,
+    setModalStage,
+    close,
 }: {
-    close: () => void;
-    setModalStage: (stage: ModalStage) => void;
     selectedFirmware: Firmware;
     selectedVersion: string;
-    versions: string[];
     compatibleDevice: string[];
+    versions: string[];
+    setModalStage: (stage: ModalStage) => void;
+    close: () => void;
 }) => {
     const device = useSelector(selectedDevice);
     const deviceName = device ? deviceInfo(device).name : 'no device';
+
+    const [dependencyFirmware, setDependencyFirmware] = useState<Firmware>();
+    // spinner?
+    useEffect(() => {
+        if (selectedFirmware.dependencies) {
+            client
+                .fetchFirmware({
+                    name: selectedFirmware.dependencies[0].name,
+                    version: selectedFirmware.dependencies[0].version,
+                    device: selectedFirmware.device,
+                })
+                .then(setDependencyFirmware);
+        }
+    }, [selectedFirmware]);
 
     const [downloading, setDownloading] = useState(false);
     const [downloadError, setDownloadError] = useState('');
@@ -669,20 +583,6 @@ const DownloadFirmware = ({
     const openFile = (filename: string) =>
         dispatch(fileActions.openFile(filename));
 
-    const [depFw, setDepFw] = useState<Firmware>();
-
-    useEffect(() => {
-        if (selectedFirmware.dependencies) {
-            client
-                .fetchFirmware({
-                    name: selectedFirmware.dependencies[0].name,
-                    version: selectedFirmware.dependencies[0].version,
-                    device: selectedFirmware.device,
-                })
-                .then(setDepFw);
-        }
-    }, [selectedFirmware]);
-
     return (
         <>
             <Dialog.Header
@@ -690,80 +590,65 @@ const DownloadFirmware = ({
                 showSpinner={downloading}
             />
             <Dialog.Body>
-                {selectedFirmware ? (
+                <div>
                     <div>
-                        <div>
-                            <div className="tw-text-lg">
-                                {selectedFirmware.title ??
-                                    selectedFirmware.name}
-                            </div>
-                            {selectedVersion && (
-                                <div className="tw-text-xs">
-                                    Version {selectedVersion}
-                                </div>
-                            )}
+                        <div className="tw-text-lg">
+                            {selectedFirmware.title ?? selectedFirmware.name}
                         </div>
-                        <div className="tw-mt-2">
-                            {selectedFirmware.description}
-                        </div>
-                        {selectedFirmware.documentation && (
-                            <div className="tw-mb-3 tw-mt-2">
-                                <div>Documentation:</div>
-                                <a
-                                    href={selectedFirmware.documentation}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    {selectedFirmware.documentation}
-                                </a>
+                        {selectedVersion && (
+                            <div className="tw-text-xs">
+                                Version {selectedVersion}
                             </div>
-                        )}
-                        {/* {selectedFirmware.dependencies && (
-                            <Alert variant="info">
-                                This firmware has dependencies. Make sure you
-                                also download{' '}
-                                {selectedFirmware.dependencies
-                                    .map(dep => `${dep.name} v${dep.version}`)
-                                    .join(', ')}
-                            </Alert>
-                        )} */}
-                        {depFw && (
-                            <Alert variant="info">
-                                This firmware has a dependency. Make sure you
-                                also download {depFw.title} v{depFw.version}
-                            </Alert>
-                        )}
-                        {device &&
-                            deviceName &&
-                            !(
-                                deviceName.toLowerCase().replace(' ', '') ===
-                                    selectedFirmware.device[0]
-                                        .toLowerCase()
-                                        .replace(' ', '') ||
-                                compatibleDevice.includes(
-                                    deviceName.toLowerCase().replace(' ', ''),
-                                )
-                            ) && (
-                                <Alert variant="warning">
-                                    Warning: This firmware is not compatible
-                                    with your selected device.
-                                </Alert>
-                            )}
-
-                        {downloadError && (
-                            <Alert variant="danger">{downloadError}</Alert>
                         )}
                     </div>
-                ) : (
-                    <div>No firmware</div>
-                )}
+                    <div className="tw-mt-2">
+                        {selectedFirmware.description}
+                    </div>
+                    {selectedFirmware.documentation && (
+                        <div className="tw-mb-3 tw-mt-2">
+                            <div>Documentation:</div>
+                            <a
+                                href={selectedFirmware.documentation}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                {selectedFirmware.documentation}
+                            </a>
+                        </div>
+                    )}
+                    {dependencyFirmware && (
+                        <Alert variant="info">
+                            This firmware has a dependency. Make sure you also
+                            download {dependencyFirmware.title} v
+                            {dependencyFirmware.version}
+                        </Alert>
+                    )}
+                    {device &&
+                        deviceName &&
+                        !(
+                            deviceName.toLowerCase().replace(' ', '') ===
+                                selectedFirmware.device[0]
+                                    .toLowerCase()
+                                    .replace(' ', '') ||
+                            compatibleDevice.includes(
+                                deviceName.toLowerCase().replace(' ', ''),
+                            )
+                        ) && (
+                            <Alert variant="warning">
+                                Warning: This firmware is not compatible with
+                                your selected device.
+                            </Alert>
+                        )}
+                    {downloadError && (
+                        <Alert variant="danger">{downloadError}</Alert>
+                    )}
+                </div>
             </Dialog.Body>
             <Dialog.Footer>
                 <DialogButton
                     variant="primary"
                     disabled={downloading}
                     onClick={() => {
-                        console.log(selectedFirmware);
                         setDownloading(true);
                         setDownloadError('');
                         client

@@ -1,5 +1,0 @@
-{
-    "device": ["nRF52", "nRF53", "nRF9160 DK"],
-    "version": ["1.2", "2.2", "2.3", "4.1.2"],
-    "name": ["Hello World", "Asset Tracking"]
-}
