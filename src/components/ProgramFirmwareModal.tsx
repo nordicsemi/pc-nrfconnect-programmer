@@ -617,7 +617,7 @@ const DownloadFirmware = ({
                         </div>
                     )}
                     {dependencyFirmware && (
-                        <Alert variant="info">
+                        <Alert variant="warning">
                             This firmware has a dependency. Make sure you also
                             download {dependencyFirmware.title} v
                             {dependencyFirmware.version}
