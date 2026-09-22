@@ -708,7 +708,7 @@ const FirmwareSearchbar = ({
         <input
             type="text"
             placeholder="Search..."
-            className="tw-rounded-none tw-border tw-border-solid tw-border-nordicBlue tw-px-2 tw-text-gray-700 placeholder:tw-text-nordicBlue-500 focus:tw-rounded-none focus:tw-border-solid focus:tw-outline focus:tw-outline-2 focus:-tw-outline-offset-2 focus:tw-outline-nordicBlue"
+            className="tw-rounded-none tw-border tw-border-solid tw-border-gray-700 tw-px-2 tw-text-gray-700 focus:tw-rounded-none focus:tw-border-solid focus:tw-outline focus:tw-outline-2 focus:-tw-outline-offset-2 focus:tw-outline-nordicBlue"
             value={value}
             ref={searchFieldRef}
             onChange={e => onChange(e.target.value)}
