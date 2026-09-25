@@ -571,7 +571,12 @@ const DownloadFirmware = ({
                     version: selectedFirmware.dependencies[0].version,
                     device: selectedFirmware.device,
                 })
-                .then(setDependencyFirmware);
+                .then(result => {
+                    if (result) {
+                        // TODO add proper empty file download handling
+                        setDependencyFirmware(result);
+                    }
+                });
         }
     }, [selectedFirmware]);
 
@@ -657,7 +662,9 @@ const DownloadFirmware = ({
                                 version: selectedVersion,
                             })
                             .then(result => {
-                                openFile(result.file);
+                                if (result) {
+                                    openFile(result.file);
+                                } // TODO add proper empty file download handling
                                 close();
                             })
                             .catch(err => {
