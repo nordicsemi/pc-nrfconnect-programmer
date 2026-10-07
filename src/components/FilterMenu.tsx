@@ -5,11 +5,10 @@
  */
 
 import React, { useState } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
 import { Button } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
-export type FilterOptions = Record<string, string[]>;
-// The filter menu is currently made with react bootstrap as this is how the filter menu in launcher was made, but should be changed to its own component
+import { type FilterOptions } from './FirmwareFilter';
+
 export default ({
     filterOptions,
     selectedFilters,
@@ -26,13 +25,18 @@ export default ({
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="tw-mr-3 tw-flex-shrink-0">
-            <Dropdown onToggle={() => setIsOpen(!isOpen)}>
-                <Dropdown.Toggle variant="secondary" active={isOpen}>
-                    <span className="mdi mdi-tune" />
-                    Filter
-                </Dropdown.Toggle>
-                <Dropdown.Menu className="tw-flex tw-max-h-[35vh] tw-w-max tw-max-w-[568px] tw-flex-col tw-overflow-hidden tw-border tw-border-solid tw-border-gray-300 tw-pt-0">
+        <div className="tw-relative">
+            <Button
+                variant="secondary"
+                size="lg"
+                onClick={() => setIsOpen(!isOpen)}
+                className="tw-mr-3"
+            >
+                <span className="mdi mdi-tune" />
+                Filter
+            </Button>
+            {isOpen && (
+                <div className="tw-absolute tw-mt-0.5 tw-flex tw-max-h-[35vh] tw-w-max tw-max-w-[568px] tw-flex-col tw-overflow-hidden tw-border tw-border-solid tw-border-gray-300 tw-bg-white tw-pb-2">
                     <div className="tw-flex tw-min-h-0 tw-flex-1 tw-flex-row tw-flex-wrap tw-overflow-y-auto tw-px-2 tw-py-2">
                         {Object.entries(filterOptions ?? {}).map(
                             ([key, values]) => (
@@ -87,8 +91,8 @@ export default ({
                             Clear filters
                         </Button>
                     </div>
-                </Dropdown.Menu>
-            </Dropdown>
+                </div>
+            )}
         </div>
     );
 };

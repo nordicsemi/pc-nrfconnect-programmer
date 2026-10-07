@@ -21,6 +21,7 @@ import { tmpdir } from 'os';
 import { join } from 'path';
 
 import * as fileActions from '../actions/fileActions';
+import FilterMenu from './FilterMenu';
 import FirmwareFilter, { type FilterOptions } from './FirmwareFilter';
 
 interface GroupedFirmware {
@@ -35,7 +36,7 @@ const client = new FirmwareClient({
     directory: join(tmpdir(), 'pc-nrfconnect-programmer'),
 });
 
-const filterableKeys = ['device', 'type'];
+const filterableKeys = ['device', 'type', 'name'];
 
 type ModalStage = 'firmwareSelection' | 'versionSelection' | 'downloadFirmware';
 
@@ -311,7 +312,7 @@ const SelectFirmware = ({
                         Select which firmware you want to download
                     </p>
                     <div className="tw-flex tw-flex-shrink-0 tw-justify-start">
-                        <FirmwareFilter
+                        <FilterMenu
                             filterOptions={filterOptions}
                             selectedFilters={selectedFilters}
                             visibleFilters={visibleFilters}
