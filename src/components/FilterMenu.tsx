@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import { type FilterOptions } from './FirmwareFilter';
@@ -23,14 +23,39 @@ export default ({
     clearFilters: () => void;
 }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const wrapperRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const handleEscape = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') setIsOpen(false);
+        };
+
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                wrapperRef.current &&
+                !wrapperRef.current.contains(event.target as Node)
+            ) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('keydown', handleEscape);
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('keydown', handleEscape);
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen]);
 
     return (
-        <div className="tw-relative">
+        <div className="tw-relative" ref={wrapperRef}>
             <Button
                 variant="secondary"
                 size="lg"
                 onClick={() => setIsOpen(!isOpen)}
-                className="tw-mr-3"
             >
                 <span className="mdi mdi-tune" />
                 Filter

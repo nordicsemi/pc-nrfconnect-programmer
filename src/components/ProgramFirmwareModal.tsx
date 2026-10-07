@@ -311,7 +311,7 @@ const SelectFirmware = ({
                     <p className="tw-flex-shrink-0">
                         Select which firmware you want to download
                     </p>
-                    <div className="tw-flex tw-flex-shrink-0 tw-justify-start">
+                    <div className="tw-flex tw-flex-shrink-0 tw-justify-start tw-gap-3">
                         <FilterMenu
                             filterOptions={filterOptions}
                             selectedFilters={selectedFilters}
