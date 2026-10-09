@@ -62,7 +62,7 @@ export default ({
             </Button>
             {isOpen && (
                 <div className="tw-absolute tw-mt-0.5 tw-flex tw-max-h-[35vh] tw-w-max tw-max-w-[568px] tw-flex-col tw-overflow-hidden tw-border tw-border-solid tw-border-gray-300 tw-bg-white tw-pb-2">
-                    <div className="tw-flex tw-min-h-0 tw-flex-1 tw-flex-row tw-flex-wrap tw-overflow-y-auto tw-px-2 tw-py-2">
+                    <div className="tw-flex tw-min-h-0 tw-flex-1 tw-flex-row tw-flex-wrap tw-overflow-y-auto tw-px-2 tw-py-2 [&::-webkit-scrollbar-thumb:hover]:tw-bg-gray-700 [&::-webkit-scrollbar-thumb]:tw-rounded-[14px] [&::-webkit-scrollbar-thumb]:tw-border-[5px] [&::-webkit-scrollbar-thumb]:tw-border-solid [&::-webkit-scrollbar-thumb]:tw-border-white [&::-webkit-scrollbar-thumb]:tw-bg-gray-500 [&::-webkit-scrollbar]:tw-h-3.5 [&::-webkit-scrollbar]:tw-w-3.5">
                         {Object.entries(filterOptions ?? {}).map(
                             ([key, values]) => (
                                 <div

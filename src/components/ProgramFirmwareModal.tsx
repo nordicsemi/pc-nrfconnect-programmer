@@ -324,7 +324,7 @@ const SelectFirmware = ({
                             onChange={setNameFilter}
                         />
                     </div>
-                    <div className="tw-mt-5 tw-min-h-[35vh] tw-flex-1 tw-overflow-y-auto">
+                    <div className="tw-mt-5 tw-min-h-[35vh] tw-flex-1 tw-overflow-y-auto [&::-webkit-scrollbar-thumb:hover]:tw-bg-gray-700 [&::-webkit-scrollbar-thumb]:tw-rounded-[14px] [&::-webkit-scrollbar-thumb]:tw-border-[5px] [&::-webkit-scrollbar-thumb]:tw-border-solid [&::-webkit-scrollbar-thumb]:tw-border-white [&::-webkit-scrollbar-thumb]:tw-bg-gray-500 [&::-webkit-scrollbar]:tw-h-3.5 [&::-webkit-scrollbar]:tw-w-3.5">
                         {firmwareList.length ? (
                             <>
                                 {firmwareList.map(firmware => (
@@ -477,7 +477,7 @@ const SelectVersion = ({
                             onChange={setVersionFilter}
                         />
                     </div>
-                    <div className="tw-mt-5 tw-flex-1 tw-justify-start tw-overflow-y-auto">
+                    <div className="tw-mt-5 tw-flex-1 tw-justify-start tw-overflow-y-auto [&::-webkit-scrollbar-thumb:hover]:tw-bg-gray-700 [&::-webkit-scrollbar-thumb]:tw-rounded-[14px] [&::-webkit-scrollbar-thumb]:tw-border-[5px] [&::-webkit-scrollbar-thumb]:tw-border-solid [&::-webkit-scrollbar-thumb]:tw-border-white [&::-webkit-scrollbar-thumb]:tw-bg-gray-500 [&::-webkit-scrollbar]:tw-h-3.5 [&::-webkit-scrollbar]:tw-w-3.5">
                         {versions
                             .filter(version =>
                                 version
