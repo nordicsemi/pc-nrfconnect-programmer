@@ -255,6 +255,28 @@ supported_devices:
       multi_image_mcuboot_programming: full
       mcuboot_dfu_programming_window: full
 
+  - device: nRF51 DK
+    pca: PCA10028
+    verification_version:
+    support:
+      erase_all_j_link: full
+      erase_and_write_j_link: full
+      read_memory_j_link: full
+      auto_read_memory: full
+      save_memory_as_file: full
+      program_via_external_debug_probe: unsupported
+      detect_firmware_type: unsupported
+      write_mcuboot: unsupported
+      select_mcuboot_target: unsupported
+      write_modem_firmware: unsupported
+      modem_dfu_programming_window: unsupported
+      write_nordic_secure_dfu: full
+      reset_device_j_link: full
+      display_device_memory_layout: full
+      inspect_memory_section_details: full
+      multi_image_mcuboot_programming: unsupported
+      mcuboot_dfu_programming_window: unsupported
+
   - device: nRF52 DK
     pca: PCA10040
     verification_version:
@@ -387,8 +409,52 @@ supported_devices:
       multi_image_mcuboot_programming: unsupported
       mcuboot_dfu_programming_window: unsupported
 
+  - device: nRF54H20 DK
+    pca: PCA10175
+    verification_version:
+    support:
+      erase_all_j_link: full
+      erase_and_write_j_link: unsupported
+      read_memory_j_link: unsupported
+      auto_read_memory: unsupported
+      save_memory_as_file: unsupported
+      program_via_external_debug_probe: unsupported
+      detect_firmware_type: unsupported
+      write_mcuboot: unsupported
+      select_mcuboot_target: unsupported
+      write_modem_firmware: unsupported
+      modem_dfu_programming_window: unsupported
+      write_nordic_secure_dfu: unsupported
+      reset_device_j_link: unsupported
+      display_device_memory_layout: unsupported
+      inspect_memory_section_details: unsupported
+      multi_image_mcuboot_programming: unsupported
+      mcuboot_dfu_programming_window: unsupported
+
   - device: nRF54L15 DK
     pca: PCA10156
+    verification_version:
+    support:
+      erase_all_j_link: full
+      erase_and_write_j_link: full
+      read_memory_j_link: full
+      auto_read_memory: full
+      save_memory_as_file: full
+      program_via_external_debug_probe: unsupported
+      detect_firmware_type: unsupported
+      write_mcuboot: unsupported
+      select_mcuboot_target: unsupported
+      write_modem_firmware: unsupported
+      modem_dfu_programming_window: unsupported
+      write_nordic_secure_dfu: unsupported
+      reset_device_j_link: full
+      display_device_memory_layout: full
+      inspect_memory_section_details: full
+      multi_image_mcuboot_programming: unsupported
+      mcuboot_dfu_programming_window: unsupported
+
+  - device: nRF54LC10 DK
+    pca: PCA10226
     verification_version:
     support:
       erase_all_j_link: full
@@ -677,17 +743,8 @@ unsupported_devices:
   - device: "Nordic Thingy:52"
     pca: PCA20020
 
-  - device: nRF51 DK
-    pca: PCA10028
-
   - device: nRF51 Dongle
     pca: PCA10031
-
-  - device: nRF54H20 DK
-    pca: PCA10175 
-
-  - device: nRF54LC10 DK
-    pca: PCA10226
 
   - device: nRF7002 DK
     pca: PCA10143
