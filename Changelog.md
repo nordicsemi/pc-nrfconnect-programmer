@@ -1,3 +1,9 @@
+## 4.8.1 - Unreleased
+
+### Fixed
+
+- Fix an issue with wrong UICR size when writing UICR data
+
 ## 4.8.0 - 2026-07-09
 
 ### Added
