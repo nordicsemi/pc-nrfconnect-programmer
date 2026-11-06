@@ -318,7 +318,7 @@ export const mergeNrfutilDeviceInfoInCoreDefinition = (
     romSize: inputCoreInfo.codeSize,
     pageSize: inputCoreInfo.codePageSize,
     uicrBaseAddr: inputCoreInfo.uicrAddress,
-    uicrSize: inputCoreInfo.codePageSize,
+    uicrSize: inputCoreInfo.infoPageSize,
 });
 
 export const generateMergedMemMap = (deviceDefinition: DeviceDefinition) => {
