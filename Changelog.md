@@ -2,7 +2,7 @@
 
 ### Fixed
 
-- Fix an issue with wrong UICR size when writing UICR data
+- Issue with incorrect UICR size when writing UICR data.
 
 ## 4.8.0 - 2026-07-09
 
