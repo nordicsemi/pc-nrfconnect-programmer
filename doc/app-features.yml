@@ -29,7 +29,7 @@ general_app_features:
     description: Remove files from the File Memory Layout
   - id: detect_file_type
     name: Detect file type
-    description: Detect either file .hex, .bin, .zip or anything else
+    description: Detect either file .hex or .zip
   - id: display_file_memory_layout
     name: Display file memory layout
     description: Display the memory layout of added firmware files
@@ -56,12 +56,9 @@ device_specific_features:
   - id: save_memory_as_file
     name: Save memory as file
     description: Save the read device memory layout to a HEX file
-  - id: program_via_external_debug_probe
-    name: Program via external debug probe
-    description: Program a device through a connected external 10-pin debug probe
   - id: detect_firmware_type
     name: Detect firmware type
-    description: When programming using MCUboot, detect whether the selected .zip file is a modem firmware or an application
+    description: Detect whether the selected .zip file is a modem firmware or an application
   - id: write_mcuboot
     name: Write (MCUboot)
     description: Program added files to an MCUboot device
@@ -89,9 +86,6 @@ device_specific_features:
   - id: multi_image_mcuboot_programming
     name: Multi-image MCUboot programming
     description: Program multiple images via an MCUboot ZIP file
-  - id: mcuboot_dfu_programming_window
-    name: MCUboot DFU programming window
-    description: Confirm and execute MCUboot updates in the MCUboot DFU window
 
 shared_features:
   - id: restore_defaults
@@ -127,67 +121,61 @@ supported_devices:
     pca: PCA20053
     verification_version:
     support:
-      erase_all_j_link: unsupported
-      erase_and_write_j_link: unsupported
-      read_memory_j_link: unsupported
+      erase_all_j_link: unsupported # only via external debug probe
+      erase_and_write_j_link: unsupported # only via external debug probe
+      read_memory_j_link: unsupported # only via external debug probe
       auto_read_memory: unsupported
       save_memory_as_file: unsupported
-      program_via_external_debug_probe: full
-      detect_firmware_type: full
+      detect_firmware_type: unsupported
       write_mcuboot: full
       select_mcuboot_target: unsupported
       write_modem_firmware: unsupported
       modem_dfu_programming_window: unsupported
       write_nordic_secure_dfu: unsupported
-      reset_device_j_link: unsupported
+      reset_device_j_link: unsupported # only via external debug probe
       display_device_memory_layout: unsupported
       inspect_memory_section_details: unsupported
       multi_image_mcuboot_programming: full
-      mcuboot_dfu_programming_window: full
 
   - device: Nordic Thingy:91
     pca: PCA20035
     verification_version:
     support:
-      erase_all_j_link: unsupported
-      erase_and_write_j_link: unsupported
-      read_memory_j_link: unsupported
+      erase_all_j_link: unsupported # only via external debug probe
+      erase_and_write_j_link: unsupported # only via external debug probe
+      read_memory_j_link: unsupported # only via external debug probe
       auto_read_memory: unsupported
       save_memory_as_file: unsupported
-      program_via_external_debug_probe: full
       detect_firmware_type: full
       write_mcuboot: full
       select_mcuboot_target: unsupported
       write_modem_firmware: full
       modem_dfu_programming_window: full
       write_nordic_secure_dfu: unsupported
-      reset_device_j_link: unsupported
+      reset_device_j_link: unsupported # only via external debug probe
       display_device_memory_layout: unsupported
       inspect_memory_section_details: unsupported
       multi_image_mcuboot_programming: full
-      mcuboot_dfu_programming_window: full
 
   - device: Nordic Thingy:91 X
-    pca: PCA20049
+    pca: PCA20065
     verification_version: 4.8.0
     support:
-      erase_all_j_link: unsupported
-      erase_and_write_j_link: unsupported
-      read_memory_j_link: unsupported
+      erase_all_j_link: unsupported # only via external debug probe
+      erase_and_write_j_link: unsupported # only via external debug probe
+      read_memory_j_link: unsupported # only via external debug probe
       auto_read_memory: unsupported
       save_memory_as_file: unsupported
-      program_via_external_debug_probe: full
       detect_firmware_type: full
       write_mcuboot: full
       select_mcuboot_target: full
       write_modem_firmware: full
       modem_dfu_programming_window: full
       write_nordic_secure_dfu: unsupported
-      reset_device_j_link: unsupported
+      reset_device_j_link: unsupported # only via external debug probe
       display_device_memory_layout: unsupported
       inspect_memory_section_details: unsupported
       multi_image_mcuboot_programming: full
-      mcuboot_dfu_programming_window: full
 
   - device: nPM 1300 EK
     pca: PCA10152
@@ -198,8 +186,7 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
-      detect_firmware_type: full
+      detect_firmware_type: unsupported
       write_mcuboot: full
       select_mcuboot_target: unsupported
       write_modem_firmware: unsupported
@@ -209,7 +196,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: full
-      mcuboot_dfu_programming_window: full
 
   - device: nPM 1304 EK
     pca: PCA10195
@@ -220,8 +206,7 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
-      detect_firmware_type: full
+      detect_firmware_type: unsupported
       write_mcuboot: full
       select_mcuboot_target: unsupported
       write_modem_firmware: unsupported
@@ -231,7 +216,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: full
-      mcuboot_dfu_programming_window: full
 
   - device: nPM 2100 EK
     pca: PCA10170
@@ -242,8 +226,7 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
-      detect_firmware_type: full
+      detect_firmware_type: unsupported
       write_mcuboot: full
       select_mcuboot_target: unsupported
       write_modem_firmware: unsupported
@@ -253,7 +236,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: full
-      mcuboot_dfu_programming_window: full
 
   - device: nRF51 DK
     pca: PCA10028
@@ -264,7 +246,6 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -275,7 +256,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF52 DK
     pca: PCA10040
@@ -286,7 +266,6 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -297,7 +276,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF52833 DK
     pca: PCA10100
@@ -308,7 +286,6 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -319,7 +296,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF52840 DK
     pca: PCA10056
@@ -330,7 +306,6 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -341,29 +316,26 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF52840 Dongle
     pca: PCA10059
     verification_version:
     support:
-      erase_all_j_link: unsupported
-      erase_and_write_j_link: unsupported
-      read_memory_j_link: unsupported
+      erase_all_j_link: unsupported # only via external debug probe
+      erase_and_write_j_link: unsupported # only via external debug probe
+      read_memory_j_link: unsupported # only via external debug probe
       auto_read_memory: unsupported
       save_memory_as_file: unsupported
-      program_via_external_debug_probe: full
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
       write_modem_firmware: unsupported
       modem_dfu_programming_window: unsupported
       write_nordic_secure_dfu: full
-      reset_device_j_link: unsupported
+      reset_device_j_link: unsupported # only via external debug probe
       display_device_memory_layout: unsupported
       inspect_memory_section_details: unsupported
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF5340 Audio DK
     pca: PCA10121
@@ -374,7 +346,6 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -385,7 +356,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF5340 DK
     pca: PCA10095
@@ -396,7 +366,6 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -407,7 +376,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF54H20 DK
     pca: PCA10175
@@ -418,7 +386,6 @@ supported_devices:
       read_memory_j_link: unsupported
       auto_read_memory: unsupported
       save_memory_as_file: unsupported
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -429,7 +396,6 @@ supported_devices:
       display_device_memory_layout: unsupported
       inspect_memory_section_details: unsupported
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF54L15 DK
     pca: PCA10156
@@ -440,7 +406,6 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -451,7 +416,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF54LC10 DK
     pca: PCA10226
@@ -462,7 +426,6 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -473,7 +436,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF54LM20 DK
     pca: PCA10184
@@ -484,7 +446,6 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -495,7 +456,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF54LM20 Dongle
     pca: PCA10208
@@ -506,8 +466,7 @@ supported_devices:
       read_memory_j_link: unsupported
       auto_read_memory: unsupported
       save_memory_as_file: unsupported
-      program_via_external_debug_probe: unsupported
-      detect_firmware_type: full
+      detect_firmware_type: unsupported
       write_mcuboot: full
       select_mcuboot_target: unsupported
       write_modem_firmware: unsupported
@@ -517,7 +476,6 @@ supported_devices:
       display_device_memory_layout: unsupported
       inspect_memory_section_details: unsupported
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: full
 
   - device: nRF54LS05 DK
     pca: PCA10214
@@ -528,7 +486,6 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -539,7 +496,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF54LV10 DK
     pca: PCA10188
@@ -550,7 +506,6 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -561,7 +516,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF7002 DK
     pca: PCA10143
@@ -572,7 +526,6 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -583,7 +536,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF9131 EK
     pca: PCA10165
@@ -594,8 +546,7 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
-      detect_firmware_type: unsupported
+      detect_firmware_type: full
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
       write_modem_firmware: full
@@ -605,7 +556,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF9151 DK
     pca: PCA10171
@@ -616,8 +566,7 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
-      detect_firmware_type: unsupported
+      detect_firmware_type: full
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
       write_modem_firmware: full
@@ -627,7 +576,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF9151 SMA DK
     pca: PCA10201
@@ -638,8 +586,7 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
-      detect_firmware_type: unsupported
+      detect_firmware_type: full
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
       write_modem_firmware: full
@@ -649,7 +596,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF9160 DK
     pca: PCA10090
@@ -660,8 +606,7 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
-      detect_firmware_type: unsupported
+      detect_firmware_type: full
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
       write_modem_firmware: full
@@ -671,7 +616,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF9161 DK
     pca: PCA10153
@@ -682,8 +626,7 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
-      detect_firmware_type: unsupported
+      detect_firmware_type: full
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
       write_modem_firmware: full
@@ -693,7 +636,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF9251 DK
     pca: PCA10218
@@ -704,8 +646,7 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
-      detect_firmware_type: unsupported
+      detect_firmware_type: full
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
       write_modem_firmware: full
@@ -715,7 +656,6 @@ supported_devices:
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF93M1 DK
     pca: PCA10232
@@ -726,18 +666,16 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: full
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
-      write_modem_firmware: unsupported
-      modem_dfu_programming_window: unsupported
+      write_modem_firmware: unsupported          # to confirm
+      modem_dfu_programming_window: unsupported  # to confirm
       write_nordic_secure_dfu: unsupported
       reset_device_j_link: full
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: nRF93M1 DK
     pca: PCA10237
@@ -748,18 +686,16 @@ supported_devices:
       read_memory_j_link: full
       auto_read_memory: full
       save_memory_as_file: full
-      program_via_external_debug_probe: unsupported
       detect_firmware_type: full
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
-      write_modem_firmware: unsupported
-      modem_dfu_programming_window: unsupported
+      write_modem_firmware: unsupported          # to confirm
+      modem_dfu_programming_window: unsupported  # to confirm
       write_nordic_secure_dfu: unsupported
       reset_device_j_link: full
       display_device_memory_layout: full
       inspect_memory_section_details: full
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
   - device: PPK2
     pca: PCA63100
@@ -770,7 +706,6 @@ supported_devices:
       read_memory_j_link: unsupported
       auto_read_memory: unsupported
       save_memory_as_file: unsupported
-      program_via_external_debug_probe: full
       detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
@@ -781,7 +716,6 @@ supported_devices:
       display_device_memory_layout: unsupported
       inspect_memory_section_details: unsupported
       multi_image_mcuboot_programming: unsupported
-      mcuboot_dfu_programming_window: unsupported
 
 unsupported_devices:
   - device: Nordic Thingy:52
