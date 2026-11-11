@@ -163,7 +163,7 @@ const isRegionInCore = (
     region: Region,
     coreDefinition: CoreDefinition,
 ): boolean => {
-    const { romBaseAddr, romSize, pageSize, uicrBaseAddr } = coreDefinition;
+    const { romBaseAddr, romSize, uicrBaseAddr, uicrSize } = coreDefinition;
     const isInRange = isRegionInRange(
         region,
         romBaseAddr,
@@ -172,7 +172,7 @@ const isRegionInCore = (
     const isUicr = isRegionInRange(
         region,
         uicrBaseAddr,
-        uicrBaseAddr + pageSize,
+        uicrBaseAddr + uicrSize,
     );
     return isInRange || isUicr;
 };
