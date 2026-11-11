@@ -382,7 +382,7 @@ supported_devices:
     verification_version:
     support:
       erase_all_j_link: full
-      erase_and_write_j_link: unsupported
+      erase_and_write_j_link: full
       read_memory_j_link: unsupported
       auto_read_memory: unsupported
       save_memory_as_file: unsupported
@@ -392,7 +392,7 @@ supported_devices:
       write_modem_firmware: unsupported
       modem_dfu_programming_window: unsupported
       write_nordic_secure_dfu: unsupported
-      reset_device_j_link: unsupported
+      reset_device_j_link: full
       display_device_memory_layout: unsupported
       inspect_memory_section_details: unsupported
       multi_image_mcuboot_programming: unsupported
@@ -643,18 +643,18 @@ supported_devices:
     support:
       erase_all_j_link: full
       erase_and_write_j_link: full
-      read_memory_j_link: full
-      auto_read_memory: full
-      save_memory_as_file: full
-      detect_firmware_type: full
+      read_memory_j_link: unsupported
+      auto_read_memory: unsupported
+      save_memory_as_file: unsupported
+      detect_firmware_type: unsupported
       write_mcuboot: unsupported
       select_mcuboot_target: unsupported
-      write_modem_firmware: full
-      modem_dfu_programming_window: full
+      write_modem_firmware: unsupported
+      modem_dfu_programming_window: unsupported
       write_nordic_secure_dfu: unsupported
       reset_device_j_link: full
-      display_device_memory_layout: full
-      inspect_memory_section_details: full
+      display_device_memory_layout: unsupported
+      inspect_memory_section_details: unsupported
       multi_image_mcuboot_programming: unsupported
 
   - device: nRF93M1 DK
